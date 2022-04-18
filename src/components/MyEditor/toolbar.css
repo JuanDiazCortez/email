@@ -1,0 +1,28 @@
+/* #edit-toolbar button {
+  margin-left: 2px;
+  color: rgb(197, 241, 241);
+  border-radius: 1rem;
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+} */
+
+
+button,
+input,
+select {
+    font-size: inherit;
+    font-family: inherit;
+    color: #000;
+    margin: 0.1rem;
+  border: 1px solid black;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.4rem;
+  background: white;
+  accent-color: black;
+}
+
+.is-active {
+    background: black;
+    color: #fff;
+}

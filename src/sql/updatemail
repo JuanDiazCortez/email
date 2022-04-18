@@ -1,0 +1,2094 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+SET search_path TO webinfo;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+SELECT * FROM pg_extension;
+select * from uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+\d users
+alter table users alter column hash default( gen_random_uuid());
+alter table users alter column hash set default( gen_random_uuid());
+select * from users;
+alter table users set hash=gen_randon_uuid();
+update users set hash = gen_randon_uuid();
+update users set hash = gen_randon_uuid() :: text;
+\df
+select  gen_randon_uuid() :: text;
+select  gen_randon_uuid():: text;
+select  gen_randon_uuid() :: text;
+select * from pg_types;
+select  gen_randon_uuid() :: text;
+select  gen_randon_uuid() t;
+select  gen_randon_uuid();
+select * from  gen_randon_uuid();
+select * from  gen_random_uuid();
+select * from  gen_random_uuid()::text;
+select * from  gen_random_uuid() ::text;
+update users set hash = gen_random_uuid() :: text;
+select * from users;
+select * from users;
+\q
+SET search_path TO webinfo;
+\q
+SET search_path TO webinfo;
+select * from users;
+SET search_path TO webinfo;
+select nombre, apellido, mail  from webinfo.users
+;
+select nombre, apellido, email  from webinfo.users;
+SET search_path TO webinfo;
+  select nombre, apellido, email from users
+;
+\dt
+\d users
+select * from users;
+insert into  from users( email, usuario, nombre, apellido , doc) values( 'g@gmail.com','pepe','Carlos','Perez','2323232332')  ;
+insert into  users( email, usuario, nombre, apellido , doc) values( 'g@gmail.com','pepe','Carlos','Perez','2323232332')  ;
+insert into  users( email, usuario, nombre, apellido , doc) values( 'rrrr@yahoo.com','Susana','Susana','Perez','2323232332')  ;
+select * from users;
+\q
+SET search_path TO webinfo;
+  select nombre, apellido, email from users
+SET search_path TO webinfo;
+SET search_path TO webinfo;
+\dt
+select mailstatus;
+select- from  mailstatus;
+select * from  mailstatus;
+delete from mailstatus where id =80;
+select * from  mailstatus;
+alter table idmail add column id-user int not null ;
+alter table idmail add column id_user int not null ;
+alter table mailsttus  add column id_user int not null ;
+alter table mailstatus  add column id_user int not null ;
+alter table mailstatus  add column id_user int not null default 0 ;
+select * from  mailstatus;
+select * from users;
+update mailstatus set id_user=28;
+select * from  mailstatus;
+alter table mailstatus  add column id_user_to  int not null default 29 ;
+select * from  mailstatus;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator INT , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user= id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user, idmail,status,leido, )  values (id_generator, idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator INT , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user= id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user, idmail,status,leido )  values (id_generator, idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator INT , idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado id_user=id_generator  WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(id_user, idmail,status,leido)  values ( id_generator, idRow,'normal' , estado); 
+        END IF; 
+    END; 
+    $function$
+;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator INT , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user= id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user, idmail,status,leido )  values (id_generator, idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+\d mailstatus
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator INT , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user= id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user, idmail,status,leido )  values (id_generator, idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+;
+;
+\q
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator INT , idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado id_user=id_generator  WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(id_user, idmail,status,leido)  values ( id_generator, idRow,'normal' , estado); 
+        END IF; 
+    END; 
+    $function$
+;
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator INT , idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator  WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(id_user, idmail,status,leido)  values ( id_generator, idRow,'normal' , estado); 
+        END IF; 
+    END; 
+    $function$
+;
+\ df
+\df
+SET search_path TO webinfo;
+\df
+ CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator integer , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado,); 
+        END IF; 
+    END; 
+    $function$;
+ CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator integer , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+\df
+SET search_path TO webinfo;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+\df+
+\d users
+select * from mailstatus;
+select * from users;
+select * from users;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+\df updateleido
+\df+ updateleido
+\df+ updatestatus
+ drop function webinfo.udatestatus CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer,touser integer  , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator , to_user= touser  WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+ drop function webinfo.udatestatus ; CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer,touser integer  , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator , to_user= touser  WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+\df
+select * to pg_functions
+;
+select * from  pg_functions
+;
+select * from  pg_func
+;
+select * from  pg_types
+;
+\dt
+SET search_path TO postgres;
+\df
+\dt
+SET search_path TO webinfo;
+ drop function webinfo.updatestatus ; CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer, idrow character varying, estado character varying,touser integer)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator , to_user= touser  WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+select * from  updatestatus(28,'6bda01d7ecd5$43cf7ea0$cb6e7be0$@infort-pat.com','reenviado',30);
+select * from  updatestatus(28,'6bda01d7ecd5$43cf7ea0$cb6e7be0$@infort-pat.com','reenviado',30);
+select * from pg_catalog;
+\
+clear
+\q
+SET search_path TO webinfo;
+ select * from  updatestatus(28,'26032971-e8c4-4e12-8326-1b44c84953cc@SIN30.saint-island.com.tw','reenviado',30);
+\df+ updatestatus
+\df updatestatus
+\f updatestatus
+\f+  updatestatus
+\df+  updatestatus
+SELECT routines.routine_name, parameters.data_type, parameters.ordinal_position
+FROM information_schema.routines
+    LEFT JOIN information_schema.parameters ON routines.specific_name=parameters.specific_name
+WHERE routines.specific_schema='my_specified_schema_name'
+ORDER BY routines.routine_name, parameters.ordinal_position;
+SELECT routines.routine_name, parameters.data_type, parameters.ordinal_position
+FROM information_schema.routines
+    LEFT JOIN information_schema.parameters ON routines.specific_name=parameters.specific_name
+WHERE routines.specific_schema='webinfo'
+ORDER BY routines.routine_name, parameters.ordinal_position;
+SELECT routines.id, routines.routine_name, parameters.data_type, parameters.ordinal_position
+FROM information_schema.routines
+    LEFT JOIN information_schema.parameters ON routines.specific_name=parameters.specific_name
+WHERE routines.specific_schema='webinfo'
+ORDER BY routines.routine_name, parameters.ordinal_position;
+SELECT routines.routine_name, parameters.data_type, parameters.ordinal_position
+FROM information_schema.routines
+    LEFT JOIN information_schema.parameters ON routines.specific_name=parameters.specific_name
+WHERE routines.specific_schema='webinfo'
+ORDER BY routines.routine_name, parameters.ordinal_position;
+select * FROM information_schema.routines
+;
+select * FROM information_schema.routines limit 1;
+\information_schema
+\d information_schema
+\d information_schema
+\s information_schema
+\s 
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator integer , idrow character varying, estado character varying,leido boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , leido  ); 
+        END IF; 
+    END; 
+    $function$;
+\dt
+\d mailstatus
+alter table mailstatus add column lastdata timestamp with zone default(now());
+alter table mailstatus add column lastdata timestamp with time  zone default(now());
+\d mailstatus
+alter table mailstatus add column lastdate timestamp with time  zone default(now());
+alter table mailstatus drop column lastdata;
+select * from mailstatus;
+select * from mailstatus;
+\d mailstatus
+select * from mailstatus;
+select * from mailstatus;
+\q
+SET search_path TO webinfo;
+psql -U postgres richelet < "SELECT prosrc FROM pg_proc WHERE proname = 'updateliedo'";
+SELECT prosrc FROM pg_proc WHERE proname = 'updateliedo';
+\df +
+\df+
+SELECT prosrc FROM pg_proc WHERE proname = 'updatestatus';
+\dh
+\d
+\h
+\dh
+\'
+\?
+\e
+SELECT prosrc FROM pg_proc WHERE proname = 'updatestatus';
+\?
+\p
+\?
+\s
+\df
+drop updateleido 
+;
+drop function updateleido;
+drop function updateleido(id_generator integer, idrow character varying, estado boolean );
+drop function updateleido(id_generator integer, idrow character varying, estado character varying);
+\df
+drop function updatestatus(  idrow character varying, estado character varying);
+drop function updatestatus( id_generator integer, idrow character varying, estado character varying);
+\df
+drop function updatestatus( id_generator integer, idrow character varying, estado character varying);
+drop function updatestatus(id_generator integer, idrow character varying, estado character varying);
+\df
+drop function updatestatus( id_generator integer, idrow character varying, estado character varying);
+drop function updatestatus( integer,  character varying, character varying);
+drop function updatestatus(id_generator integer, idrow character varying, estado character varying, touser integer );
+drop function updatestatus( integer,  character varying, character varying);
+\df
+SELECT prosrc FROM pg_proc WHERE proname = 'updatestatus';
+\q
+\s
+SET search_path TO webinfo;
+\d mailstatus
+\q
+SELECT n.nspname AS schema
+      ,proname AS fname
+      ,proargnames AS args
+      ,t.typname AS return_type
+      ,d.description
+      ,pg_get_functiondef(p.oid) as definition
+--      ,CASE WHEN NOT p.proisagg THEN pg_get_functiondef(p.oid)
+--            ELSE 'pg_get_functiondef() can''t be used with aggregate functions'
+--       END as definition
+  FROM pg_proc p
+  JOIN pg_type t
+    ON p.prorettype = t.oid
+  LEFT OUTER
+  JOIN pg_description d
+    ON p.oid = d.objoid
+  LEFT OUTER
+  JOIN pg_namespace n
+    ON n.oid = p.pronamespace
+ WHERE NOT p.proisagg
+   AND n.nspname~'webinfo'
+   AND proname~'updatestatus';
+SELECT n.nspname AS schema
+      ,proname AS fname
+      ,proargnames AS args
+      ,t.typname AS return_type
+      ,d.description
+      ,pg_get_functiondef(p.oid) as definition
+  FROM pg_proc p
+  JOIN pg_type t
+    ON p.prorettype = t.oid
+  LEFT OUTER
+  JOIN pg_description d
+    ON p.oid = d.objoid
+  LEFT OUTER
+  JOIN pg_namespace n
+    ON n.oid = p.pronamespace
+ WHERE NOT p.proisagg
+   AND n.nspname~'webinfo'
+   AND proname~'updatestatus';
+\sf updateleido
+SET search_path TO webinfo;
+\sf updateleido
+\sf updatestatus
+\sf updatestatus
+ select * from  updateleido(28,'435C266977AE45819E43564D6EF6B4FD@inpi.gov.ar',true);
+\sf updateleido
+ select * from  updateleido(28,'435C266977AE45819E43564D6EF6B4FD@inpi.gov.ar',true);
+\sf updateleido
+drop function updateleido(id_generator integer, idrow character varying, estado character varying, leido boolean);
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator integer, idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,leido)  values (id_generator,idRow, leido  ); 
+        END IF; 
+    END; 
+    $function$;
+\dt mailstatus
+\d mailstatus
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator integer, idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,leido)  values (id_generator,idRow, estado  ); 
+        END IF; 
+    END; 
+    $function$;
+\df
+ 
+select * from  updatestatus(28,'EF10CE44C51540CCA465328D8061650B@inpi.gov.ar','reenviado',30);
+\sf updatestatus
+select * from  updatestatus(28,'EF10CE44C51540CCA465328D8061650B@inpi.gov.ar','reenviado',30);
+\sf updatestatus
+CREATE OR REPLACE FUNCTION webinfo.updateenviado(id_generator integer, touser integer, idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET id_user = id_generator, id_user_to = touser  WHERE idmail = idRow and id_user=id_generator ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status)  values (id_generator,idRow, estado); 
+        END IF; 
+    END; 
+    $function$;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+\sf updatestatus
+drop function updatestatus(id_generator integer, touser integer, idrow character varying, estado character varying);
+\sf updatestatus
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer, idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator   WHERE idmail = idRow and user_id= id_generator ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+truncate table mailstatus;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer, idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator   WHERE idmail = idRow and id_user = id_generator ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+truncate table mailstatus;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer, idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user=id_generator   WHERE idmail = idRow and id_user = id_generator ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status )  values (id_generator,idRow, estado); 
+        END IF; 
+    END; 
+    $function$;
+truncate table mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer, idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user=id_generator   WHERE idmail = idRow and id_user = id_generator ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status )  values (id_generator,idRow, estado); 
+        END IF; 
+    END; 
+    $function$;
+\d mailstatus
+alter table mailstatus alter column status default('normal');
+alter table mailstatus alter column status set default('normal');
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+\s updatestatus
+\s updateestatus
+\df
+\s updatestatus
+\sf  updatestatus
+\sf  updateleido
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+\d mailstatus
+alter table mailstatus alter column id_user_to set default(0);
+alter table mailstatus alter column id_user_to set null ;
+alter table mailstatus alter column id_user_to null ;
+alter table mailstatus alter column id_user_to drop not  null ;
+alter table mailstatus alter column id_user_to drod default  ;
+alter table mailstatus alter column id_user_to drop default  ;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from  updateleido(28,'0296B480384148338B93DC9FD5F57715@inpi.gov.ar',true);
+\sf updateleido
+select * from  updateenviado(28,30,'66839l7989593l24322l0l121093046@c129.criticalimpactinc.com','reenviado');
+\sf updatereenviado
+\sf updateeenviado
+\sf updateenviado
+\sf updateenviado
+CREATE OR REPLACE FUNCTION webinfo.updateenviado(id_generator integer, touser integer, idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET id_user = id_generator, id_user_to = touser  status=estado  WHERE idmail = idRow and id_user=id_generator ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status)  values (id_generator,idRow, estado); 
+        END IF; 
+    END; 
+    $function$
+;
+CREATE OR REPLACE FUNCTION webinfo.updateenviado(id_generator integer, touser integer, idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET id_user = id_generator, id_user_to = touser , status=estado  WHERE idmail = idRow and id_user=id_generator ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status)  values (id_generator,idRow, estado); 
+        END IF; 
+    END; 
+    $function$
+;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+ select * from  updateenviado(28,30,'66839l7989593l24322l0l121093046@c129.criticalimpactinc.com','reenviado');
+\d mailstatus
+ select * from  updateenviado(28,30,'66839l7989593l24322l0l121093046@c129.criticalimpactinc.com','reenviado');
+select * from mailstatus;
+select * from  updateenviado(28,30,'70A229E3-6490-4263-A8C4-B5444DD09282@quino.com.ar','reenviado');
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+truncate table mailstatus;
+ select * from  updateenviado(28,28,'b39ee0b982734a2694d03c40edef24bc@konexoglobal.com','reenviado');
+select * from mailstatus;
+\s updateenviado
+\s updateenviado
+\sf updateenviado
+CREATE OR REPLACE FUNCTION webinfo.updateenviado(id_generator integer, touser integer, idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET id_user = id_generator, id_user_to = touser , status=estado  WHERE idmail = idRow and id_user=id_generator ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,id_user_to,idmail,status)  values (id_generator,touser,idRow, estado); 
+        END IF; 
+    END; 
+    $function$
+;
+truncate table mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+truncate table mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+\d mailstatus
+select * from mailstatus;
+select * from mailstatus where idmail='28B42BF9F2B74F238B1FF302ED8D1904@Sergio';
+\d mailstatus
+\dt
+select * from mailstatus where idmail='LO2P265MB292706A0DF1813E445DA210EFF719@LO2P265MB2927.GBRP265.PROD.OUTLOOK.COM';
+select * from users where id=30;
+create table prefs( id integer not null primary key  , data jsonb );
+select * from users;
+alter table users add column admin boolean default false;;
+\d users
+select * from users;
+update users set admin=true where id=28;
+select * from users ;
+\dt
+\d prefs
+insert into prefs( id, data) values( 28, { servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"]  });
+insert into prefs( id, data) values( 28, {servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"]  } ::jsonb );
+insert into prefs( id, data) values( 28, {servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"]  } );
+insert into prefs( id, data) values( 28, { servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"]  } );
+insert into prefs( id, data) values( 28, { servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] } } );
+insert into prefs( id, data) values( 28, { servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] } );
+insert into prefs( id, data) values( 28, { servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] } );
+insert into prefs( id, data) values( 28, "{ servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] }" );
+insert into prefs( id, data) values( 28, "{ servers:[ { url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] }" );
+insert into prefs( id, data) values( 28, '{ servers:[ { url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] }' );
+insert into prefs( id, data) values( 28, '{ servers:[ { url:"http://fibertel.com.ar" , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] }' );
+insert into prefs( id, data) values( 28, '{ servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] }' );
+insert into prefs( id, data) values( 28, '{ servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] }' );
+insert into prefs( id, data) values( 28, { servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] } );
+insert into prefs( id, data) values( 28, '{ servers:[ { url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] }' );
+insert into prefs( id, data) values( 28, '{ servers: [{ url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] }' );
+insert into prefs( id, data) values( 28, "{ servers: [{ url:"http://fibertel.com.ar" , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] }" );
+insert into prefs( id, data) values( 28, "{ servers: [{ url:'http://fibertel.com.ar' , port:25 , user: "admin", passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] }" );
+insert into prefs( id, data) values( 28, "{ servers: [{ url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: "admin" } ], styles:["dark", "ligth"],fontSize:["fs-2","fs-3","fs-4"] }" );
+insert into prefs( id, data) values( 28, "{ servers: [{ url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] }" );
+insert into prefs( id, data) values( 28, "{ servers: [{ url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4] }" );
+insert into prefs( id, data) values( 28, "{ servers: [{ url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3',"fs-4"] }" );
+insert into prefs( id, data) values( 28, "{ servers: [{ url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] }" );
+insert into prefs( id, data) values( 28, { servers: [{ url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] } );
+insert into prefs( id, data) values( 28, { a:1 } );
+insert into prefs( id, data) values( 28, "{ a:1 }" );
+insert into prefs( id, data) values( 28, '{ a:1 }' );
+insert into prefs( id, data) values( 28, '{ "a":1 }' );
+insert into prefs( id, data) values( 28, { "servers": [{ url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] } );
+insert into prefs( id, data) values( 28, '{ "servers": [{ url:'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] }' );
+insert into prefs( id, data) values( 28, '{ "servers": [{ "url":'http://fibertel.com.ar' , port:25 , user: 'admin', passwd: 'admin' } ], styles:['dark', 'ligth'],fontSize:['fs-2','fs-3','fs-4'] }' );
+insert into prefs( id, data) values( 28, '{ "servers": [{ "url":"http://fibertel.com.ar" , "port":25 , "user": 'admin', "passwd": 'admin' } ], "styles":['dark', 'ligth'],"fontSize":['fs-2','fs-3','fs-4'] }' );
+insert into prefs( id, data) values( 28, '{ "servers": [{ "url":"http://fibertel.com.ar" , "port":25 , "user": "admin", "passwd": "admin" } ], "styles":['dark', 'ligth'],"fontSize":['fs-2','fs-3','fs-4'] }' );
+insert into prefs( id, data) values( 28, '{ "servers": [{ "url":"http://fibertel.com.ar" , "port":25 , "user": "admin", "passwd": "admin" } ], "styles":["dark", "ligth"],"fontSize":['fs-2','fs-3','fs-4'] }' );
+insert into prefs( id, data) values( 28, '{ "servers": [{ "url":"http://fibertel.com.ar" , "port":25 , "user": "admin", "passwd": "admin" } ], "styles":["dark", "ligth"],"fontSize":["fs-2","fs-3","fs-4"] }' );
+truncate table prefs
+;
+insert into prefs( id, data) values( 28, '{ "servers": [{ "url":"http://fibertel.com.ar" , "port":25 , "user": "admin", "passwd": "admin" } ], "styles":["dark", "ligth"],"fontSize":["fs-2","fs-3","fs-4"] }' );
+select * from prefs;
+drop table prefs
+;
+\p
+\h
+\?
+\p
+\p
+create table prefs(id serial not null ,  id_user integer not null primary key  , data jsonb );
+insert into prefs( id, data) values( 28, '{ "servers": [{ "url":"http://fibertel.com.ar" , "port":25 , "user": "admin", "passwd": "admin" } ], "styles":["dark", "ligth"],"fontSize":["fs-2","fs-3","fs-4"] }' );
+insert into prefs( id_user, data) values( 28, '{ "servers": [{ "url":"http://fibertel.com.ar" , "port":25 , "user": "admin", "passwd": "admin" } ], "styles":["dark", "ligth"],"fontSize":["fs-2","fs-3","fs-4"] }' );
+select * from prefs
+;
+select * from prefs where id_user = 28
+;
+select * from prefs where id_user = 28;
+select * from mailstatus
+\s
+SET search_path TO webinfo;
+SET search_path TO webinfo;
+s'dt
+';
+\dt
+select mail->'messageId' from emails where id=1;
+select mail->'messageId' from emails where id=10;
+select mail->'messageId' from emails limit 10;
+create index i_x_messageId ON mails((mail->>'messageId'));
+create index i_x_messageId ON emails((mail->>'messageId'));
+select * from emails where mail->>messageId=  'YjY72SAaQ_OvTnfKL9SFVw@geopod-ismtpd-3-1';
+select * from emails where mail->>'messageId' =  'YjY72SAaQ_OvTnfKL9SFVw@geopod-ismtpd-3-1';
+select id from emails where mail->>'messageId' =  'YjY72SAaQ_OvTnfKL9SFVw@geopod-ismtpd-3-1';
+explaain analyze select id from emails where mail->>'messageId' =  'YjY72SAaQ_OvTnfKL9SFVw@geopod-ismtpd-3-1';
+explain analyze select id from emails where mail->>'messageId' =  'YjY72SAaQ_OvTnfKL9SFVw@geopod-ismtpd-3-1';
+explain analyze select id from emails where mail->>'messageId' =  'YjY72SAaQ_OvTnfKL9SFVw@geopod-ismtpd-3-1';
+\q
+SET search_path TO webinfo;
+\dt
+select * from emails where mail->>'messageId' =  'YjY72SAaQ_OvTnfKL9SFVw@geopod-ismtpd-3-1';
+select id from emails where mail->>'messageId' =  'YjY72SAaQ_OvTnfKL9SFVw@geopod-ismtpd-3-1';
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from em
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+SET search_path TO webinfo;
+CREATE OR REPLACE FUNCTION webinfo.updateamil ( mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+    
+INSERT INTO emails(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.email WHERE mail->'messageId' = mail->'messageId'
+    );
+
+    RETURN;
+END;
+$function$
+;
+CREATE OR REPLACE FUNCTION webinfo.updateamil ( mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+BEGIN    
+INSERT INTO emails(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.email WHERE mail->'messageId' = mail->'messageId'
+    );
+
+    RETURN;
+END;
+$function$
+;
+SET search_path TO webinfo;
+select count(*) from emails;
+select count(*) from emails_bak;
+select count(*) from email_bak;
+\dt
+select count(*) from emails_bak;
+select count(*) from webinfo.emails_bak;
+select count(*) from mails_bak;
+select count(*) from mails_bak;
+select count(*) from webinfo.mails_bak;
+select count(*) from emails;
+select count(*) from mails_back;
+CREATE OR REPLACE FUNCTION webinfo.updateaemils( mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+BEGIN    
+INSERT INTO emails(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.email WHERE mail->'messageId' = mail->'messageId'
+    );
+
+    RETURN;
+END;
+$function$
+;
+\df
+CREATE OR REPLACE FUNCTION webinfo.updateaemils( mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+BEGIN    
+INSERT INTO webinfo.mails_back(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.mails_back  WHERE webinfo.mails_back->'messageId' = v_messageid
+    );
+
+    RETURN;
+END;
+$function$
+;
+\s updateemils
+\s updateaemils
+\f updateaemils
+\s updateaemils
+\df
+\f updateleido
+\s updateleido
+\sf updateleido
+\sf updateaemils
+select mail->'messageId' from webinfo.emails limit 10;
+select id, mail->'messageId' from webinfo.emails limit 10;
+select id, mail->'messageId' from webinfo.emails limit 100;
+delete from webinfo.mails.back where id=503;
+delete webinfo.mails.back where id=503;
+delete webinfo.mails_back where id=503;
+delete from webinfo.mails_back where id=503;
+select id from webinfo.emails where mail->'messageId' = '034296CD-48EC-40CF-BBA4-93AD1AA6EA49@hair-recovery.com';
+select id from webinfo.emails where mail->'messageId'= '034296CD-48EC-40CF-BBA4-93AD1AA6EA49@hair-recovery.com';
+select mail->'messageId' where id=503;
+select mail->'messageId'from emails  where id=503;
+select id from webinfo.emails where mail->>'messageId'= '034296CD-48EC-40CF-BBA4-93AD1AA6EA49@hair-recovery.com';
+CREATE OR REPLACE FUNCTION webinfo.updateaemils( mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+BEGIN    
+INSERT INTO webinfo.mails_back(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.mails_back  WHERE webinfo.mails_back->>'messageId' = v_messageid
+    );
+
+    RETURN;
+END;
+$function$
+;
+CREATE OR REPLACE FUNCTION webinfo.updateaemils( mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+BEGIN    
+INSERT INTO emails(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.email WHERE mail->>'messageId' = mail->'messageId'
+    );
+
+    RETURN;
+END;
+$function$
+;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+\dt
+select count(*) from mails_back;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+\s
+SET search_path TO webinfo;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails where mail->'messgeId' = '8407B990D8AC4E0CBC9AAE901B2DA676@inpi.gov.ar';
+select count(*) from emails where mail->>'messgeId' = '8407B990D8AC4E0CBC9AAE901B2DA676@inpi.gov.ar';
+select count(*) from emails where mail->>'messgeId' = '8407B990D8AC4E0CBC9AAE901B2DA676@inpi.gov.ar';
+\df 
+\df updateamil
+\f updateamil
+\sf updateamil
+CREATE OR REPLACE FUNCTION webinfo.updateamil(mail jsonb)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+BEGIN    
+INSERT INTO emails(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.email WHERE mail->'messageId' = mail->>'messageId'
+    );
+
+    RETURN;
+END;
+$function$
+;
+\sf updateamil
+CREATE OR REPLACE FUNCTION webinfo.updateamil(mail jsonb)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+BEGIN    
+INSERT INTO emails(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.email WHERE mail->'messageId' = v_messageid
+    );
+
+    RETURN;
+END;
+$function$
+;
+\sf updateamil
+\df
+\q
+\df
+\sf loadall2
+\df
+\sf buscamarca
+\s
+SET search_path TO webinfo;
+\dt
+select count(*) from emails;
+\dt
+\df
+\sf updateamil
+CREATE OR REPLACE FUNCTION webinfo.updateamil(mail jsonb)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    /* variables de v_1 */
+DECLARE
+    DECLARE v_messageid character varying(180);
+    
+    /* variable de boletindbf */
+BEGIN    
+INSERT INTO emails(mail)
+SELECT  mail
+WHERE
+    NOT EXISTS (
+        SELECT id FROM webinfo.emails  WHERE mail->>'messageId' = v_messageid
+    );
+
+    RETURN;
+END;
+$function$
+;
+\sf updateamil
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+select count(*) from emails;
+
+SET search_path TO public;
+\df
+\sf exists_v1
+SET search_path TO webinfo;
+\df
+\sf updateaemils
+CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    
+    DECLARE v_mail FOR $1;
+    DECLARE v_id = vmail -> 'messageId';
+    DECLARE vcursor CURSOR FOR
+        SELECT
+            id
+        FROM
+            webinfo.emails
+        WHERE
+            mail ->> 'messageId' = v_id;
+BEGIN
+    RAISE info 'buscando %', v_id;
+    OPEN vcursor;
+    FETCH vcursor INTO lexists;
+    CLOSE vcursor;
+    RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+    IF NOT found THEN
+        RETURN;
+        BEGIN
+            INSERT INTO webinfo.emails (mail)
+                VALUES ($1);
+        END;
+    END IF;
+END;
+$function$
+;
+SET search_path TO public;
+\sf exists_v1
+SET search_path TO public;
+CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    
+    DECLARE v_mail alias FOR $1;
+    DECLARE v_id = vmail -> 'messageId';
+    DECLARE vcursor CURSOR FOR
+        SELECT
+            id
+        FROM
+            webinfo.emails
+        WHERE
+            mail ->> 'messageId' = v_id;
+BEGIN
+    RAISE info 'buscando %', v_id;
+    OPEN vcursor;
+    FETCH vcursor INTO lexists;
+    CLOSE vcursor;
+    RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+    IF NOT found THEN
+        RETURN;
+        BEGIN
+            INSERT INTO webinfo.emails (mail)
+                VALUES ($1);
+        END;
+    END IF;
+END;
+$function$
+;
+CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    
+    DECLARE v_mail alias FOR $1;
+    DECLARE v_id = $1->'messageId';
+    DECLARE vcursor CURSOR FOR
+        SELECT
+            id
+        FROM
+            webinfo.emails
+        WHERE
+            mail ->> 'messageId' = v_id;
+BEGIN
+    RAISE info 'buscando %', v_id;
+    OPEN vcursor;
+    FETCH vcursor INTO lexists;
+    CLOSE vcursor;
+    RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+    IF NOT found THEN
+        RETURN;
+        BEGIN
+            INSERT INTO webinfo.emails (mail)
+                VALUES ($1);
+        END;
+    END IF;
+END;
+$function$;
+CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    
+    DECLARE v_mail alias FOR $1;
+    DECLARE v_id = mail->'messageId';
+    DECLARE vcursor CURSOR FOR
+        SELECT
+            id
+        FROM
+            webinfo.emails
+        WHERE
+            mail ->> 'messageId' = v_id;
+BEGIN
+    RAISE info 'buscando %', v_id;
+    OPEN vcursor;
+    FETCH vcursor INTO lexists;
+    CLOSE vcursor;
+    RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+    IF NOT found THEN
+        RETURN;
+        BEGIN
+            INSERT INTO webinfo.emails (mail)
+                VALUES ($1);
+        END;
+    END IF;
+END;
+$function$;
+CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    
+    DECLARE v_mail alias FOR $1;
+    DECLARE v_id = varchar(100);
+    DECLARE vcursor CURSOR FOR
+        SELECT
+            id
+        FROM
+            webinfo.emails
+        WHERE
+            mail ->> 'messageId' = v_id;
+BEGIN
+    RAISE info 'buscando %', v_id;
+    v_id := mail->'messgaId';
+    OPEN vcursor;
+    FETCH vcursor INTO lexists;
+    CLOSE vcursor;
+    RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+    IF NOT found THEN
+        RETURN;
+        BEGIN
+            INSERT INTO webinfo.emails (mail)
+                VALUES ($1);
+        END;
+    END IF;
+END;
+$function$
+;
+SET search_path TO public;
+\sf exists_v1
+\sf vexi
+\df
+\sf loadall2
+SET search_path TO webinfo;
+CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    
+    DECLARE v_mail alias FOR $1;
+    DECLARE v_id = varying(100);
+    DECLARE vcursor CURSOR FOR
+        SELECT
+            id
+        FROM
+            webinfo.emails
+        WHERE
+            mail ->> 'messageId' = v_id;
+BEGIN
+    RAISE info 'buscando %', v_id;
+    v_id := mail->'messgaId';
+    OPEN vcursor;
+    FETCH vcursor INTO lexists;
+    CLOSE vcursor;
+    RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+    IF NOT found THEN
+        RETURN;
+        BEGIN
+            INSERT INTO webinfo.emails (mail)
+                VALUES ($1);
+        END;
+    END IF;
+END;
+$function$
+;
+CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+    RETURNS void
+    LANGUAGE plpgsql
+    AS $function$
+    /* variables de v_1 */
+DECLARE
+    
+    DECLARE v_mail alias FOR $1;
+    DECLARE v_id := varying(100);
+    DECLARE vcursor CURSOR FOR
+        SELECT
+            id
+        FROM
+            webinfo.emails
+        WHERE
+            mail ->> 'messageId' = v_id;
+BEGIN
+    RAISE info 'buscando %', v_id;
+    v_id := mail->'messgaId';
+    OPEN vcursor;
+    FETCH vcursor INTO lexists;
+    CLOSE vcursor;
+    RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+    IF NOT found THEN
+        RETURN;
+        BEGIN
+            INSERT INTO webinfo.emails (mail)
+                VALUES ($1);
+        END;
+    END IF;
+END;
+$function$
+;
+\df public
+\df public.*
+\df public
+\df public.*
+\sf public.sp2
+\sf public.sp
+\s  public.sp2
+\df public.*
+\sf public.sp2
+\sf public.exists_v1
+\df public.*
+\sf public.totitular
+\sf public.to_titular
+\df public.*
+\sf public.carga_v12
+\df public.*
+\sf public.loadall
+\sf public.load_all
+\sf public.loadall2
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                mail ->> 'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        v_id := mail->'messgaId';
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                mail ->> 'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        v_id := mail->'messageId';
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                mail ->> 'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        v_id := mail->'messageId';
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+\sf public.exists_v1
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean=false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                mail ->> 'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        v_id := mail->'messageId';
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                mail->>'messageId' = v_id;
+    BEGIN
+        v_id := mail->'messgaId';
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (mail jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                mail->>'messageId' = v_id;
+    BEGIN
+        v_id := mail->'messgaId';
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select 'buscando' ;
+select 'buscando' ;
+select count(*) from emails;
+select 'buscando' ;
+select 'buscando' ;
+select * into emails_update limit 1;
+select * into emails_update from emails limit 1;
+select count(*) emails_update;
+truncate table emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select 'buscando' ;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails_update;
+select count(*) from emails;
+select max(id) from emails_update;
+select max(id) from emails_update;
+\dt
+\d emails_update
+\d emails
+select mail->'messageId' from emails_update limit 10;
+select max(length(mail->'messageId')) from emails_update ;
+select length(mail->'messageId') from emails_update limit 10;
+select length(mail->'messageId'::text ) from emails_update limit 10;
+select lenght(mail->'messageId'::text ) from emails_update limit 10;
+select length('hola');
+select lenght(mail->'messageId' ::text) from emails_update limit 10;
+select lenght(mail->'messageId' ::text) from emails_update limit 1;
+select length(mail->'messageId' ::text) from emails_update limit 1;
+select mail->'messageId'  from emails_update limit 1;
+select mail->'messageId'::text as id  from emails_update limit 1;
+select length(mail->'messageId'::text)  as id  from emails_update limit 1;
+select mail->'messageId'::text  as id  from emails_update limit 1;
+select mail->'messageId'::text  as id  from emails_update limit 19;
+select b.mai->'messageId' from emails_update b  where not exists( select 1 from emails a where a.mail->'messageId' = b.mail->'messageId' );
+select b.mail->'messageId' from emails_update b  where not exists( select 1 from emails a where a.mail->'messageId' = b.mail->'messageId' );
+\dt
+\d emails
+create index i_seacrch emails_update( mail->'messageId);
+';
+);
+create index i_seacrch emails_update( mail->'messageId');
+create index i_seacrch on emails_update( mail->'messageId');
+create index i_seacrch on emails_update( mail->'messageId');
+\s
+create index i_seacrch on emails_update( mail->>'messageId');
+create index i_seacrch on emails_update(mail->>'messageId');
+create index i_seacrch on emails_update((mail->>'messageId'));
+select b.mail->'messageId' from emails_update b  where not exists( select 1 from emails a where a.mail->'messageId' = b.mail->'messageId' );
+select b.mail->'messageId' from emails_update b  where not exists( select 1 from emails a where a.mail->'messageId' = b.mail->'messageId' );
+select 1 from emails_update where mails->>'messageId= 'DS7PR19MB44396BFF3AD4393B209801DC85749@DS7PR19MB4439.namprd19.prod.outlook.com'
+;
+';
+select 1 from emails_update where mails->>'messageId'= 'DS7PR19MB44396BFF3AD4393B209801DC85749@DS7PR19MB4439.namprd19.prod.outlook.com'
+;
+select 1 from emails_update where mail->>'messageId'= 'DS7PR19MB44396BFF3AD4393B209801DC85749@DS7PR19MB4439.namprd19.prod.outlook.com'
+;
+select mail  from emails_update where mail->>'messageId'= 'DS7PR19MB44396BFF3AD4393B209801DC85749@DS7PR19MB4439.namprd19.prod.outlook.com'
+;
+create secuence pepe;
+create sequence pepe;
+update mail_update set id= nextval('pepe');
+update emails_update set id= nextval('pepe');
+select id  from emails_update where mail->>'messageId'= 'DS7PR19MB44396BFF3AD4393B209801DC85749@DS7PR19MB4439.namprd19.prod.outlook.com'
+;
+select  webinfo.updateemails (select mail from emails_update where emails_update.id=507);
+select id from emails_update where emails_update.id=507;
+webinfo.updateemails(select mail from emails_update where emails_update.id=507);
+select webinfo.updateemails(select mail from emails_update where emails_update.id=507);
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+\sf updateemails
+CREATE OR REPLACE FUNCTION webinfo.updateemails(mail jsonb)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                webinfo.mail->>'messageId' = v_id;
+    BEGIN
+        v_id := mail->'messgaId';
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+CREATE OR REPLACE FUNCTION webinfo.updateemails(mail jsonb)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        v_id := mail->'messgaId';
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        v_id := email->>'messgaId';
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        v_id := email->>'messgaId';
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+drop function updateemails(jsonb);
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        v_id := email->>'messgaId';
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100);
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        v_id := email->>'messgaId';
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100)=email->>'messageId';
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        v_id := email->>'messgaId';
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+select count(*) from emails;
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100)=email->>'messageId';
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+select count(*) from emails;
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100)=email->>'messageId';
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found % ', v_id, FOUND;
+        IF NOT found THEN
+            RETURN;
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100)=email->>'messageId';
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found %  lexists', v_id, FOUND,lexists ;
+        IF NOT found THEN
+            RAISE info 'NOT FOUND' ;
+            RETURN;
+        ELSE
+        RAISE info 'INSERT' ;    
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100)=email->>'messageId';
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found=%  lexists=%', v_id, FOUND,lexists ;
+        IF NOT found THEN
+            RAISE info 'NOT FOUND' ;
+            RETURN;
+        ELSE
+        RAISE info 'INSERT' ;    
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+    CREATE OR REPLACE FUNCTION webinfo.updateemails (email jsonb)
+        RETURNS void
+        LANGUAGE plpgsql
+        AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100)=email->>'messageId';
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                id
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found=%  lexists=%', v_id, FOUND,lexists ;
+        IF FOUND  THEN
+            RAISE info 'FOUND estaba' ;
+            RETURN;
+        ELSE
+        RAISE info 'INSERT' ;    
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select webinfo.updateemails( (select mail from emails_update where emails_update.id=507) );
+select count(*) from emails;
+\sf updateemails
+CREATE OR REPLACE FUNCTION webinfo.updateemails(email jsonb)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+        /* variables de v_1 */
+    DECLARE
+        DECLARE lexists boolean = false;
+        DECLARE v_mail alias FOR $1;
+        DECLARE v_id  character varying(100)=email->>'messageId';
+        DECLARE vcursor CURSOR FOR
+            SELECT
+                true
+            FROM
+                webinfo.emails
+            WHERE
+                 webinfo.emails.mail->>'messageId' = v_id;
+    BEGIN
+        RAISE info 'buscando %', v_id;
+        OPEN vcursor;
+        FETCH vcursor INTO lexists;
+        CLOSE vcursor;
+        RAISE info 'buscando  messageId=% found=%  lexists=%', v_id, FOUND,lexists ;
+        IF FOUND  THEN
+            RAISE info 'FOUND estaba' ;
+            RETURN;
+        ELSE
+        RAISE info 'INSERT' ;    
+            BEGIN
+                INSERT INTO webinfo.emails (mail)
+                    VALUES ($1);
+            END;
+        END IF;
+    END;
+    $function$
+;
+select count(*) from emails;
+select count(*) from emails;
+\s
+SET search_path TO webinfo;
+select count(*) from emails;
+\s updatemail

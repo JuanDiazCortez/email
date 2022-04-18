@@ -1,0 +1,25 @@
+.modale {
+  background-color: rbga(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100000;
+}
+
+.modale-content {
+  background: #f0f0f0;
+  width: 100rem;
+  padding: 10px 20px;
+  height: 80vh;
+  margin: 10vh auto;
+  position: relative;
+  overflow: scroll;
+}
+
+.modale-content .btn {
+  display: block;
+  margin-bottom: 12px;
+}

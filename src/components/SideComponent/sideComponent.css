@@ -1,0 +1,8 @@
+.li-side hover {
+  background-color: rgb(62, 219, 88);
+  cursor: pointer;
+}
+
+ul li #side-menu:hover, ul li #side-menu:focus {
+  color:red;
+ }

@@ -1,0 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.modal-dialog-modal {
+  /* background-color: cadetblue; */
+}
+
+.modal-dialog {
+  /* background-color: cadetblue; */
+  left: -1000;
+}

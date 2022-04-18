@@ -1,0 +1,691 @@
+insert into webinfo.contacs(contact) values( XMLPARSER( DOCUMENT '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:16:11Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="80a469a9-320e-42ae-910a-9e4d073dc51b"><c:Value>ae525194-1f6e-4260-b10e-2a27909325d7</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="6266111c-7c5d-4281-a726-7ef73020bc0c"><c:Type>SMTP</c:Type><c:Address>burri@wildschnyder.ch</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="ff8daa98-298c-4f60-92f9-ec9b36e70b0a"><c:FormattedName>WILD SCHNYDER AG.</c:FormattedName><c:GivenName>WILD SCHNYDER AG.</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="a092d482-c940-48cd-a425-e28d9220af2d"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+' ) );
+insert into webinfo.contacts(contact) values( XMLPARSER( DOCUMENT '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:16:11Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="80a469a9-320e-42ae-910a-9e4d073dc51b"><c:Value>ae525194-1f6e-4260-b10e-2a27909325d7</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="6266111c-7c5d-4281-a726-7ef73020bc0c"><c:Type>SMTP</c:Type><c:Address>burri@wildschnyder.ch</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="ff8daa98-298c-4f60-92f9-ec9b36e70b0a"><c:FormattedName>WILD SCHNYDER AG.</c:FormattedName><c:GivenName>WILD SCHNYDER AG.</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="a092d482-c940-48cd-a425-e28d9220af2d"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+' ) );
+insert into webinfo.contacts(contact) values( XMLPARSER( '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:16:11Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="80a469a9-320e-42ae-910a-9e4d073dc51b"><c:Value>ae525194-1f6e-4260-b10e-2a27909325d7</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="6266111c-7c5d-4281-a726-7ef73020bc0c"><c:Type>SMTP</c:Type><c:Address>burri@wildschnyder.ch</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="ff8daa98-298c-4f60-92f9-ec9b36e70b0a"><c:FormattedName>WILD SCHNYDER AG.</c:FormattedName><c:GivenName>WILD SCHNYDER AG.</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="a092d482-c940-48cd-a425-e28d9220af2d"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+' ) );
+insert into webinfo.contacts(contact) values( XMLPARSER( DOCUMENT '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:16:11Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="80a469a9-320e-42ae-910a-9e4d073dc51b"><c:Value>ae525194-1f6e-4260-b10e-2a27909325d7</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="6266111c-7c5d-4281-a726-7ef73020bc0c"><c:Type>SMTP</c:Type><c:Address>burri@wildschnyder.ch</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="ff8daa98-298c-4f60-92f9-ec9b36e70b0a"><c:FormattedName>WILD SCHNYDER AG.</c:FormattedName><c:GivenName>WILD SCHNYDER AG.</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="a092d482-c940-48cd-a425-e28d9220af2d"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+' ) );
+insert into webinfo.contacts(contact) values( XMLPARSER( DOCUMENT '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:18:55Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="ca30b112-91e7-4894-8e8e-25813f5b797c"><c:Value>7b3b4218-7ab6-4d7b-8d58-49c06d71517d</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="34d4a6c1-f8da-4fe8-8e81-438d64d15955"><c:Type>SMTP</c:Type><c:Address>alvarope@mazalosa.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="eb3c9929-d7a4-4b45-98ee-c6417ca11dc7"><c:FormattedName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:FormattedName><c:GivenName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="8345fecc-f132-4818-a479-1246924febe5"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+' ) );
+insert into webinfo.contacts(contact) values( XMLPARSER( DOCUMENT'<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:18:55Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="ca30b112-91e7-4894-8e8e-25813f5b797c"><c:Value>7b3b4218-7ab6-4d7b-8d58-49c06d71517d</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="34d4a6c1-f8da-4fe8-8e81-438d64d15955"><c:Type>SMTP</c:Type><c:Address>alvarope@mazalosa.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="eb3c9929-d7a4-4b45-98ee-c6417ca11dc7"><c:FormattedName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:FormattedName><c:GivenName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="8345fecc-f132-4818-a479-1246924febe5"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+' ) );
+insert into webinfo.contacts(contact) values( XMLPARSER( '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:18:55Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="ca30b112-91e7-4894-8e8e-25813f5b797c"><c:Value>7b3b4218-7ab6-4d7b-8d58-49c06d71517d</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="34d4a6c1-f8da-4fe8-8e81-438d64d15955"><c:Type>SMTP</c:Type><c:Address>alvarope@mazalosa.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="eb3c9929-d7a4-4b45-98ee-c6417ca11dc7"><c:FormattedName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:FormattedName><c:GivenName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="8345fecc-f132-4818-a479-1246924febe5"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+' ) );
+insert into webinfo.contacts(contact) values( XMLPARSER( '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:18:55Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="ca30b112-91e7-4894-8e8e-25813f5b797c"><c:Value>7b3b4218-7ab6-4d7b-8d58-49c06d71517d</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="34d4a6c1-f8da-4fe8-8e81-438d64d15955"><c:Type>SMTP</c:Type><c:Address>alvarope@mazalosa.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="eb3c9929-d7a4-4b45-98ee-c6417ca11dc7"><c:FormattedName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:FormattedName><c:GivenName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="8345fecc-f132-4818-a479-1246924febe5"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml ) );
+insert into webinfo.contacts(contact) values(  '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:18:55Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="ca30b112-91e7-4894-8e8e-25813f5b797c"><c:Value>7b3b4218-7ab6-4d7b-8d58-49c06d71517d</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="34d4a6c1-f8da-4fe8-8e81-438d64d15955"><c:Type>SMTP</c:Type><c:Address>alvarope@mazalosa.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="eb3c9929-d7a4-4b45-98ee-c6417ca11dc7"><c:FormattedName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:FormattedName><c:GivenName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="8345fecc-f132-4818-a479-1246924febe5"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml ) );
+insert into webinfo.contacts(contact) values(  '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:18:55Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="ca30b112-91e7-4894-8e8e-25813f5b797c"><c:Value>7b3b4218-7ab6-4d7b-8d58-49c06d71517d</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="34d4a6c1-f8da-4fe8-8e81-438d64d15955"><c:Type>SMTP</c:Type><c:Address>alvarope@mazalosa.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="eb3c9929-d7a4-4b45-98ee-c6417ca11dc7"><c:FormattedName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:FormattedName><c:GivenName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="8345fecc-f132-4818-a479-1246924febe5"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml ) ;
+insert into webinfo.contacts(contact) values(  '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:18:55Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="ca30b112-91e7-4894-8e8e-25813f5b797c"><c:Value>7b3b4218-7ab6-4d7b-8d58-49c06d71517d</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="34d4a6c1-f8da-4fe8-8e81-438d64d15955"><c:Type>SMTP</c:Type><c:Address>alvarope@mazalosa.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="eb3c9929-d7a4-4b45-98ee-c6417ca11dc7"><c:FormattedName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:FormattedName><c:GivenName>Álvaro Pérez Esquivel (Mazalosa S.A.)</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="8345fecc-f132-4818-a479-1246924febe5"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml ) ;
+truncate table webinfo.contacts;
+insert into webinfo.contacts(contact) values( '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T13:06:18Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="bad74551-4bd8-49f2-98be-ac9d59a47ac6"><c:Value>e4e552aa-d559-42b2-8dc2-7a830076c4be</c:Value></c:ContactID></c:ContactIDCollection><c:NameCollection><c:Name c:ElementID="d3f78449-149c-48c1-a103-87fe0e3ad8cf"><c:FormattedName>tomasini@almacendebelleza.com</c:FormattedName><c:GivenName>tomasini@almacendebelleza.com</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="04597a46-1359-4fce-8746-1dc58872dafa"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml );
+truncate table webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select * from contacts;
+truncate table webinfo.contacts;
+insert into webinfo.contacts(contact) values( '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T12:11:58Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="4b65941d-d0d7-48cf-898d-70be41d49631"><c:Value>258f4cd2-1475-4891-81ef-d94c459aa30f</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="0f7e6a7a-f6a4-4d56-98d4-a139600c76eb"><c:Type>SMTP</c:Type><c:Address>dcabrera@nunezcordo.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="1cffd9ac-1621-4089-bc60-a663b9b38842"><c:FormattedName>'Dora A. Cabrera'</c:FormattedName><c:GivenName>'Dora A. Cabrera'</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="f3e4cfef-d4a7-4b2a-aa81-bedc7dbfc645"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml ) ;
+insert into webinfo.contacts(contact) values( '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T12:11:58Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="4b65941d-d0d7-48cf-898d-70be41d49631"><c:Value>258f4cd2-1475-4891-81ef-d94c459aa30f</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="0f7e6a7a-f6a4-4d56-98d4-a139600c76eb"><c:Type>SMTP</c:Type><c:Address>dcabrera@nunezcordo.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="1cffd9ac-1621-4089-bc60-a663b9b38842"><c:FormattedName>Dora A. Cabrera</c:FormattedName><c:GivenName>Dora A. Cabrera</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="f3e4cfef-d4a7-4b2a-aa81-bedc7dbfc645"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml ) ;
+truncate table webinfo.contacts;
+insert into webinfo.contacts(contact) values( '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T12:11:58Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="4b65941d-d0d7-48cf-898d-70be41d49631"><c:Value>258f4cd2-1475-4891-81ef-d94c459aa30f</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="0f7e6a7a-f6a4-4d56-98d4-a139600c76eb"><c:Type>SMTP</c:Type><c:Address>dcabrera@nunezcordo.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="1cffd9ac-1621-4089-bc60-a663b9b38842"><c:FormattedName>Dora A. Cabrera</c:FormattedName><c:GivenName>Dora A. Cabrera</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="f3e4cfef-d4a7-4b2a-aa81-bedc7dbfc645"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml ) ;
+select count(*) from webinfo.contacts;
+truncate table webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+select count(*) from webinfo.contacts;
+insert into webinfo.contacts(contact) values( '<?xml version="1.0" encoding="UTF-8"?>
+<c:contact c:Version="1" xmlns:c="http://schemas.microsoft.com/Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSP2P="http://schemas.microsoft.com/Contact/Extended/MSP2P">
+        <c:CreationDate>2013-07-23T12:11:58Z</c:CreationDate><c:Extended xsi:nil="true"/>
+        <c:ContactIDCollection><c:ContactID c:ElementID="4b65941d-d0d7-48cf-898d-70be41d49631"><c:Value>258f4cd2-1475-4891-81ef-d94c459aa30f</c:Value></c:ContactID></c:ContactIDCollection><c:EmailAddressCollection><c:EmailAddress c:ElementID="0f7e6a7a-f6a4-4d56-98d4-a139600c76eb"><c:Type>SMTP</c:Type><c:Address>dcabrera@nunezcordo.com.ar</c:Address><c:LabelCollection><c:Label>Preferred</c:Label></c:LabelCollection></c:EmailAddress></c:EmailAddressCollection><c:NameCollection><c:Name c:ElementID="1cffd9ac-1621-4089-bc60-a663b9b38842"><c:FormattedName>Dora A. Cabrera</c:FormattedName><c:GivenName>Dora A. Cabrera</c:GivenName></c:Name></c:NameCollection><c:PhotoCollection><c:Photo c:ElementID="f3e4cfef-d4a7-4b2a-aa81-bedc7dbfc645"><c:LabelCollection><c:Label>UserTile</c:Label></c:LabelCollection></c:Photo></c:PhotoCollection></c:contact>
+'::xml ) ;
+select count(*) from webinfo.contacts;
+select xpath('//FormattedName/text()',contact) textcol from webinfo.contacts;
+select xpath('//c:ContactIDCollection/text()',contact) textcol from webinfo.contacts;
+select xpath('//ContactIDCollection/text()',contact) textcol from webinfo.contacts;
+select xpath('//ContactIDCollection/FormattedName/text()',contact) textcol from webinfo.contacts;
+select xpath('//Name/text()',contact) textcol from webinfo.contacts;
+select xpath('//c:Address/text()',contact) textcol from webinfo.contacts;
+select xpath('//Address/text()',contact) textcol from webinfo.contacts;
+select xpath('//Address/text()',contact) textcol from webinfo.contacts limit 2;
+select xpath('//Name/text()',contact) textcol from webinfo.contacts limit 2;
+select xpath('//NameCollection/text()',contact) textcol from webinfo.contacts limit 2;
+select xpath('/c:Address/text()',contact) textcol from webinfo.contacts;
+select xpath('/n:Contacts/n:Name/text()',contact) textcol from webinfo.contacts;
+select xpath('/n:MSP2P/n:Name/text()',contact) textcol from webinfo.contacts;
+select xpath('/n:Contact/n:Name/text()',contact) textcol from webinfo.contacts;
+select xpath('/n:MSP2P/n:Name/text()',contact) textcol from webinfo.contacts;
+select xpath('/n:MSP2P/n:NameCollection/text()',contact) textcol from webinfo.contacts;
+\s
+\q
+select (select xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts),
+(select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts) from webinfo.contacts
+;
+select xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts;
+select id, xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts;
+select id, xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts;
+select id, xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 100 ;
+select id, xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 100 ;
+select id, xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10 ;
+select id, xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts where id=8683;
+select id, xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts where id=8682;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts) from webinfo.contacts where id=8683;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  where id=8683;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+ select xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select id , xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts) from webinfo.contacts
+;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}')   from webinfo.contacts
+;
+select xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts;
+select xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10 ;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts) from webinfo.contacts
+;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts;
+select xpath('/c:contact/c:EmailAddressCollection',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts;
+\s
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+select xpath('//c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+select xpath('//c:contact/c:EmailAddressCollection',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+select xpath('/c:contact/c:EmailAddressCollection',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+select xpath('/c:contact/c:EmailAddressCollection/',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+select xpath('/c:contact/c:EmailAddressCollection',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+select xpath('/c:contact/c:EmailAddressCollection',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts  limit 10;
+\s
+\q
+regexp_replace('{fgdgdfgdf}','{|}','');
+select regexp_replace('{fgdgdfgdf}','{|}','');
+select regexp_replace('{fgdgdfgdf}','[{|}]','');
+select regexp_replace('{fgdgdfgdf}','[{||}]','');
+select regexp_replace('{fgdgdfgdf}','[{|}]','');
+select regexp_replace('{fgdgdfgdf}','[{|}]');
+select regexp_replace('{fgdgdfgdf}','[{|}]','g');
+select regexp_replace('{fgdgdfgdf}','[{|}]','');
+select regexp_replace('{fgdgdfgdf}','{|}','');
+select regexp_replace('{fgdgdfgdf}','({|})','');
+select regexp_replace('{fgdgdfgdf}','({|})','/1');
+select regexp_replace('{fgdgdfgdf}','({|})','\1');
+select regexp_replace('{fgdgdfgdf}','({|})','');
+select regexp_replace('{fgdgdfgdf}','('{'|'}')','');
+select regexp_replace('{fgdgdfgdf}','(\{|\})','');
+select regexp_replace('{fgdgdfgdf}','(\{||\})','');
+select regexp_replace('{fgdgdfgdf}','{|}','');
+select regexp_replace('{fgdgdfgdf}','({|})','');
+select id, 
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company ,
+  xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as  address  
+   from webinfo.contacts limit 10 ;
+\q
+SET search_path TO webinfo;
+with ( contact ) (select contact from contacts where id=499 )::xml select xpath('/c:Address/text()',contact) textcol from webinfo.contacts;
+with  contact (select contact from contacts where id=499 )::xml select xpath('/c:Address/text()',contact) textcol from webinfo.contacts;
+with  contact (select contact from webinfo.contacts where id=499 )::xml select xpath('/c:Address/text()',contact) textcol from webinfo.contacts;
+with  contact select contact from webinfo.contacts where id=499 ::xml select xpath('/c:Address/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=499 )::xml select xpath('/c:Address/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=499 ) select xpath('/c:Address/text()',contact) textcol from webinfo.contacts;
+select contact from webinfo.contacts where id=499 
+;
+select contact from webinfo.contacts where id=1499 
+;
+select count(*) from contacts;
+select max(id) from contacts;
+select contact from webinfo.contacts where id=11499 
+;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('/c:Address/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('/c:Address/text()',contact ) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) ;
+with  contact as (select contact from webinfo.contacts where id=11499 ) select * f;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('/n:MSP2P/Name/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('//n:MSP2P/Name/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('/n:MSP2P/n:Name/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('/c:Contact/c:Name/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('/c:Contact/c:EmailAddress/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('c:Contact/c:EmailAddress/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/EmailAddress/text()',contact) textcol from webinfo.contacts;
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/EmailAddress/text()',contact) textcol from webinfo.contacts  '{{c,http://schemas.microsoft.com/Contact}}';
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/EmailAddress/text()',contact) textcol from webinfo.contacts  '{{c,http://schemas.microsoft.com/Contact}}');
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/EmailAddress/text()',contact) textcol from webinfo.contacts,'{{c,http://schemas.microsoft.com/Contact}}');
+with  contact as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/c:EmailAddress/text()',contact) textcol from webinfo.contacts,'{{c,http://schemas.microsoft.com/Contact}}');
+with  contacts(contact) as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/c:EmailAddress/text()',contact) textcol from webinfo.contacts,'{{c,http://schemas.microsoft.com/Contact}}');
+with  contacts(contact) as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/c:EmailAddress/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}');
+with  contacts(contact) as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/c:EmailAddress/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts;
+with  contacts(contact) as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/c:EmailAddress/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts;
+with  contacts(contact) as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:Contact/c:EmailAddress/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+with  contacts(contact) as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:contact/c:EmailAddress/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+with  contacts(contact) as(select contact from webinfo.contacts where id=11499 ) select xpath('//c:contact/c:EmailAddressCollection/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('//c:contact/c:EmailAddressCollection/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('//c:contact//c:EmailAddressCollection/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/CreationDate/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:CreationDate/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:CreationDate/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/ContactIDCollection/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:ContactIDCollection/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:Extended/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:CreationDate/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection/Address',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address//c:Contact',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address//c:nls',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address//c:Contact',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address//c:Contact',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts 
+;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:NamedCollection',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:NameCollection',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:NameCollection/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+select xpath('/c:contact/c:EmailAddressCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts
+;
+select xpath('/c:contact/c:ContactIDCollection//c:Address/text()',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts
+;
+select xpath('/c:contact/c:ContactIDCollection//c:Address',contact,'{{c,http://schemas.mirosoft.com/Contact}}') from webinfo.contacts
+;
+ select xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:EmailAddressCollection',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:EmailAddressCollection/c:Address',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:EmailAddressCollection',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Addres',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 10;
+ select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 100;
+ select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 100;
+ select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 100;
+ select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') from webinfo.contacts limit 100;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'),
+xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+ from webinfo.contacts limit 100;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as address ,
+xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company 
+ from webinfo.contacts limit 100;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as address ,
+xpath('/c:contact/c:NameCollection//c:FormattedName/text()[0]',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company 
+ from webinfo.contacts limit 100;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as address ,
+xpath('/c:contact/c:NameCollection//c:FormattedName/text()[1]',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company 
+ from webinfo.contacts limit 100;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as address ,
+xpath('/c:contact/c:NameCollection//c:FormattedName/text()[1]',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company 
+ from webinfo.contacts limit 100;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as address ,
+xpath('/c:contact/c:NameCollection//c:FormattedName/text()[1]',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company 
+ from webinfo.contacts limit 100;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address',contact,'{{c,http://schemas.microsoft.com/Contact}}'),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, replace('{',xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'),''),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, replace('{',xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')::text,''),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, replace(xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')::text,'{',''),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, replace(xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')::text,'{|}',''),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, replace(xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')::text,'{||}',''),
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')
+   from webinfo.contacts 
+;
+select id, 
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company ,
+  xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as  address  
+   from webinfo.contacts order by company limit 100 ;
+select id, 
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company ,
+  xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as  address  
+   from webinfo.contacts limit 100 ;
+select id, 
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company ,
+  xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as  address  
+   from webinfo.contacts order by company limit 100 ;
+with extractd as (select id, 
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company ,
+  xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as  address  
+   from webinfo.contacts  ) select company , address from extractd order by company   ;
+with extractd as (select id, 
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company ,
+  xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as  address  
+   from webinfo.contacts  ) select company , address from extractd ;
+with extractd as (select id, 
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company ,
+  xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as  address  
+   from webinfo.contacts  ) select company , address from extractd order by extracted.company ;
+with extractd as (select id, 
+  xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as company ,
+  xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}') as  address  
+   from webinfo.contacts  ) select company , address from extractd order by extractd.company ;
+with extractd as (select id, 
+ unnest( xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')) as company ,
+ unnest( xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')) as  address  
+   from webinfo.contacts  ) select company , address from extractd order by extractd.company ;
+with extractd as (select id, 
+ unnest( xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')) as company ,
+ unnest( xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}')) as  address  
+   from webinfo.contacts  ) select company , address from extractd  ;
+with extracted as (select id, 
+  unnest(xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'))::TEXT as company ,
+  unnest(xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'))::TEXT as  address  
+   from webinfo.contacts) select company , address from extracted  limit 100 offset;
+with extracted as (select id, 
+  unnest(xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'))::TEXT as company ,
+  unnest(xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'))::TEXT as  address  
+   from webinfo.contacts) select company , address from extracted  limit 100 offset 0;
+with extracted as (select id, 
+  unnest(xpath('/c:contact/c:NameCollection//c:FormattedName/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'))::TEXT as company ,
+  unnest(xpath('/c:contact/c:EmailAddressCollection/c:EmailAddress/c:Address/text()',contact,'{{c,http://schemas.microsoft.com/Contact}}'))::TEXT as  address  
+   from webinfo.contacts) select company , address from extracted  order by company limit 100 offset 0;
+\dt
+\s
+\s
+SET search_path TO webinfo;
+\dt
+\d contacts
+select * from contacts where id is null ;
+\q
+SET search_path TO webinfo;
+truncate table contacts;
+\q
+SET search_path TO webinfo;
+count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+\q
+select count(*) from contacts;
+SET search_path TO webinfo;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+select count(*) from contacts;
+\q
+\s
+SET search_path TO webinfo;
+\dt
+\q
+SET search_path TO webinfo;
+\dt
+\q
+SET search_path TO webinfo;
+select id, hash  from  webinfo.users where usuario=$1 and passwd= webinfo.crypt('Kl1ng0n',passwd) ;
+select id, hash  from  webinfo.users where usuario='Kl!ng0n' and passwd= webinfo.crypt('Kl!ng0n',passwd) ;
+select id, hash  from  webinfo.users where usuario='Kl1ng0n' and passwd= webinfo.crypt('Kl1ng0n',passwd) ;
+select * gtom webinfo.users;
+select * from webinfo.users;
+select id, hash  from  webinfo.users where usuario='juan' and passwd= webinfo.crypt('Kl1ng0n',passwd) ;
+select id, hash  from  webinfo.users where usuario='juan' and passwd= webinfo.crypt('Kl!ng0n',passwd) ;
+select id, hash  from  webinfo.users where usuario='juan' and passwd= webinfo.crypt('Kl1ng0n',passwd) ;
+select id, hash  from  webinfo.users where usuario='juan' and passwd= webinfo.crypt('Kl!ng0n',passwd) ;
+select id, hash  from  webinfo.users where usuario='juan' and passwd= webinfo.crypt('Kl!ng0n2021',passwd) ;
+select id, hash  from  webinfo.users where usuario='juan' and passwd= webinfo.crypt('Kl1ng0n2021',passwd) ;
+select id, hash  from  webinfo.users where usuario='juan' and passwd= webinfo.crypt('kl1ng0n2021',passwd) ;
+select id, hash  from  webinfo.users where usuario='juan' and passwd= webinfo.crypt('kl1ng0n',passwd) ;
+select * from webinfo.users;
+\q
+SET search_path TO webinfo;
+\dt
+select * from users;
+select * from users;
+\sf
+\df
+\d users
+select * from users;
+select * from users;
+\d users
+select * from users;
+select * from users;
+03a794b5-7d55-4dee-a098-33163a7ca9e3;
+select * from users;
+select hast from users where id=28;
+select hash from users where id=28;
+select hash from users where id=28;
+select hash from users where id=28;
+select hash from users where id=28;
+select lastlogin,hash from users where id=28;
+select lastlogin,hash from users where id=28;
+select lastlogin,hash from users where id=28;
+\d users
+select * from users;
+select * from users where admin ;
+select * from users 
+;
+select * from mailstatus ;
+select * from users 
+;
+select id, nombre from users 
+;
+select * from webinfo.mailstatus where id_user_to = 31;
+\DT
+\dt
+\d emails
+select id from emails where mail->'messageId' =  'MR1P264MB42578A76561BC1626B2107A5E67E9@MR1P264MB4257.FRAP264.PROD.OUTLOOK.COM';
+select id from emails where mail->'messageId' = 'MR1P264MB42578A76561BC1626B2107A5E67E9@MR1P264MB4257.FRAP264.PROD.OUTLOOK.COM';
+\s
+select id from emails where mail->'messageId' = 'MR1P264MB42578A76561BC1626B2107A5E67E9@MR1P264MB4257.FRAP264.PROD.OUTLOOK.COM';
+\s
+select mail  from emails_update where mail->>'messageId'= 'DS7PR19MB44396BFF3AD4393B209801DC85749@DS7PR19MB4439.namprd19.prod.outlook.com'
+;
+select id from emails where mail->>'messageId' = 'MR1P264MB42578A76561BC1626B2107A5E67E9@MR1P264MB4257.FRAP264.PROD.OUTLOOK.COM'
+select mail from emails where mail->>'messageId' in ('MR1P264MB42578A76561BC1626B2107A5E67E9@MR1P264MB4257.FRAP264.PROD.OUTLOOK.COM', 'CADAjv6Vhov0Q0VoaA_kg24oCXmt8ccQTjhDzeuyU0kdE0Qyjmg@mail.gmail.com' );
+select id  from emails where mail->>'messageId' in ('MR1P264MB42578A76561BC1626B2107A5E67E9@MR1P264MB4257.FRAP264.PROD.OUTLOOK.COM', 'CADAjv6Vhov0Q0VoaA_kg24oCXmt8ccQTjhDzeuyU0kdE0Qyjmg@mail.gmail.com' );
+select id from emails where mail->>'messageId' in ('MR1P264MB42578A76561BC1626B2107A5E67E9@MR1P264MB4257.FRAP264.PROD.OUTLOOK.COM','CADAjv6Vhov0Q0VoaA_kg24oCXmt8ccQTjhDzeuyU0kdE0Qyjmg@mail.gmail.com') ;
+\q
+create database mingodb ;
+\q
+\dt
+select * from pg_table;
+select * from pg_tables;
+select * from pg_tables;
+select count(*) from contactos:
+;
+select count(*) from contactos;
+\q
+\dt
+select count(*) from contactos;
+\dr
+\st
+\dt
+select count(*)  from articulos ;
+s'q
+\q
+';
+\q
+COPY articulos FROM '/tmp/articulos.csv ' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+\dt atriculos
+\dt articulos
+\d articulos
+precultcom
+;
+\sd articulos
+\pd articulos
+\d articulos
+select * from articulos;
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ',', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+\d articulos
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+\q
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+\q
+alter table mingodb rename to mingodb_old
+;
+alter database  mingodb rename to mingodb_old
+;
+\q
+\q
+\H create database
+\H create database;
+\H
+\h
+\h CREATA DATABASE
+\h CREATE DATABASE
+CREATE DATABASE  mingodb encodding=unicode;
+CREATE DATABASE  mingodb with encodding=unicode;
+CREATE DATABASE  mingodb with encoding=unicode;
+\q
+CREATE DATABASE  mingodb with encoding=latin1
+;
+drop database mingodb;
+CREATE DATABASE  mingodb with encoding=latin1
+;
+CREATE DATABASE  mingodb with encoding=LATIN1;
+;
+\q
+alter table mingodb_old rename to mingodb
+;
+alter database  mingodb_old rename to mingodb
+;
+\q
+\dt
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+select * from articulos;
+\q
+insert  into articulos IdArticuloBarra,IdBarra,Nombre,IdArticulo,IdProveedor,IdRubro,IdSubRubro,UniMedi,UniBul,Envase,StockMinimo,StockMaximo,CodEquiv,IdClase,InHabilitado,TieneSerie,Codigobarra,CodIva,CodIInt,CodCom,Bonif,FecUltCom,CantUltCom,Precio,IdProvUltCom,Ubicacion,PrecUltCom,FechaAlta,NombreAdic,tipoarti,idmodelo,retorno,propio,saldotemp,Fracciona,Promocion,HaceDto,Peso,Cantifracc,CalculaEst,FecUltPrec,DescPrv1,DescPrv2,DescPrv3,DescPrv4,parte,BajaStock,Idtalle,Idcolor,idmoneda,UnibulPack,Idcuenta,header,fabricacion,idarticuloasociado,NroMotor,NroPatente,Chasis,Procedencia,Usada,Importada,Moto,Anotaciones,PrecioMinimo,PorcentajeImpMin,NombrePresu,WebDescrip,IdListaPrecioWeb,IdListaPrecioOfertaWeb,EnOferta,Destacado,ActivadoenWeb,CopiasPromedio,IdCuentaCompras,EsAccesorio,idDibujo,IdVariante,EsFuncion,COMBOOFERTA,ESPESTANIA,IDTASAIMPA,PERCIBEIVA,ESMENU,idEstado,EsConsignacion,Vencimiento,Notas,EsVehiculo,FECHAINGRESO,ALTO,LARGO,ANCHO,COMISION,IDMARCA,NOMBREEXTENSO,ESGENERICO,ESFORMULA,ESCOMPONENTE,IDUMEDIDA,UNIDXBULTOSVENTA,UNIDXBULTOSCOMPRA,DESCPRESU,IDCUENTARTOIMP,PLAZOENTREGA,ANOTACIONESVARIAS,DESCPRV5,DESCPRV6,PAISPROCEDENCIA,PAISORIGEN,POSICIONARANC,FLETEPORC,FLETEIMPORTE,COSTO,IDPOLITICA,IDACTIVIDADIVAVENTAS,IDACTIVIDADIVACOMPRAS,GASTOSIMPORTACION,POSICIONARANCSUGERIDA,FECHAMODIFICACION,ID,CODIGOARBA,IDWOOCOMMERCE,IDIMAGE,SYNC,PUBLICARWEB,WOO_AGRUPADO,WOO_DETALLE,WOO_VARIABLE values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert  into articulos IdArticuloBarra,IdBarra,Nombre,IdArticulo,IdProveedor,IdRubro,IdSubRubro,UniMedi,UniBul,Envase,StockMinimo,StockMaximo,CodEquiv,IdClase,InHabilitado,TieneSerie,Codigobarra,CodIva,CodIInt,CodCom,Bonif,FecUltCom,CantUltCom,Precio,IdProvUltCom,Ubicacion,PrecUltCom,FechaAlta,NombreAdic,tipoarti,idmodelo,retorno,propio,saldotemp,Fracciona,Promocion,HaceDto,Peso,Cantifracc,CalculaEst,FecUltPrec,DescPrv1,DescPrv2,DescPrv3,DescPrv4,parte,BajaStock,Idtalle,Idcolor,idmoneda,UnibulPack,Idcuenta,header,fabricacion,idarticuloasociado,NroMotor,NroPatente,Chasis,Procedencia,Usada,Importada,Moto,Anotaciones,PrecioMinimo,PorcentajeImpMin,NombrePresu,WebDescrip,IdListaPrecioWeb,IdListaPrecioOfertaWeb,EnOferta,Destacado,ActivadoenWeb,CopiasPromedio,IdCuentaCompras,EsAccesorio,idDibujo,IdVariante,EsFuncion,COMBOOFERTA,ESPESTANIA,IDTASAIMPA,PERCIBEIVA,ESMENU,idEstado,EsConsignacion,Vencimiento,Notas,EsVehiculo,FECHAINGRESO,ALTO,LARGO,ANCHO,COMISION,IDMARCA,NOMBREEXTENSO,ESGENERICO,ESFORMULA,ESCOMPONENTE,IDUMEDIDA,UNIDXBULTOSVENTA,UNIDXBULTOSCOMPRA,DESCPRESU,IDCUENTARTOIMP,PLAZOENTREGA,ANOTACIONESVARIAS,DESCPRV5,DESCPRV6,PAISPROCEDENCIA,PAISORIGEN,POSICIONARANC,FLETEPORC,FLETEIMPORTE,COSTO,IDPOLITICA,IDACTIVIDADIVAVENTAS,IDACTIVIDADIVACOMPRAS,GASTOSIMPORTACION,POSICIONARANCSUGERIDA,FECHAMODIFICACION,ID,CODIGOARBA,IDWOOCOMMERCE,IDIMAGE,SYNC,PUBLICARWEB,WOO_AGRUPADO,WOO_DETALLE,WOO_VARIABLE values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert  into articulos IdArticuloBarra,IdBarra,Nombre,IdArticulo,IdProveedor,IdRubro,IdSubRubro,UniMedi,UniBul,Envase,StockMinimo,StockMaximo,CodEquiv,IdClase,InHabilitado,TieneSerie,Codigobarra,CodIva,CodIInt,CodCom,Bonif,FecUltCom,CantUltCom,Precio,IdProvUltCom,Ubicacion,PrecUltCom,FechaAlta,NombreAdic,tipoarti,idmodelo,retorno,propio,saldotemp,Fracciona,Promocion,HaceDto,Peso,Cantifracc,CalculaEst,FecUltPrec,DescPrv1,DescPrv2,DescPrv3,DescPrv4,parte,BajaStock,Idtalle,Idcolor,idmoneda,UnibulPack,Idcuenta,header,fabricacion,idarticuloasociado,NroMotor,NroPatente,Chasis,Procedencia,Usada,Importada,Moto,Anotaciones,PrecioMinimo,PorcentajeImpMin,NombrePresu,WebDescrip,IdListaPrecioWeb,IdListaPrecioOfertaWeb,EnOferta,Destacado,ActivadoenWeb,CopiasPromedio,IdCuentaCompras,EsAccesorio,idDibujo,IdVariante,EsFuncion,COMBOOFERTA,ESPESTANIA,IDTASAIMPA,PERCIBEIVA,ESMENU,idEstado,EsConsignacion,Vencimiento,Notas,EsVehiculo,FECHAINGRESO,ALTO,LARGO,ANCHO,COMISION,IDMARCA,NOMBREEXTENSO,ESGENERICO,ESFORMULA,ESCOMPONENTE,IDUMEDIDA,UNIDXBULTOSVENTA,UNIDXBULTOSCOMPRA,DESCPRESU,IDCUENTARTOIMP,PLAZOENTREGA,ANOTACIONESVARIAS,DESCPRV5,DESCPRV6,PAISPROCEDENCIA,PAISORIGEN,POSICIONARANC,FLETEPORC,FLETEIMPORTE,COSTO,IDPOLITICA,IDACTIVIDADIVAVENTAS,IDACTIVIDADIVACOMPRAS,GASTOSIMPORTACION,POSICIONARANCSUGERIDA,FECHAMODIFICACION,ID,CODIGOARBA,IDWOOCOMMERCE,IDIMAGE,SYNC,PUBLICARWEB,WOO_AGRUPADO,WOO_DETALLE,WOO_VARIABLE values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+\d articulos
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34)
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34)
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34)
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34)
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34)
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34)
+;
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34);
+\d articulos
+insert  into articulos(idarticulobarra,idbarra,nombre,idarticulo,idproveedor,idrubro,idsubrubro,unimedi,unibul,envase,stockminimo,stockmaximo,codequiv,idclase,inhabilitado,tieneserie,codigobarra,codiva,codiint,codcom,bonif,fecultcom,cantultcom,precio,idprovultcom,ubicacion,precultcom,fechaalta,nombreadic,tipoarti,idmodelo,retorno,propio,saldotemp,fracciona,promocion,hacedto,peso,cantifracc,calculaest,fecultprec,descprv1,descprv2,descprv3,descprv4,parte,bajastock,idtalle,idcolor,idmoneda,unibulpack,idcuenta,header,fabricacion,idarticuloasociado,nromotor,nropatente,chasis,procedencia,usada,importada,moto,anotaciones,preciominimo,porcentajeimpmin,nombrepresu,webdescrip,idlistaprecioweb,idlistaprecioofertaweb,enoferta,destacado,activadoenweb,copiaspromedio,idcuentacompras,esaccesorio,iddibujo,idvariante,esfuncion,combooferta,espestania,idtasaimpa,percibeiva,esmenu,idestado,esconsignacion,vencimiento,notas,esvehiculo,fechaingreso,alto,largo,ancho,comision,idmarca,nombreextenso,esgenerico,esformula,escomponente,idumedida,unidxbultosventa,unidxbultoscompra,descpresu,idcuentartoimp,plazoentrega,anotacionesvarias,descprv5,descprv6,paisprocedencia,paisorigen,posicionaranc,fleteporc,fleteimporte,costo,idpolitica,idactividadivaventas,idactividadivacompras,gastosimportacion,posicionarancsugerida,fechamodificacion,id,codigoarba,idwoocommerce,idimage,sync,publicarweb,woo_agrupado,woo_detalle,woo_variable) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99,$100,$101,$102,$103,$104,$105,$106,$107,$108,$109,$110,$111,$112,$113,$114,$115,$116,$117,$118,$119,$120,$121,$122,$123,$124,$125,$126,$127,$128);
+select count(*) from articulos;
+\d articulos
+\d articulos
+\d articulos
+alter table articulos alter column parte type numeric(14,2);
+\d articulos
+alter table articulos alter column peso type numeric(14,2);
+\d articulos
+alter table articulos alter column saldotemp type numeric(14,2);
+\d articulos
+alter table articulos alter column precultomp  type numeric(14,2);
+\d articulos
+alter table articulos alter column precultom  type numeric(14,2);
+alter table articulos alter column precultom  type numeric(14,2);
+\d articulos
+alter table articulos alter column precultcom  type numeric(14,2);
+\d articulos
+alter table articulos alter column precio  type numeric(14,2);
+\d articulos
+\d articulos
+alter table articulos alter column cantultcom  type numeric(14,2);
+\d articulos
+alter table articulos alter column bonif  type numeric(14,2);
+select count(*) from articulos;
+\p
+\a
+\s
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/articulos.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/art.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/art.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+COPY articulos FROM '/tmp/art.csv' (DELIMITER ';', HEADER TRUE, FORMAT CSV);
+\q
+\dt
+\q
+\s
+SET search_path TO webinfo;
+\dt
+select * from emails_sent;
+\s
+SET search_path TO webinfo;
+explain analyse select mail from webinfo.emails 
+  where  mail->>'messageId' in ( select idmail from   webinfo.mailstatus where id_user=28 and leido )  limit  2;
+explain analyse select mail from webinfo.emails 
+  where  mail->>'messageId' in ( select idmail from   webinfo.mailstatus where id_user=28 and leido )  limit  20;
+select * from  "webinfo"."emails_sent" where user_sent=28;
+select count(*)  from  "webinfo"."emails_sent" where user_sent=28;
+select mail from webinfo.emails 
+  where  mail->>'messageId' in ( select idmail from   webinfo.mailstatus where id_user=28 and leido )  limit  20;
+select count(*) from webinfo.emails 
+  where  mail->>'messageId' in ( select idmail from   webinfo.mailstatus where id_user=28 and leido )  limit  20;
+explain analyze select count(*) from webinfo.emails 
+  where  mail->>'messageId' in ( select idmail from   webinfo.mailstatus where id_user=28 and leido )  limit  20;
+select * from mailstatus;
+select * from mailstatus where messageid='7f9c758bae5aca14c23e1d5d7b2d043a@localhost.localdomain';
+\d mailstatus
+select * from mailstatus where idmail='7f9c758bae5aca14c23e1d5d7b2d043a@localhost.localdomain';
+select * from mailstatus;
+SET search_path TO webinfo;
+select * from emails_sent;
+\d emails_sent
+select readtext(attach) from  emails_sent;
+select readtext(attach) from  emails_sent;
+select webinfo".readtext(attach) as data ,* 
+    from  "webinfo"."emails_sent"
+     where user_sent=28;
+";
+select webinfo.readtext(attach) as data ,* 
+    from  "webinfo"."emails_sent"
+     where user_sent=28;
+SET search_path TO webinfo;
+select count(*) from emails;
+\q
+SET search_path TO webinfo;
+\dt
+\d emails
+drop table mails_back;
+\dt
+reindex
+;
+emails reindex;
+reindex database ;
+\q
+SET search_path TO webinfo;
+\df
+\q
+SET search_path TO webinfo;
+\s updateemails;
+\s updateemails

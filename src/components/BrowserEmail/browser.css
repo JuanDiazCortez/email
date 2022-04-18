@@ -1,0 +1,25 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
+select {
+  font-family: "FontAwesome", "Verdana", "Glyphicons Halflings";
+}
+td {
+  font-size: 15px;
+}
+/* .list-item a:hover {
+  background: rgb(172, 162, 231) !important;
+}
+table:hover {
+  // change table style 
+  background: rgb(172, 162, 231) !important;
+}
+*/
+table tr:hover {
+  /* change table row style */
+  background: rgb(173, 172, 184) !important;
+}
+
+th:nth-child(1) {
+  width: 40%;
+}

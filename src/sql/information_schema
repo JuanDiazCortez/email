@@ -1,0 +1,840 @@
+select substr(encode(pdf ::bytea , 'hex'),1,25)  from poderes where id=142;
+select substr(encode(pdf ::bytea , 'hex'),1,25)  from poderes where id=144;
+select id,length(pdf)  from poderes;
+select id,length(pdf)  from poderes;
+select substr(encode(pdf ::bytea , 'hex'),1,25)  from poderes where id=145;
+select substr(pdf ,1,25)  from poderes where id=145;
+select( encode(37,'hex')
+;
+);
+select encode(37,'hex');
+select encode('37','hex');
+select encode('01','hex');
+select encode('01','bin');
+select id,length(pdf)  from poderes;
+truncate table poderes
+;
+select id,length(pdf)  from poderes;
+select id,length(pdf)  from poderes;
+select id,length(pdf)  from poderes;
+select id , substring( pdf::int[] ,1,20) ;
+select id , substring( pdf::int[] ,1,20) from poderes;
+select pdf::int[]  from poderes;
+select pdf ::integer[]  from poderes;
+select pdf ::int[]  from poderes;
+select pdf ::int  from poderes;
+select pdf ::int[]  from poderes;
+select encode( pdf ::bytea, 'hex') from poderes; 
+select encode( pdf ::bytea, 'base64') from poderes; 
+select length(encode( pdf ::bytea, 'base64')) from poderes; 
+select length(pdf),length(encode( pdf ::bytea, 'base64')) from poderes; 
+select length(encode( pdf ::bytea, 'base64'))-length(pdf)  from poderes; 
+select convert_from( pdf, 'UTF-8') from poderes ;
+select convert_from( pdf::text, 'UTF-8') from poderes ;
+select convert_from( pdf::int[], 'UTF-8') from poderes ;
+select pdf::int[]  from poderes ;
+select encode([1,2,4], 'hex')  
+;
+select encode([1,2,4], 'hex');  
+;
+select encode([1 2 4], 'hex');  
+;
+select encode({1, 2, 4}, 'hex');  
+select {1, 2, 4};  
+select ARRAY( pdf) from poderes;
+select encode( pdf,'hex') from poderes;
+select substring( pdf,1,20) from poderes;  
+truncate table poderes
+;
+select substring( pdf,1,20) from poderes;  
+select decode( pdf,'hex') from poderes;  
+select decode( pdf ::text ,'hex') from poderes;  
+select decode( pdf ::bytea  ,'hex') from poderes;  
+select substring( pdf,1,20) from poderes;  
+truncate table poderes
+;
+select substring( pdf,1,20) from poderes;  
+select substring( pdf,1,20) from poderes;  
+select decode( pdf ::bytea  ,'hex') from poderes;  
+select substring(decode( pdf ::bytea  ,'hex'),1,20) from poderes;  
+select substring( pdf,1,20) from poderes;  
+select substring( pdf,1,20) from poderes;  
+truncate table poderes
+;
+select substring( pdf,1,20) from poderes;  
+select substring( pdf,1,20) from poderes;  
+truncate table poderes
+;
+select substring( pdf,1,20) from poderes;  
+truncate table poderes
+;
+select substring( pdf,1,20) from poderes;  
+select encode('2550','hex');
+select substring( pdf,1,20) from poderes;  
+select encode('50','hex');
+select substring( pdf,1,20) from poderes;  
+select substring( pdf,1,20) from poderes;  
+select decode(pdf,'base64') from poderes;  
+select decode(pdf ::text ,'base64') from poderes;  
+select decode(pdf ::bytea ,'base64') from poderes;  
+select decode(pdf ::bytea ,'base64') ::text from poderes;  
+select decode(pdf ::bytea ,'base64') ::bytea from poderes;  
+select decode( encode(pdf,'base64')) from poderes;  
+select  encode(pdf,'base64') from poderes;  
+select  decode(encode(pdf,'base64'),base64)  from poderes;  
+select  decode(encode(pdf,'base64'),'base64')  from poderes;  
+select  decode(pdf,'base64')  from poderes;  
+select  encode(pdf,'base64')  from poderes;  
+select  decode(encode(pdf,'base64'))  from poderes;  
+select  decode(encode(pdf,'base64'),'base64')  from poderes;  
+copy select  decode(encode(pdf,'base64'),'base64')  from poderes to '/tmp/data/;
+';
+copy (select  decode(encode(pdf,'base64'),'base64'  from poderes)  to '/tmp/data/';
+);
+copy (select  decode(encode(pdf,'base64'),'base64')  from poderes)  to '/tmp/data/';
+copy (select  decode(encode(pdf,'base64'),'base64')  from poderes)  to '/tmp/data.pdf';
+copy (select  decode(encode(pdf,'hex'),'base64')  from poderes)  to '/tmp/data.pdf';
+copy (select pdf   from poderes where id (select max(id) from poderes )  to '/tmp/data.pdf';
+);
+copy (select pdf   from poderes where id (select max(id) from poderes ))  to '/tmp/data.pdf';
+copy (select pdf  from poderes where id =(select max(id) from poderes ))  to '/tmp/data.pdf';
+select id from poderes;
+select substring( pdf,1,20) from poderes where id =158;  
+truncate table poderes
+;
+truncate table poderes;
+select substring( pdf,1,20) from poderes where id =158;  
+select id from poderes;
+select substring( pdf,1,20) from poderes where id =159;  
+alter table poderes alter column pdf type text ;
+select substring( pdf,1,20) from poderes where id =159;  
+truncate table poderes;
+select substring( pdf,1,20) from poderes ;  
+select substring( pdf,1,120) from poderes ;  
+select length(pdf0) from poderes ;  
+select length(pdf) from poderes ;  
+truncate table poderes;
+select length(pdf) from poderes ;  
+select length(pdf) from poderes ;  
+select substring( pdf,1,120) from poderes ;  
+select encode(pdf,'base64') from poderes ;  
+select decode(pdf,'base64') from poderes ;  
+truncate table poderes;
+select decode(pdf,'base64') from poderes ;  
+select encode(pdf,'base64') from poderes ;  
+select substring( pdf,1,120) from poderes ;  
+select substring( pdf,1,120) from poderes ;  
+\d poderes
+select id, encode( substr(pdf::bytea,1,20),'base64') from poderes;
+\d poderes
+select id from poderes;
+\q
+\q
+ET search_path TO webinfo;"
+SET search_path TO webinfo;
+";
+SET search_path TO webinfo;
+\dt
+select * from mailstatus
+;
+delete from mailstatus whee status is null ;
+delete from mailstatus where status is null ;
+select * from mailstatus
+;
+select * from mailstatus
+;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(idmail,status,leido)  values (idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(idmail,status,leido)  values (idRow,'normal' , estado); 
+        END IF; 
+    END; 
+    $function$;
+s'q
+\q
+';
+\q
+SET search_path TO webinfo;
+select * from mailstatus;
+update poderes set status='normal' where id=40;
+update mailstatus  set status='normal' where id=40;
+select * from mailstatus;
+update mailstatus  set status='Normal' where id=40;
+select * from mailstatus;
+update mailstatus  set status='Normal' where id=41;
+select * from mailstatus;
+update mailstatus  set status='normal' where id=41;
+update mailstatus  set status='normal' where id=40;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+\q
+SET search_path TO webinfo;
+\d mailstatus
+\q
+select * from mailstatus;
+SET search_path TO webinfo;
+select * from mailstatus;
+\q
+SET search_path TO webinfo;
+create table users(id serial not null primary key, email varchar(40), user varchar(20 ),nombre varchar(40),apellido varchar(40), doc varchar(20),passwd varchar(60));
+create table users(id serial not null primary key, email varchar(40), usuario varchar(20 ),nombre varchar(40),apellido varchar(40), doc varchar(20),passwd varchar(60));
+select * from users;
+truncate table users;
+select * from users;
+select * from users;
+truncate table users;
+CREATE EXTENSION pgcrypto;
+SET search_path TO webinfo;
+CREATE EXTENSION pgcrypto;
+select * from users;
+\df
+\d users
+select * from users;
+select decrypt( password, 'kkkkkkkkkk') from users;
+\dt users
+\d users
+select decrypt( passwd, 'kkkkkkkkkk') from users;
+select decrypt( passwd ::bytea , 'kkkkkkkkkk') from users;
+select decrypt( passwd ::bytea , 'kkkkkkkkkk'::bytea) from users;
+select decrypt( passwd ::bytea , 'kkkkkkkkkk'::bytea) from users;
+\ df
+\df
+\df decrypt
+select crypt( 'kkkkkkkkkk',passwd) from users;
+select crypt( 'kkkkkkkkkk',passwd),passwd from users;
+SELECT crypt('johnspassword', passwd) from users ;
+SELECT crypt('kkkkkkkkkk', passwd) from users ;
+SELECT crypt('kkkkkkkkkk', passwd), passwd from users ;
+SELECT crypt('kkkkkkkkkk', passwd), passwd , crypt('kkkkkkkkkk',gent_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk', passwd), passwd , crypt('kkkkkkkkkk'::text ,gent_salt('bf'))  from users ;
+SELECT kkk'::text ,gent_salt('bf')::text )  from users ;
+SELECT crypt('kkkkkkkkkk'::text ,gent_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk' ,gent_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gent_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf') )  from users ;
+truncate table users;
+select * from users;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gent_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,passwd )  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,passwd ) ,passwd  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,  passwd ) ,passwd  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+SELECT crypt('kkkkkkkkkk'::TEXT   ,gen_salt('bf'))  from users ;
+truncate table users;
+alter table users alter column passwd type text;
+select * from users;
+select * from users;
+SELECT crypt('kkkkkkkkkk'   ,passwd )  from users ;
+SELECT * from users where passwd =  crypt('kkkkkkkkkk'  ,passwd )   ;
+SELECT * from users where passwd =  crypt('kkkkkkkkkk'  ,passwd )   ;
+truncate table users;
+INSERT INTO users (email, passwd) VALUES (
+  'johndoe@mail.com',
+  crypt('johnspassword', gen_salt('bf'))
+);
+SELECT id 
+  FROM users
+ WHERE email = 'johndoe@mail.com' 
+   AND passwd = crypt('johnspassword', password);
+SELECT id 
+  FROM users
+ WHERE email = 'johndoe@mail.com' 
+   AND passwd = crypt('johnspassword', passwd);
+SELECT id 
+  FROM users
+ WHERE email = 'johndoe@mail.com' 
+   AND users.passwd = crypt('johnspassword', passwd);
+SELECT id 
+  FROM users
+ WHERE email = 'johndoe@mail.com' 
+   AND users.passwd = crypt('johnspassword', passwd);
+select * from users;
+truncate table users;
+select * from users;
+SELECT id 
+  FROM users
+ WHERE user = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+SELECT id 
+  FROM users
+ WHERE email  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+SELECT id 
+  FROM users
+ WHERE email  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+SELECT id 
+  FROM users
+ WHERE email  = 'juan' ;
+SELECT id 
+  FROM users
+ WHERE email  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+select * from users;
+SELECT id 
+  FROM users
+ WHERE email  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+truncate table users;
+SELECT id 
+  FROM users
+ WHERE email  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+select * from users;
+select * from users;
+truncate table users;
+select * from users;
+select * from users;
+SELECT id 
+  FROM users
+ WHERE email  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+truncate table users;
+insert into users( usuario, password) values( 'juan', crypt('kl1ng0n', gen_salt('bf'));
+;
+);
+insert into users( usuario, password) values( 'juan', crypt('kl1ng0n', gen_salt('bf')));
+insert into users( usuario, passwd) values( 'juan', crypt('kl1ng0n', gen_salt('bf')));
+select * from users;
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+select * from users;
+truncate table users;
+select * from users;
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n', passwd);
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND users.passwd = crypt('kl1ng0n'::text , passwd);
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND passwd = crypt('kl1ng0n'::text , passwd);
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+update users set email=crypt( 'kl1ng0n', gen_salt('bf'));
+alter table users add column p2 text;
+update users set p2=crypt( 'kl1ng0n', gen_salt('bf'));
+SELECT crypt('kl1ng0n'::text , passwd),passwd from users;
+select * from users;
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND users.p2 = crypt('kl1ng0n'::text , p2);
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND users.p2 = crypt('kl1ng0n' , p2);
+update users set p2=crypt( 'kl1ng0n', gen_salt('bf'));
+select * from users;
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND p2 = crypt('kl1ng0n'::text , p2);
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND p2 = crypt('kl1ng0n' , p2);
+SELECT id 
+  FROM users
+ WHERE usuario  = 'juan' 
+   AND p2 = crypt('kl1ng0n'::text , p2);
+select * from users;
+INSERT INTO users (email, passwd) VALUES (
+  'johndoe@mail.com',
+  crypt('johnspassword', gen_salt('bf'))
+);
+SELECT id 
+  FROM users
+ WHERE email = 'johndoe@mail.com' 
+   AND passwd = crypt('johnspassword', passwd);
+insert into user(mail, passwd) values('juan',crypt('kl1ng0n',gen_salt('bf')));
+insert into users(email, passwd) values('juan',crypt('kl1ng0n',gen_salt('bf')));
+SELECT id 
+  FROM users
+ WHERE email = 'johndoe@mail.com' 
+   AND passwd = crypt('johnspassword', passwd);
+SELECT id 
+  FROM users
+ WHERE email = 'juan' 
+   AND passwd = crypt('kl1ng0n', passwd);
+select * from users;
+SELECT id 
+  FROM users
+ WHERE email = 'juan2' 
+   AND passwd = crypt('kl1ng0n', passwd);
+\d users
+select * from users;
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n',gen_salt('bf'));
+select crypt( 'kl1ng0n','$2a$06$cTz7JO.xNTyMviv3Ltrav.FYRT2mdAalD4WmveNDXdDmgKG/iQ8ue');
+select crypt( 'kl1ng0n','$2a$06$cTz7JO.xNTyMviv3Ltrav.FYRT2mdAalD4WmveNDXdDmgKG/iQ8ue') = '$2a$06$cTz7JO.xNTyMviv3Ltrav.FYRT2mdAalD4WmveNDXdDmgKG/iQ8ue';
+select * from users;
+select crypt('kl1ng0n','$2a$06$5/sjGK6L3UAY4YXFkJhjIONGBgajYK1OkomrWEGCZCjeWZziGnKAC')
+;
+select * from users;
+select * from users;
+truncate table users;
+truncate table users;
+select * from users;
+truncate table users;
+select * from users;
+truncate table users;
+select * from users;
+truncate table users;
+select * from users;
+select * from users;
+truncate table users;
+select * from users;
+SELECT id 
+  FROM users
+ WHERE usuario = 'juan' 
+   AND passwd = crypt('kl1ng0n', passwd);
+\q
+SET search_path TO webinfo;
+\dt
+SET search_path TO webinfo;
+\dt
+select * from mailstatus;
+truncate taable mailstatus;
+truncate table mailstatus;
+\q
+SET search_path TO webinfo;
+select * from mailstatus;
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(idmail,status,leido)  values (idRow,'Normal' , estado); 
+        END IF; 
+    END; 
+    $function$
+;
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(idmail,status,leido)  values (idRow,'normal' , estado); 
+        END IF; 
+    END; 
+    $function$
+;
+select * from mailstatus;
+select * from mailstatus;
+s'q
+\q
+';
+\q
+SET search_path TO webinfo;
+\dt
+\d users
+select * from users;
+alter table users add column lastLogin type timestamp default=now();
+alter table users add column lastLogin type timestamp   default=now();
+alter table users add column lastLogin timestamp with time zone   default=now();
+alter table users add column lastLogin timestamp with time zone   default="now()";
+alter table users add column lastLogin timestamp with time zone   default(now());
+select * from users;
+alter table users add column hash type text;
+alter table users add column hash type text;
+alter table users add column hash type TEXT;
+alter table users add column hash  TEXT;
+select * from users;
+select uuid();
+select * from uuid();
+SELECT * FROM pg_extension;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+select version();
+select version();
+\q
+select version();
+select version();
+select version();
+\q
+select version();
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+/usr/share/postgresql-13/
+\q
+s'dt
+s'dt
+';
+\dt
+;
+';
+\dt
+\@
+Q
+\Q
+\q
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+SET search_path TO webinfo;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+SELECT * FROM pg_extension;
+select * from uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+select gen_random_uuid();
+\d users
+alter table users alter column hash default( gen_random_uuid());
+alter table users alter column hash set default( gen_random_uuid());
+select * from users;
+alter table users set hash=gen_randon_uuid();
+update users set hash = gen_randon_uuid();
+update users set hash = gen_randon_uuid() :: text;
+\df
+select  gen_randon_uuid() :: text;
+select  gen_randon_uuid():: text;
+select  gen_randon_uuid() :: text;
+select * from pg_types;
+select  gen_randon_uuid() :: text;
+select  gen_randon_uuid() t;
+select  gen_randon_uuid();
+select * from  gen_randon_uuid();
+select * from  gen_random_uuid();
+select * from  gen_random_uuid()::text;
+select * from  gen_random_uuid() ::text;
+update users set hash = gen_random_uuid() :: text;
+select * from users;
+select * from users;
+\q
+SET search_path TO webinfo;
+\q
+SET search_path TO webinfo;
+select * from users;
+SET search_path TO webinfo;
+select nombre, apellido, mail  from webinfo.users
+;
+select nombre, apellido, email  from webinfo.users;
+SET search_path TO webinfo;
+  select nombre, apellido, email from users
+;
+\dt
+\d users
+select * from users;
+insert into  from users( email, usuario, nombre, apellido , doc) values( 'g@gmail.com','pepe','Carlos','Perez','2323232332')  ;
+insert into  users( email, usuario, nombre, apellido , doc) values( 'g@gmail.com','pepe','Carlos','Perez','2323232332')  ;
+insert into  users( email, usuario, nombre, apellido , doc) values( 'rrrr@yahoo.com','Susana','Susana','Perez','2323232332')  ;
+select * from users;
+\q
+SET search_path TO webinfo;
+  select nombre, apellido, email from users
+SET search_path TO webinfo;
+SET search_path TO webinfo;
+\dt
+select mailstatus;
+select- from  mailstatus;
+select * from  mailstatus;
+delete from mailstatus where id =80;
+select * from  mailstatus;
+alter table idmail add column id-user int not null ;
+alter table idmail add column id_user int not null ;
+alter table mailsttus  add column id_user int not null ;
+alter table mailstatus  add column id_user int not null ;
+alter table mailstatus  add column id_user int not null default 0 ;
+select * from  mailstatus;
+select * from users;
+update mailstatus set id_user=28;
+select * from  mailstatus;
+alter table mailstatus  add column id_user_to  int not null default 29 ;
+select * from  mailstatus;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator INT , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user= id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user, idmail,status,leido, )  values (id_generator, idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator INT , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user= id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user, idmail,status,leido )  values (id_generator, idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator INT , idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado id_user=id_generator  WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(id_user, idmail,status,leido)  values ( id_generator, idRow,'normal' , estado); 
+        END IF; 
+    END; 
+    $function$
+;
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator INT , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user= id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user, idmail,status,leido )  values (id_generator, idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+\d mailstatus
+CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator INT , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET status = estado , id_user= id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user, idmail,status,leido )  values (id_generator, idRow,estado,false); 
+        END IF; 
+    END; 
+    $function$;
+;
+;
+\q
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator INT , idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado id_user=id_generator  WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(id_user, idmail,status,leido)  values ( id_generator, idRow,'normal' , estado); 
+        END IF; 
+    END; 
+    $function$
+;
+DROP FUNCTION IF EXISTS updateleido;
+CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator INT , idrow character varying, estado boolean)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator  WHERE idmail = idRow ;         
+        IF NOT FOUND THEN 
+            INSERT INTO mailstatus(id_user, idmail,status,leido)  values ( id_generator, idRow,'normal' , estado); 
+        END IF; 
+    END; 
+    $function$
+;
+\ df
+\df
+SET search_path TO webinfo;
+\df
+ CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator integer , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado,); 
+        END IF; 
+    END; 
+    $function$;
+ CREATE OR REPLACE FUNCTION webinfo.updateleido(id_generator integer , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+\df
+SET search_path TO webinfo;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+\df+
+\d users
+select * from mailstatus;
+select * from users;
+select * from users;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+select * from mailstatus;
+truncate table mailstatus;
+select * from mailstatus;
+\df updateleido
+\df+ updateleido
+\df+ updatestatus
+ drop function webinfo.udatestatus CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer,touser integer  , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator , to_user= touser  WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+ drop function webinfo.udatestatus ; CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer,touser integer  , idrow character varying, estado character varying)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator , to_user= touser  WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+\df
+select * to pg_functions
+;
+select * from  pg_functions
+;
+select * from  pg_func
+;
+select * from  pg_types
+;
+\dt
+SET search_path TO postgres;
+\df
+\dt
+SET search_path TO webinfo;
+ drop function webinfo.updatestatus ; CREATE OR REPLACE FUNCTION webinfo.updatestatus(id_generator integer, idrow character varying, estado character varying,touser integer)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$ 
+    DECLARE 
+    BEGIN 
+        UPDATE richelet.webinfo.mailstatus SET leido = estado , id_user=id_generator , to_user= touser  WHERE idmail = idRow ; 
+        IF NOT FOUND THEN 
+        INSERT INTO mailstatus(id_user,idmail,status,leido)  values (id_generator,idRow,null , estado); 
+        END IF; 
+    END; 
+    $function$;
+select * from  updatestatus(28,'6bda01d7ecd5$43cf7ea0$cb6e7be0$@infort-pat.com','reenviado',30);
+select * from  updatestatus(28,'6bda01d7ecd5$43cf7ea0$cb6e7be0$@infort-pat.com','reenviado',30);
+select * from pg_catalog;
+\
+clear
+\q
+SET search_path TO webinfo;
+ select * from  updatestatus(28,'26032971-e8c4-4e12-8326-1b44c84953cc@SIN30.saint-island.com.tw','reenviado',30);
+\df+ updatestatus
+\df updatestatus
+\f updatestatus
+\f+  updatestatus
+\df+  updatestatus
+SELECT routines.routine_name, parameters.data_type, parameters.ordinal_position
+FROM information_schema.routines
+    LEFT JOIN information_schema.parameters ON routines.specific_name=parameters.specific_name
+WHERE routines.specific_schema='my_specified_schema_name'
+ORDER BY routines.routine_name, parameters.ordinal_position;
+SELECT routines.routine_name, parameters.data_type, parameters.ordinal_position
+FROM information_schema.routines
+    LEFT JOIN information_schema.parameters ON routines.specific_name=parameters.specific_name
+WHERE routines.specific_schema='webinfo'
+ORDER BY routines.routine_name, parameters.ordinal_position;
+SELECT routines.id, routines.routine_name, parameters.data_type, parameters.ordinal_position
+FROM information_schema.routines
+    LEFT JOIN information_schema.parameters ON routines.specific_name=parameters.specific_name
+WHERE routines.specific_schema='webinfo'
+ORDER BY routines.routine_name, parameters.ordinal_position;
+SELECT routines.routine_name, parameters.data_type, parameters.ordinal_position
+FROM information_schema.routines
+    LEFT JOIN information_schema.parameters ON routines.specific_name=parameters.specific_name
+WHERE routines.specific_schema='webinfo'
+ORDER BY routines.routine_name, parameters.ordinal_position;
+select * FROM information_schema.routines
+;
+select * FROM information_schema.routines limit 1;
+\information_schema
+\d information_schema
+\d information_schema
+\s information_schema
