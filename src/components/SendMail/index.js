@@ -36,11 +36,11 @@ function SendMail({ email, credenciales, onClose }) {
 
   const [showAddressBookList, setShowAddressBookList] = useState(false);
   const [fromValues, setToFromValues] = useState([
-    { id: shortid.generate(), address: "" }
+    { id: shortid.generate(), address: "" },
   ]);
 
   const [ccValues, setccValues] = useState([
-    { id: shortid.generate(), address: "" }
+    { id: shortid.generate(), address: "" },
   ]);
 
   const [subjectValue, setSubjectValue] = useState(email.subject);
@@ -69,6 +69,8 @@ function SendMail({ email, credenciales, onClose }) {
       console.log(`compomentUnmount-->SendMail ${__MODULE_FILE__}`);
     };
   }, [addressBook]);
+
+
   console.log(`selectedRows ${JSON.stringify(selectedRows, null, 2)}`);
   if (selectedRows.length === 0) {
     return alert("no seleccionó correo a responder");
@@ -91,7 +93,8 @@ function SendMail({ email, credenciales, onClose }) {
         messageId: email.messageId,
         from: "info@richelet.com.ar",
         to: fromValues,
-        textContent: textContent
+        textContent: textContent,
+        original: email.html,
       };
 
       sendEmailToDb(
@@ -152,7 +155,7 @@ function SendMail({ email, credenciales, onClose }) {
         style={{
           maxWidth: "80rem",
           maxHeight: "42rem",
-          overflow: "scroll"
+          overflow: "scroll",
         }}
       >
         <input
@@ -170,11 +173,11 @@ function SendMail({ email, credenciales, onClose }) {
             overflowY: "hidden",
             hover: { background: "blue" },
             "&:hover": {
-              background: "#efefef"
+              background: "#efefef",
             },
             "&:lastChild": {
-              borderRight: "solid 1px #cccccc"
-            }
+              borderRight: "solid 1px #cccccc",
+            },
           }}
         >
           {listModel.map((item) => (
@@ -190,11 +193,11 @@ function SendMail({ email, credenciales, onClose }) {
                 overflowY: "hidden",
                 hover: { background: "blue" },
                 "&:hover": {
-                  background: "#efefef"
+                  background: "#efefef",
                 },
                 "&:lastChild": {
-                  borderRight: "solid 1px #cccccc"
-                }
+                  borderRight: "solid 1px #cccccc",
+                },
               }}
             >
               {item.adress}
@@ -215,7 +218,7 @@ function SendMail({ email, credenciales, onClose }) {
     ev.preventDefault();
     setToFromValues((antValues) => [
       ...antValues,
-      { id: shortid.generate(), address: "" }
+      { id: shortid.generate(), address: "" },
     ]);
   };
   console.log(fromValues);
@@ -377,7 +380,7 @@ function SendMail({ email, credenciales, onClose }) {
                 texto={email.html}
                 onChangeContent={onChangeContent}
                 style={{
-                  marginTop: "2rem"
+                  marginTop: "2rem",
                 }}
               />
             </div>

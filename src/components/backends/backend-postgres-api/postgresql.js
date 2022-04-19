@@ -5,7 +5,7 @@ const { sendMail } = require("../backend-email-api/_SendMail");
 const getClient = () =>
   new Client({
     user: "postgres",
-    host: URL_DATABASE,
+    host: "192.168.1.27",
     database: "richelet",
     password: "postgres",
     port: 5432

@@ -4,7 +4,6 @@ const nodemailer = require("nodemailer");
 const makeTo = (toList) => {
   console.log(`makeTo . --> ${JSON.stringify(toList, null, 2)}`);
   let result = "";
-  
 
   for (let index = 0; index < toList.length; index++) {
     let item = toList[index].address;
@@ -36,11 +35,11 @@ async function sendMail(email, creds) {
     secure: false, // true for 465, false for other ports
     auth: {
       user: "info@richelet.com.ar", // generated ethereal user
-      pass: "RR%%1info" // generated ethereal password
-    }
+      pass: "RR%%1info", // generated ethereal password
+    },
   });
-
-  // console.log(JSON.stringify(email.to, null, 2));
+  console.log("[email->original]");
+  console.log(JSON.stringify(email.original, null, 2));
 
   // send mail with defined transport object
   try {
@@ -48,8 +47,8 @@ async function sendMail(email, creds) {
       from: '"Richelet & Richelet " <info@richelet.com.ar>', // sender address
       to: makeTo(email.to), // list of receivers
       subject: email.subject,
-      text: "Prueba correo desde app?", // plain text body
-      html: "<b>Hola Fer ya mando correos desde el codigo!!!</b>" // html body
+     // text: email.original, // plain text body
+      html: email.original, // html body
     });
 
     console.log("Message sent: %s", JSON.stringify(info));
@@ -60,12 +59,12 @@ async function sendMail(email, creds) {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
     return info;
   } catch (error) {
-    console.log(`error en envío ${error.message} `);
+    console.log(`error en envío1!! ${error.message} `);
     return error;
   }
 }
 
 // main().catch(console.error);
 module.exports = {
-  sendMail
+  sendMail,
 };
