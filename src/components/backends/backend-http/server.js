@@ -321,8 +321,8 @@ app.post("/retrieveLast", (req, resp) => {
 
 const wrapEmail = (emailSent) => {
   const date = new Date(emailSent.fecha_sent);
-  console.log(`wrapp DB ${emailSent.fecha_sent}`);
-  console.log(`wrapp ${date}`);
+//  console.log(`wrapp DB ${emailSent.fecha_sent}`);
+//  console.log(`wrapp ${date}`);
 
   return {
     cc: [],
@@ -392,6 +392,7 @@ app.post("/getMailFromDb", (req, resp) => {
 });
 
 app.get("/getAddressBook", async (req, resp) => {
+  console.log("getAddressBook");
   console.log(req.query);
   const { page } = req.query;
   await getAdressBook(page, (error, response) => {

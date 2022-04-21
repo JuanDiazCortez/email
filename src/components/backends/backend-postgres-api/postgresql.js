@@ -1,13 +1,18 @@
 const { Client } = require("pg");
 const { URL_DATABASE, printMail } = require("../../constants");
 const { sendMail } = require("../backend-email-api/_SendMail");
+const path = require("path");
+const data = require("dotenv").config({
+  path: path.resolve(__dirname, "../.env")
+});
+// console.log(`postgres --> ${path.resolve(__dirname, "../.env")}`);
 
 const getClient = () =>
   new Client({
-    user: "postgres",
-    host: "192.168.1.27",
-    database: "richelet",
-    password: "postgres",
+    user: process.env.REACT_APP_DB_USER,
+    host: process.env.REACT_APP_DB_HOST,
+    database: process.env.REACT_APP_DB_DATABASE,
+    password: process.env.REACT_APP_DB_PASSWORD,
     port: 5432
   });
 

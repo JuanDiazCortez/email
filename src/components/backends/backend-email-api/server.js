@@ -3,10 +3,16 @@ const Client = require("node-poplib-yapc").Client;
 const MailParser = require("mailparser-mit").MailParser;
 const { saveMailToDb } = require("../backend-postgres-api/postgresql");
 
+const path = require("path");
+const data = require("dotenv").config({
+  path: path.resolve(__dirname, "../.env")
+});
+console.log(path.resolve(__dirname, "../.env"));
+console.log(data);
 
 var _numero = 0;
 const mailparser = new MailParser();
-mailparser.on("end", function (mail_object) {
+mailparser.on("end", function(mail_object) {
   console.log("end parser");
   console.log("From:", mail_object.from); //[{address:'sender@example.com',name:'Sender Name'}]
   console.log("Subject:", mail_object.subject); // Hello world!
@@ -14,35 +20,40 @@ mailparser.on("end", function (mail_object) {
 });
 
 const client = new Client({
-  hostname: "201.212.2.136",
+  hostname: process.env.REACT_APP_EMAIL_ADDRESS,
   port: 995,
   tls: true,
   mailparser: true,
   parserOptions: { mailParser: mailparser, showAttachmentLinks: false },
   username: "info@richelet.com.ar",
-  password: "RR%%1info"
+  password: process.env.REACT_APP_EMAIL_PASSWORD
 });
+console.log(`EMAIL:ADDRESS -> ${process.env.REACT_APP_EMAIL_ADDRESS}
+  EMAIL_ACCOUNT ->${process.env.REACT_APP_EMAIL_ACCOUNT}
+  EMAIL_PASSWORD ->${process.env.REACT_APP_EMAIL_PASSWORD}
+  `);
+console.log(`CLIENT->${JSON.stringify(client, null, 2)} `);
 
 const getClientNotParsed = () => {
   return new Client({
-    hostname: "201.212.2.136",
+    hostname: process.env.REACT_EMAIL_ADDRESS,
     port: 995,
     tls: true,
     debug: false,
     mailparser: false,
     parserOptions: { showAttachmentLinks: false },
-    username: "info@richelet.com.ar",
-    password: "RR%%1info"
+    username: process.env.REACT_EMAIL_ACCOUNT,
+    password: process.env.REACT_EMAIL_PASSWORD
   });
 };
 
 const parse = async (parser, email) => {
   return new Promise((resolve, reject) => {
-    parser.on("end", function (element) {
+    parser.on("end", function(element) {
       resolve(element);
     });
 
-    parser.on("error", function (err) {
+    parser.on("error", function(err) {
       reject(err);
     });
 
@@ -54,12 +65,12 @@ const parse = async (parser, email) => {
 const retrievePromess = async (popServer, callback) => {
   //
   return new Promise((resolve, reject) => {
-    popServer.on("data", function (data) {
+    popServer.on("data", function(data) {
       console.log("resolve data ");
       resolve(data);
     });
 
-    popServer.on("error", function (error) {
+    popServer.on("error", function(error) {
       console.log("resolve error");
       reject(error);
     });
@@ -71,7 +82,7 @@ const retrievePromess = async (popServer, callback) => {
 };
 
 const retrieveNewFrom = (messageID, receiveDate, callBack) => {
-  retrieveLast(50, function (error, result) {
+  retrieveLast(50, function(error, result) {
     if (error) {
       console.error(error);
       callBack(error, null);
@@ -108,7 +119,7 @@ const saveEmailToDb = async (fConn, query, email) => {
   console.log("__333");
   return retVal;
 };
-const serie = (stop) => {
+const serie = stop => {
   resp = [];
   for (let index = 0; index < stop; index++) {
     resp.push(index);
@@ -127,7 +138,7 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
   //  console.log(`client-->${JSON.stringify(client, null, 2)}`);
 
   try {
-    pop3Server.connect(function () {
+    pop3Server.connect(function() {
       count((error, cantidad) => {
         if (error) console.log(error);
         console.log(cantidad);
@@ -140,48 +151,44 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
         let salir = false;
         for (let index = cantidad; index > 0; index--) {
           //   console.log(`0000000000000000000002222222 ${index}`);
-          retrieve(
-            index,
-
-            (err, message) => {
-              console.log("11112");
-              if (err) {
-                console.log(err);
-                return callBack(err, null);
-              }
-              console.log(message);
-              try {
-                console.log(_numero++);
-                let result = saveEmailToDb(clientPG, query, message);
-                if (result.error) {
-                  console.log(result.error);
-                }
-                if (!result.update) {
-                }
-                console.log(`result -->${JSON.stringify(result)}`);
-              } catch (e) {
-                console.log("999999999999999999");
-                console.log(e);
-
-                // return callBack(e, null);
-              }
-              return callBack(null, {
-                response: "ok",
-                largo: log,
-                updated: _numero
-              });
-
-              console.log("333333");
-              pop3Server.quit();
-              // connection.end();
-              console.log("**********");
-              return callBack(null, {
-                response: "ok",
-                largo: log,
-                updated: _numero
-              });
+          retrieve(index, (err, message) => {
+            console.log("11112");
+            if (err) {
+              console.log(err);
+              return callBack(err, null);
             }
-          ); // RETRIEVE
+            console.log(message);
+            try {
+              console.log(_numero++);
+              let result = saveEmailToDb(clientPG, query, message);
+              if (result.error) {
+                console.log(result.error);
+              }
+              if (!result.update) {
+              }
+              console.log(`result -->${JSON.stringify(result)}`);
+            } catch (e) {
+              console.log("999999999999999999");
+              console.log(e);
+
+              // return callBack(e, null);
+            }
+            return callBack(null, {
+              response: "ok",
+              largo: log,
+              updated: _numero
+            });
+
+            console.log("333333");
+            pop3Server.quit();
+            // connection.end();
+            console.log("**********");
+            return callBack(null, {
+              response: "ok",
+              largo: log,
+              updated: _numero
+            });
+          }); // RETRIEVE
           break;
         } // for
         console.log("salioo 0000000000000000000000");
@@ -207,9 +214,9 @@ const retrieveAllFromMail = async (objConn, callBack) => {
   let log;
   let pop3Server = client;
 
-  pop3Server.connect(function () {
+  pop3Server.connect(function() {
     try {
-      pop3Server.retrieveAll(function (err, messages) {
+      pop3Server.retrieveAll(function(err, messages) {
         if (!messages)
           return callBack({ message: "error not messages " }, null);
         //
@@ -217,7 +224,7 @@ const retrieveAllFromMail = async (objConn, callBack) => {
         log = messages.length;
         console.log("al for each " + log);
         _numero = 0;
-        messages.reverse().forEach(async function (message) {
+        messages.reverse().forEach(async function(message) {
           try {
             if (!connection._connected && !connection._connecting)
               await connection.connect();
@@ -247,7 +254,7 @@ const retrieveAllFromMail = async (objConn, callBack) => {
 /* pepe */
 
 const count = (callBack, lClose = false) => {
-  client.connect(function () {
+  client.connect(function() {
     client.count(callBack);
     if (lClose) {
       client.quit();
@@ -261,7 +268,7 @@ const retrieve = (nro, callback) => {
   try {
     console.log("__!");
     if (client.connected) client.quit();
-    client.connect(function () {
+    client.connect(function() {
       console.log(`__!! ${nro}`);
       try {
         client.retrieve(nro, (err, msg) => {
@@ -292,10 +299,10 @@ const retrieveRef = async (ref, callBackHTTP) => {
   result = [];
   let pop3 = getClientNotParsed();
   //
-  const _retrieveAll = (pop) => {
-    pop.retrieveAll((messages) => {
+  const _retrieveAll = pop => {
+    pop.retrieveAll(messages => {
       let parser = new MailParser({ showAttachmentLinks: true });
-      messages.forEach(async (msg) => {
+      messages.forEach(async msg => {
         console.log(" parsing ");
         let mail = await parse(parser, msg);
         result.push(mail);
@@ -313,14 +320,14 @@ const retrieveRef2 = async (ref, callBack) => {
   console.log("RetrieveRef[pop-api]");
   let nlient = getClientNotParsed();
   console.log("RetrieveRef[0]");
-  nlient.connect((err) => {
+  nlient.connect(err => {
     if (err) {
       console.log("error");
       console.log(err);
       callBack(err, null);
     }
     console.log("2");
-    nlient.count(function (err, contador) {
+    nlient.count(function(err, contador) {
       if (err) {
         console.log("error");
         console.log(err);

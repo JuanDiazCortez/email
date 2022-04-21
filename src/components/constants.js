@@ -2,7 +2,7 @@
  */
 
 var PORT_BACKEND = "5100";
-const URL_DATABASE = "192.168.1.17";
+const URL_DATABASE = "192.168.0.120";
 var URL_PROTOCOL = "http";
 const URL_BACKEND = "192.168.0.120";
 
@@ -14,10 +14,8 @@ const DEFAULT_POST_HEADER = {
   },
   body: JSON.stringify({ cantidad: 0 })
 };
-/* pepe */
-function pepe() {
-  alert("pepe");
-}
+
+
 const Status = {
   normal: {
     title: "Normal",
