@@ -2,7 +2,10 @@ const __MODULE_FILE__ = "BACKEND-EMAIL-API";
 const Client = require("node-poplib-yapc").Client;
 const MailParser = require("mailparser-mit").MailParser;
 const { saveMailToDb } = require("../backend-postgres-api/postgresql");
+const dotenv = require("dotenv");
+const config = dotenv.config({ path: "../.env" });
 
+console.log(config);
 
 var _numero = 0;
 const mailparser = new MailParser();
@@ -14,13 +17,13 @@ mailparser.on("end", function (mail_object) {
 });
 
 const client = new Client({
-  hostname: "201.212.2.136",
-  port: 995,
+  hostname: process.env.EMAIL_URL,
+  port: process.env.EMAIL_PORT,
   tls: true,
   mailparser: true,
   parserOptions: { mailParser: mailparser, showAttachmentLinks: false },
-  username: "info@richelet.com.ar",
-  password: "RR%%1info"
+  username: process.env.EMAIL_USER,
+  password: process.env.EMAIL_PASSWD
 });
 
 const getClientNotParsed = () => {
