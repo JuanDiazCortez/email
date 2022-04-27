@@ -1,11 +1,12 @@
 const { Client } = require("pg");
 const { URL_DATABASE, printMail } = require("../../constants");
 const { sendMail } = require("../backend-email-api/_SendMail");
-const path = require("path");
-const data = require("dotenv").config({
-  path: path.resolve(__dirname, "../.env")
-});
-// console.log(`postgres --> ${path.resolve(__dirname, "../.env")}`);
+
+const dotenv = require("dotenv");
+const config = dotenv.config({ path: "../.env" });
+
+console.log(config);
+
 
 const getClient = () =>
   new Client({
@@ -14,6 +15,7 @@ const getClient = () =>
     database: process.env.REACT_APP_DB_DATABASE,
     password: process.env.REACT_APP_DB_PASSWORD,
     port: 5432
+
   });
 
 const client = getClient();
@@ -54,7 +56,7 @@ const assingStatus = (users, rows, emails) => {
         state: dRow[0].status,
         leido: dRow[0].leido,
         reenviado: user,
-        reenviado_fecha: dRow[0].lastdate
+        reenviado_fecha: dRow[0].lastdate,
       };
     } else {
       /* aca van defaults cuando no encuentra el status en la db*/
@@ -63,7 +65,7 @@ const assingStatus = (users, rows, emails) => {
         state: "normal",
         leido: false,
         reenviado: 0, // not user default value;
-        reenviado_fecha: new Date()
+        reenviado_fecha: new Date(),
       };
     }
 
@@ -103,7 +105,7 @@ const retrievePrefs = async (id, callBack) => {
 const isAdmin = async (id) => {
   const query = {
     text: `select admin from webinfo.users where id=$1`,
-    values: [id]
+    values: [id],
   };
 
   let client = getClient();
@@ -149,7 +151,7 @@ const retrieveLastFromUser = async (id, callBack) => {
   console.log(`retrieveLastFromUser id=${id}`);
   const Qry = {
     text: `select * from webinfo.mailstatus where id_user_to = $1`,
-    values: [id]
+    values: [id],
   };
   console.log(Qry);
   let client = getClient();
@@ -255,7 +257,7 @@ const PG_getSentEmailForUser = async (credenciales, callback) => {
        where user_sent=$1`,
 
     values: [credenciales.id],
-    rowAsArray: true
+    rowAsArray: true,
   };
   console.log(`Qry ${query.text}`);
   let client = getClient();
@@ -286,8 +288,8 @@ const PG_sendEmailToDb = async (credenciales, email, callback) => {
       "",
       "",
       email,
-      credenciales.id
-    ]
+      credenciales.id,
+    ],
   };
 
   let client = getClient();
@@ -320,7 +322,7 @@ const addUser = async (datos, callback) => {
   const query = {
     text: `insert into webinfo.users(email, usuario,nombre,apellido, doc,passwd ) 
      values($1,$2,$3,$4,$5,webinfo.crypt($6,webinfo.gen_salt('bf')))`,
-    values: [email, user, nombre, apellido, documento, passwd]
+    values: [email, user, nombre, apellido, documento, passwd],
   };
 
   let client = getClient();
@@ -359,7 +361,7 @@ const logUser = async (user, passwd, callback) => {
   console.log("loguser");
   const query = {
     text: `select id, hash  from  webinfo.users where usuario=$1 and passwd= webinfo.crypt($2,passwd) `,
-    values: [user, passwd]
+    values: [user, passwd],
   };
 
   console.log(query);
@@ -392,7 +394,7 @@ async function updateLogin(id) {
   const query = {
     text: `update webinfo.users set lastlogin=now() , 
      hash= gen_random_uuid() where id=$1 `,
-    values: [id]
+    values: [id],
   };
 
   let client = getClient();
@@ -445,7 +447,7 @@ const retrieveMailFromDb = async (callBack) => {
   // let Qry =
   const Qry = {
     text: "select mail from webinfo.emails;",
-    rowAsArray: true
+    rowAsArray: true,
   };
   try {
     await client.connect();
@@ -504,7 +506,7 @@ const getAdressBook = async (page, callBack) => {
       let resp = {
         id: contact.id,
         company: format(contact.company),
-        adress: contact.address
+        adress: contact.address,
       };
       return resp;
     });
@@ -519,14 +521,14 @@ const updateAllMailToDb = async (callBack) => {
   const Qry = {
     name: "insert_mails",
     text: "select * from webinfo.updateemails($1)",
-    rowAsArray: true
+    rowAsArray: true,
   };
   let r;
 
   //  console.log(client._connected);
   let object = {
     clientPG: getClient,
-    query: Qry
+    query: Qry,
   };
   var retrieveAllFromMail =
     require("../backend-email-api/server").retrieveAllFromMail;
@@ -536,7 +538,7 @@ const updateAllMailToDb = async (callBack) => {
 const saveMailToDb = async (callBack) => {
   const Qry = {
     text: "insert into webinfo.emails_update( mail) values($1)",
-    rowAsArray: true
+    rowAsArray: true,
   };
   let r;
   let client = getClient();
@@ -611,5 +613,5 @@ module.exports = {
   getAdressBook,
   saveMailToDb,
   addUser,
-  logUser
+  logUser,
 };
