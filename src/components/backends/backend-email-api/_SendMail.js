@@ -1,5 +1,7 @@
 "use strict";
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+const config = dotenv.config({ path: "../.env" });
 
 const makeTo = (toList) => {
   console.log(`makeTo . --> ${JSON.stringify(toList, null, 2)}`);
@@ -23,19 +25,19 @@ const makeTo = (toList) => {
 };
 // async..await is not allowed in global scope, must use a wrapper
 async function sendMail(email, creds) {
-  console.log(`sendMail->_SendMail.js ${JSON.stringify(email, null, 2)}`);
+ // console.log(`sendMail->_SendMail.js ${JSON.stringify(email, null, 2)}`);
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
   // let testAccount = await nodemailer.createTestAccount();
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "mr.fibercorp.com.ar",
+    host: process.env.EMAIL_HOST,
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "info@richelet.com.ar", // generated ethereal user
-      pass: "RR%%1info", // generated ethereal password
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWD,
     },
   });
   console.log("[email->original]");
@@ -47,7 +49,7 @@ async function sendMail(email, creds) {
       from: '"Richelet & Richelet " <info@richelet.com.ar>', // sender address
       to: makeTo(email.to), // list of receivers
       subject: email.subject,
-     // text: email.original, // plain text body
+      // text: email.original, // plain text body
       html: email.original, // html body
     });
 
@@ -59,7 +61,7 @@ async function sendMail(email, creds) {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
     return info;
   } catch (error) {
-    console.log(`error en envío1!! ${error.message} `);
+    console.log(`error en envío !! ${error.message} `);
     return error;
   }
 }

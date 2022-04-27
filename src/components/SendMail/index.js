@@ -70,7 +70,6 @@ function SendMail({ email, credenciales, onClose }) {
     };
   }, [addressBook]);
 
-
   console.log(`selectedRows ${JSON.stringify(selectedRows, null, 2)}`);
   if (selectedRows.length === 0) {
     return alert("no seleccionó correo a responder");
@@ -264,76 +263,90 @@ function SendMail({ email, credenciales, onClose }) {
           <label className="form-label">
             from: <span>info@richelet.com.ar</span>
           </label>
-        </div>
-        <p>to</p>
-        <button
-          onClick={(ev) => {
-            setShowFrom(!showFrom);
-          }}
-        >
-          {showFrom ? "-" : "+"}
-        </button>
-        {showFrom && (
-          <div id="frame-from">
-            <div className="d-flex flex-row">
-              <div className="input-group mb-3">
-                {fromValues.map((item) => (
-                  <div key={item.id}>
-                    <label>To:</label>
-                    <input
-                      key={item.id}
-                      value={item.address}
-                      onChange={(ev) => {
-                        handleInputIndexChanged(ev, item.id);
-                      }}
-                    />
-                    <button
-                      onClick={(ev) => {
-                        setShowHelp(!showHelp);
-                      }}
-                    >
-                      ?
-                    </button>
-                    <button
-                      onClick={(ev) => {
-                        handleRemoveTo(item.id);
-                      }}
-                    >
-                      -
-                    </button>
+
+          <div className="d-flex flex-row ">
+            <button
+              onClick={(ev) => {
+                setShowFrom(!showFrom);
+              }}
+              /*       style={{
+                maxWidth: "22px",
+                maxHeight: "22px",
+              }} */
+            >
+              {showFrom ? "To: -" : "To: +"}
+            </button>
+
+            {showFrom && (
+              <div id="frame-from">
+                <div className="d-flex flex-row">
+                  <div className="input-group mb-3">
+                    {fromValues.map((item) => (
+                      <div key={item.id}>
+                        {/*    <label className="ml-3" style={{ marginLeft: "2rem" }}>
+                          To:
+                        </label> */}
+                        <input
+                          key={item.id}
+                          className="ml-3"
+                          value={item.address}
+                          onChange={(ev) => {
+                            handleInputIndexChanged(ev, item.id);
+                          }}
+                        />
+                        <button
+                          onClick={(ev) => {
+                            setShowHelp(!showHelp);
+                          }}
+                        >
+                          ?
+                        </button>
+                        <button
+                          onClick={(ev) => {
+                            handleRemoveTo(item.id);
+                          }}
+                        >
+                          -
+                        </button>
+                        <button onClick={handleAddAddress}>+add</button>
+                      </div>
+                    ))}
+                    {showHelp && (
+                      <RendereBookList
+                        key={shortid.generate()}
+                        listBooks={addressBook}
+                      />
+                    )}
                   </div>
-                ))}
-                <button onClick={handleAddAddress}>+add</button>
-                {showHelp && (
-                  <RendereBookList
-                    key={shortid.generate()}
-                    listBooks={addressBook}
-                  />
-                )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
-        )}
-        {/***********************************************/}
-        <button>{showFrom ? "-" : "+"}</button>
+        </div>
+
         {showFrom && (
-          <div id="frame-cc">
+          <div id="frame-cc" className="d-flex flex-row">
+            <button id="mas-menos-cc">{showFrom ? "Cc: -" : "Cc +"}</button>
             <div className="d-flex flex-row">
               <div className="input-group mb-3">
                 {ccValues.map((item) => (
                   <div key={item.id}>
-                    <label>cc:</label>
+                    {/* <label style={{ marginLeft: "2rem" }}>cc:</label> */}
                     <input
                       key={item.id}
+                      className="ml-3"
                       value={item.address}
                       onChange={(ev) => {
                         handleCcChanged(ev, item.id);
                       }}
+                      style={{ marginLeft: "4px" }}
                     />
                     <button
+                      id="cc"
                       onClick={(ev) => {
                         setShowHelp(!showHelp);
                       }}
+                      style={{ marginLeft: "4px" }}
                     >
                       ?
                     </button>
@@ -341,23 +354,29 @@ function SendMail({ email, credenciales, onClose }) {
                       onClick={(ev) => {
                         handleRemoveCc(item.id);
                       }}
+                      style={{ marginLeft: "4px" }}
                     >
                       -
                     </button>
+                    <button
+                      onClick={handleAddAddress}
+                      style={{ marginLeft: "4px" }}
+                    >
+                      +add
+                    </button>
+                    {showHelp && (
+                      <RendereBookList
+                        key={shortid.generate()}
+                        listBooks={addressBook}
+                      />
+                    )}
                   </div>
                 ))}
-                <button onClick={handleAddAddress}>+add</button>
-                {showHelp && (
-                  <RendereBookList
-                    key={shortid.generate()}
-                    listBooks={addressBook}
-                  />
-                )}
               </div>
             </div>
           </div>
         )}
-        {/* *********************************************/}
+
         <div className="input-group-sm mb-3">
           <label className="form-label">
             Subject:
