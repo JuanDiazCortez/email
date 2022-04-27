@@ -321,8 +321,8 @@ app.post("/retrieveLast", (req, resp) => {
 
 const wrapEmail = (emailSent) => {
   const date = new Date(emailSent.fecha_sent);
-  console.log(`wrapp DB ${emailSent.fecha_sent}`);
-  console.log(`wrapp ${date}`);
+  //console.log(`wrapp DB ${emailSent.fecha_sent}`);
+ // console.log(`wrapp ${date}`);
 
   return {
     cc: [],
