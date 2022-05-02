@@ -2,23 +2,24 @@ const { Client } = require("pg");
 const { URL_DATABASE, printMail } = require("../../constants");
 const { sendMail } = require("../backend-email-api/_SendMail");
 
-const dotenv = require("dotenv");
-const config = dotenv.config({ path: "../.env" });
+const path = require("path");
+const { log } = require("console");
+const data = require("dotenv").config({
+  path: path.resolve(__dirname, "../.env"),
+});
 
-console.log(config);
-
-
+console.log(data);
 const getClient = () =>
   new Client({
-    user: process.env.REACT_APP_DB_USER,
-    host: process.env.REACT_APP_DB_HOST,
-    database: process.env.REACT_APP_DB_DATABASE,
-    password: process.env.REACT_APP_DB_PASSWORD,
-    port: 5432
-
+    user: process.env.DATABASE_USER,
+    host: process.env.DATABASE_URL,
+    database: process.env.DATABASE_DB,
+    password: process.env.DATABASE_PASSWD,
+    port: 5432,
   });
 
 const client = getClient();
+client.connect();
 
 const getUsers = async () => {
   let client = getClient();

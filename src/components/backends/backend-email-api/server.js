@@ -9,15 +9,13 @@ const config = dotenv.config({ path: "../.env" });
 console.log(config);
 const path = require("path");
 const data = require("dotenv").config({
-  path: path.resolve(__dirname, "../.env")
+  path: path.resolve(__dirname, "../.env"),
 });
-console.log(path.resolve(__dirname, "../.env"));
-console.log(data);
 
 
 var _numero = 0;
 const mailparser = new MailParser();
-mailparser.on("end", function(mail_object) {
+mailparser.on("end", function (mail_object) {
   console.log("end parser");
   console.log("From:", mail_object.from); //[{address:'sender@example.com',name:'Sender Name'}]
   console.log("Subject:", mail_object.subject); // Hello world!
@@ -25,43 +23,40 @@ mailparser.on("end", function(mail_object) {
 });
 
 const client = new Client({
-
   hostname: process.env.EMAIL_URL,
   port: process.env.EMAIL_PORT,
   tls: true,
   mailparser: true,
   parserOptions: { mailParser: mailparser, showAttachmentLinks: false },
   username: process.env.EMAIL_USER,
-  password: process.env.EMAIL_PASSWD
-
+  password: process.env.EMAIL_PASSWD,
 });
 
-console.log(`EMAIL:ADDRESS -> ${process.env.REACT_APP_EMAIL_ADDRESS}
-  EMAIL_ACCOUNT ->${process.env.REACT_APP_EMAIL_ACCOUNT}
-  EMAIL_PASSWORD ->${process.env.REACT_APP_EMAIL_PASSWORD}
-  `);
+
+
+
 console.log(`CLIENT->${JSON.stringify(client, null, 2)} `);
 
 const getClientNotParsed = () => {
   return new Client({
-    hostname: process.env.REACT_EMAIL_ADDRESS,
+    hostname: process.env.EMAIL_URL,
     port: 995,
     tls: true,
     debug: false,
     mailparser: false,
     parserOptions: { showAttachmentLinks: false },
-    username: process.env.REACT_EMAIL_ACCOUNT,
-    password: process.env.REACT_EMAIL_PASSWORD
+    username: process.env.EMAIL_USER,
+    password: process.env.EMAIL_PASSWD,
   });
 };
 
 const parse = async (parser, email) => {
   return new Promise((resolve, reject) => {
-    parser.on("end", function(element) {
+    parser.on("end", function (element) {
       resolve(element);
     });
 
-    parser.on("error", function(err) {
+    parser.on("error", function (err) {
       reject(err);
     });
 
@@ -73,12 +68,12 @@ const parse = async (parser, email) => {
 const retrievePromess = async (popServer, callback) => {
   //
   return new Promise((resolve, reject) => {
-    popServer.on("data", function(data) {
+    popServer.on("data", function (data) {
       console.log("resolve data ");
       resolve(data);
     });
 
-    popServer.on("error", function(error) {
+    popServer.on("error", function (error) {
       console.log("resolve error");
       reject(error);
     });
@@ -90,7 +85,7 @@ const retrievePromess = async (popServer, callback) => {
 };
 
 const retrieveNewFrom = (messageID, receiveDate, callBack) => {
-  retrieveLast(50, function(error, result) {
+  retrieveLast(50, function (error, result) {
     if (error) {
       console.error(error);
       callBack(error, null);
@@ -127,7 +122,7 @@ const saveEmailToDb = async (fConn, query, email) => {
   console.log("__333");
   return retVal;
 };
-const serie = stop => {
+const serie = (stop) => {
   resp = [];
   for (let index = 0; index < stop; index++) {
     resp.push(index);
@@ -146,7 +141,7 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
   //  console.log(`client-->${JSON.stringify(client, null, 2)}`);
 
   try {
-    pop3Server.connect(function() {
+    pop3Server.connect(function () {
       count((error, cantidad) => {
         if (error) console.log(error);
         console.log(cantidad);
@@ -184,7 +179,7 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
             return callBack(null, {
               response: "ok",
               largo: log,
-              updated: _numero
+              updated: _numero,
             });
 
             console.log("333333");
@@ -194,7 +189,7 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
             return callBack(null, {
               response: "ok",
               largo: log,
-              updated: _numero
+              updated: _numero,
             });
           }); // RETRIEVE
           break;
@@ -203,7 +198,7 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
         return callBack(null, {
           response: "ok",
           largo: log,
-          updated: _numero
+          updated: _numero,
         });
       }, false);
     }); //count
@@ -212,7 +207,7 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
   }
 };
 
-const retrieveAllFromMail = async (objConn, callBack) => {
+const retrieveAllFromMail = (objConn, callBack) => {
   console.log(`retrieveAllFromMail-.->${__MODULE_FILE__} `);
   //  console.log(objConn);
   const { clientPG, query } = objConn;
@@ -222,47 +217,57 @@ const retrieveAllFromMail = async (objConn, callBack) => {
   let log;
   let pop3Server = client;
 
-  pop3Server.connect(function() {
+  pop3Server.connect(function () {
     try {
-      pop3Server.retrieveAll(function(err, messages) {
+      pop3Server.retrieveAll(function (err, messages) {
         if (!messages)
           return callBack({ message: "error not messages " }, null);
         //
         console.log(messages.length);
         log = messages.length;
-        console.log("al for each " + log);
+        console.log(`al for each  ${log}`);
         _numero = 0;
-        messages.reverse().forEach(async function(message) {
-          try {
-            if (!connection._connected && !connection._connecting)
-              await connection.connect();
-            let result = await connection.query(query, [message]);
-            connection.end();
-            console.log(result.rows[0].updateemails);
-            if (result.rows[0].updateemails) _numero++;
-          } catch (error) {
-            if (error.message !== "Connection terminated") {
-              pop3Server.quit();
-              console.log(`error 157 ${error.stack}`);
-              //    connection.end();
-              callBack(error, null);
-            }
-          }
-        });
+        messages.reverse().forEach(function (message) {
+          if (!connection._connected && !connection._connecting)
+            connection.connect();
+
+          connection
+            .query(query, [message])
+            .then((result) => {
+              connection.end();
+              console.log(`res= ${result.rows[0].updateemails}`);
+              if (_numero === 0)
+                console.log(` update[0]==> ${result.rows[0].updateemails}`);
+              if (result.rows[0].updateemails) {
+                _numero++;
+              }
+            })
+            .catch((error) => {
+              if (error.message !== "Connection terminated") {
+                pop3Server.quit();
+                console.log(`error 157 ${error.stack}`);
+                //    connection.end();
+                callBack(error, null);
+              }
+            });
+        }); // for each
+
         pop3Server.quit();
         callBack(null, { response: "ok", largo: log, updated: _numero });
       });
     } catch (err) {
+      // try connect
       console.log(`error ppal 176 ${err.stack}`);
       if (connection._connected) connection.end();
       pop3Server.quit();
+      callBack(null, { response: "error", largo: log, updated: _numero });
     }
   });
 };
 /* pepe */
 
 const count = (callBack, lClose = false) => {
-  client.connect(function() {
+  client.connect(function () {
     client.count(callBack);
     if (lClose) {
       client.quit();
@@ -276,7 +281,7 @@ const retrieve = (nro, callback) => {
   try {
     console.log("__!");
     if (client.connected) client.quit();
-    client.connect(function() {
+    client.connect(function () {
       console.log(`__!! ${nro}`);
       try {
         client.retrieve(nro, (err, msg) => {
@@ -307,10 +312,10 @@ const retrieveRef = async (ref, callBackHTTP) => {
   result = [];
   let pop3 = getClientNotParsed();
   //
-  const _retrieveAll = pop => {
-    pop.retrieveAll(messages => {
+  const _retrieveAll = (pop) => {
+    pop.retrieveAll((messages) => {
       let parser = new MailParser({ showAttachmentLinks: true });
-      messages.forEach(async msg => {
+      messages.forEach(async (msg) => {
         console.log(" parsing ");
         let mail = await parse(parser, msg);
         result.push(mail);
@@ -328,14 +333,14 @@ const retrieveRef2 = async (ref, callBack) => {
   console.log("RetrieveRef[pop-api]");
   let nlient = getClientNotParsed();
   console.log("RetrieveRef[0]");
-  nlient.connect(err => {
+  nlient.connect((err) => {
     if (err) {
       console.log("error");
       console.log(err);
       callBack(err, null);
     }
     console.log("2");
-    nlient.count(function(err, contador) {
+    nlient.count(function (err, contador) {
       if (err) {
         console.log("error");
         console.log(err);
@@ -395,5 +400,5 @@ module.exports = {
   retrieveNewFrom,
   retrieveLast,
   retrieveRef,
-  count
+  count,
 };

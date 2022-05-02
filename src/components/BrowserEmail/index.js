@@ -6,7 +6,7 @@ import BrowserRow from "../BrowserRow";
 import {
   updateReenviado,
   onListFilter,
-  processChange
+  processChange,
 } from "./BrowserEmailHelpers";
 // import FilterForStatus from "../FilterForStatus";
 import ModalEditor from "../ModalEditor";
@@ -19,14 +19,14 @@ import {
   faArrowDown,
   faPaperclip,
   faSyncAlt,
-  faReply
+  faReply,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
   URL_DATABASE,
   PORT_BACKEND,
   Status,
-  onRetrieveUrl
+  onRetrieveUrl,
   // pritMail
 } from "../constants";
 
@@ -54,7 +54,7 @@ function BrowserEmail({
   setIdUserReenviar,
   userReenviado,
   changeRow,
-  loading
+  loading,
 }) {
   const [showFilter, setshowFilter] = useState(false);
   const [filterTodos, setfilterTodos] = useState(true);
@@ -138,7 +138,7 @@ function BrowserEmail({
       id: mail.messageId,
       newStatus: ev.target.value,
       leido: !mail.leido,
-      mail: mail.messageId
+      mail: mail.messageId,
     };
     onRetrieveUrl(
       `http://${URL_DATABASE}:${PORT_BACKEND}/changeStatus`,
@@ -146,9 +146,9 @@ function BrowserEmail({
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newMail)
+        body: JSON.stringify(newMail),
       },
       function (content) {
         processChange(content, ev, mail, data, setData, newMail, setChangeFlag);
@@ -360,7 +360,7 @@ function BrowserEmail({
   };
 
   const toolbarStyle = {
-    marginLeft: "1rem"
+    marginLeft: "1rem",
   };
 
   const medium = "text-md-start"; // medium
@@ -407,11 +407,11 @@ function BrowserEmail({
                   }}
                   style={{
                     "&:hover": {
-                      background: "#efefef"
+                      background: "#efefef",
                     },
                     "&:lastChild": {
-                      borderRight: "solid 1px #cccccc"
-                    }
+                      borderRight: "solid 1px #cccccc",
+                    },
                   }}
                 >
                   <a
@@ -433,7 +433,7 @@ function BrowserEmail({
                   }}
                   style={{
                     ...style.normal,
-                    ...(hover ? style.hover : null)
+                    ...(hover ? style.hover : null),
                   }}
                 >
                   <a
@@ -455,7 +455,7 @@ function BrowserEmail({
                   }}
                   style={{
                     ...style.normal,
-                    ...(hover ? style.hover : null)
+                    ...(hover ? style.hover : null),
                   }}
                 >
                   <a
@@ -478,7 +478,7 @@ function BrowserEmail({
                   }}
                   style={{
                     ...style.normal,
-                    ...(hover ? style.hover : null)
+                    ...(hover ? style.hover : null),
                   }}
                 >
                   <a
@@ -688,7 +688,7 @@ function BrowserEmail({
               onChange={(ev) => setFilterText(ev.target.value)}
               style={{
                 width: "40rem",
-                marginLeft: "4rem"
+                marginLeft: "4rem",
               }}
             />
 
@@ -701,11 +701,11 @@ function BrowserEmail({
                   aria-current="true"
                   style={{
                     "&:hover": {
-                      background: "white#cadetblue"
+                      background: "white#cadetblue",
                     },
                     "&:last-child": {
-                      borderRight: "solid 1px #cccccc"
-                    }
+                      borderRight: "solid 1px #cccccc",
+                    },
                   }}
                 >
                   {filterList.map((item) => (
@@ -754,7 +754,8 @@ function BrowserEmail({
         style={{
           borderRightStyle: "dashed",
           position: "fixed",
-          top: "0"
+          position: "sticky",
+          top: "0",
         }}
       />
 
@@ -763,7 +764,7 @@ function BrowserEmail({
         id="browser-email"
         style={{
           overflow: "scroll",
-          maxHeight: "40rem"
+          maxHeight: "40rem",
         }}
       >
         {showModalEmail && (
@@ -786,8 +787,9 @@ function BrowserEmail({
             className="border-bottom fs-3"
             style={{
               borderRightStyle: "dashed",
+              maxHeight: "20px",
               position: "sticky",
-              top: "1"
+              top: "1",
             }}
           >
             <tr className="fs-4" style={{ backgroundColor: "#c7c7c7" }}>
@@ -796,7 +798,10 @@ function BrowserEmail({
                 scope="col"
                 role="button"
                 onClick={(ev) => onClickSelTodos(ev)}
-                style={{ width: "20px" }}
+                style={{
+                  width: "42px",
+                  maxHeight: "20px",
+                }}
               >
                 Sel
               </th>
