@@ -7,8 +7,6 @@ const path = require("path");
 const data = require("dotenv").config({
   path: path.resolve(__dirname, "../.env"),
 });
-console.log(path.resolve(__dirname, "../.env"));
-console.log(data);
 
 var _numero = 0;
 const mailparser = new MailParser();
@@ -20,30 +18,26 @@ mailparser.on("end", function (mail_object) {
 });
 
 const client = new Client({
-  hostname: process.env.REACT_APP_EMAIL_ADDRESS,
-  port: 995,
+  hostname: process.env.EMAIL_URL,
+  port: process.env.EMAIL_PORT,
   tls: true,
   mailparser: true,
   parserOptions: { mailParser: mailparser, showAttachmentLinks: false },
-  username: "info@richelet.com.ar",
-  password: process.env.REACT_APP_EMAIL_PASSWORD,
+  username: process.env.EMAIL_USER,
+  password: process.env.EMAIL_PASSWD,
 });
-console.log(`EMAIL:ADDRESS -> ${process.env.REACT_APP_EMAIL_ADDRESS}
-  EMAIL_ACCOUNT ->${process.env.REACT_APP_EMAIL_ACCOUNT}
-  EMAIL_PASSWORD ->${process.env.REACT_APP_EMAIL_PASSWORD}
-  `);
 console.log(`CLIENT->${JSON.stringify(client, null, 2)} `);
 
 const getClientNotParsed = () => {
   return new Client({
-    hostname: process.env.REACT_EMAIL_ADDRESS,
+    hostname: process.env.EMAIL_URL,
     port: 995,
     tls: true,
     debug: false,
     mailparser: false,
     parserOptions: { showAttachmentLinks: false },
-    username: process.env.REACT_EMAIL_ACCOUNT,
-    password: process.env.REACT_EMAIL_PASSWORD,
+    username: process.env.EMAIL_USER,
+    password: process.env.EMAIL_PASSWD,
   });
 };
 
