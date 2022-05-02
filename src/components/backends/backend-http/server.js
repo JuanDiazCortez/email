@@ -10,7 +10,7 @@ const {
   retrieveLast,
   retrieveRef,
   retrieve,
-  count
+  count,
 } = require("../../backends/backend-email-api/server");
 
 const {
@@ -28,7 +28,7 @@ const {
   getAdressBook,
   saveMailToDb,
   addUser,
-  logUser
+  logUser,
 } = require("../../backends/backend-postgres-api/postgresql");
 
 const { PORT_BACKEND, printMail } = require("../../constants");
@@ -43,7 +43,7 @@ app.use(bodyParser.raw());
 app.use(compression());
 app.use(
   bodyParser.json({
-    limit: "10mb"
+    limit: "10mb",
   })
 );
 
@@ -202,7 +202,7 @@ app.get("/api/password", (request, response) => {
   console.log("req: " + JSON.stringify(request.body));
   const query = {
     text: "select * from register  WHERE(  origin = $3 and   ((email = $1  AND clave = crypt( $2 , clave))  OR ( nombre = $1 and clave = crypt($2 , clave)))) ;",
-    values: p
+    values: p,
   };
 
   client.connect();
@@ -321,8 +321,8 @@ app.post("/retrieveLast", (req, resp) => {
 
 const wrapEmail = (emailSent) => {
   const date = new Date(emailSent.fecha_sent);
-//  console.log(`wrapp DB ${emailSent.fecha_sent}`);
-//  console.log(`wrapp ${date}`);
+  //  console.log(`wrapp DB ${emailSent.fecha_sent}`);
+  //  console.log(`wrapp ${date}`);
 
   return {
     cc: [],
@@ -341,7 +341,7 @@ const wrapEmail = (emailSent) => {
     state_: "normal",
     reenviado: 1,
     reenviado_fecha: date,
-    references: []
+    references: [],
   };
 };
 

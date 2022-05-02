@@ -7,7 +7,7 @@ import {
   faEnvelopeOpen,
   faArrowDown,
   faPaperclip,
-  faReply
+  faReply,
 } from "@fortawesome/free-solid-svg-icons";
 import { Status, makeReduce } from "../constants";
 
@@ -33,8 +33,12 @@ export const onClickDownLoadAttach = (ev, attach) => {
   const dataUrl = `data:${contentType};${transferEncoding},${makeReduce(
     content.data
   )}`;
-  target.href = dataUrl;
+  // alert(dataUrl);
+  
+  //  target.href = dataUrl;
   target.setAttribute("download", `${attach.fileName} `);
+  var win = window.open(dataUrl, '_blank');
+  win.focus();
 };
 
 export const getBorderForState = (state) => {
