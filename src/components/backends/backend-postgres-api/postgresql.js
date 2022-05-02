@@ -5,7 +5,7 @@ const path = require("path");
 const data = require("dotenv").config({
   path: path.resolve(__dirname, "../.env")
 });
-// console.log(`postgres --> ${path.resolve(__dirname, "../.env")}`);
+
 
 const getClient = () =>
   new Client({
