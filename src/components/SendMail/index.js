@@ -65,7 +65,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     ev.preventDefault();
     console.log("handleSend");
     console.log(ev.target.textContent);
-    if (ev.target.textContent === "Enviar" && texto === "Responder Email") {
+    if (ev.target.textContent === "Enviar" && tittle === "Responder Email") {
       _mail = {
         subject: subjectValue,
         messageId: email.messageId,
@@ -74,40 +74,42 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         textContent: textContent,
         original: email.html,
       };
-
-      if (ev.target.textContent === "Enviar" && texto === "Reenviar Email") {
-        _mail = {
-          subject: subjectValue,
-          messageId: email.messageId,
-          from: "info@richelet.com.ar",
-          to: fromValues,
-          textContent: textContent,
-          original: email.html,
-        };
-
-        if (ev.target.textContent === "Enviar" && texto === "Responder a Todos") {
-          _mail = {
-            subject: subjectValue,
-            messageId: email.messageId,
-            from: "info@richelet.com.ar",
-            to: fromValues,
-            textContent: textContent,
-            original: email.html,
-          };
-
-      sendEmailToDb(
-        credenciales,
-        _mail,
-
-        (data, err) => {
-          if (err) {
-            return console.log(err);
-          }
-          console.log(data);
-          onClose();
-        }
-      );
     }
+
+    if (ev.target.textContent === "Enviar" && tittle === "Reenviar Email") {
+      _mail = {
+        subject: subjectValue,
+        messageId: email.messageId,
+        from: "info@richelet.com.ar",
+        to: fromValues,
+        textContent: textContent,
+        original: email.html,
+      };
+    }
+
+    if (ev.target.textContent === "Enviar" && tittle === "Responder a Todos") {
+      _mail = {
+        subject: subjectValue,
+        messageId: email.messageId,
+        from: "info@richelet.com.ar",
+        to: fromValues,
+        textContent: textContent,
+        original: email.html,
+      };
+    }
+
+    sendEmailToDb(
+      credenciales,
+      _mail,
+
+      (data, err) => {
+        if (err) {
+          return console.log(err);
+        }
+        console.log(data);
+        onClose();
+      }
+    );
   };
 
   const handleOnChangeSubject = (ev) => {
@@ -131,7 +133,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
       return () => {
         console.log(`compomentUnmount-->RenderBookList ${__MODULE_FILE__}`);
       };
-    }, []);
+    });
 
     const handleClickBook = (ev, address) => {
       console.log(`handleClickBook ${address}`);
