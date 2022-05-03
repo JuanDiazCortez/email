@@ -625,7 +625,7 @@ function BrowserEmail({
               icon={faReplyAll}
               texto="reenviar"
               clickHandle={(ev) => {
-                onResponderClick(ev, "Reenviar Email ");
+                onResponderClick(ev, "Reenviar Email");
               }}
             />
 

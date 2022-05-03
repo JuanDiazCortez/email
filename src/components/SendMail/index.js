@@ -61,11 +61,12 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   }
 
   const handleSend = (ev) => {
+    let _mail;
     ev.preventDefault();
     console.log("handleSend");
     console.log(ev.target.textContent);
-    if (ev.target.textContent === "Enviar") {
-      let _mail = {
+    if (ev.target.textContent === "Enviar" && texto === "Responder Email") {
+      _mail = {
         subject: subjectValue,
         messageId: email.messageId,
         from: "info@richelet.com.ar",
@@ -73,6 +74,26 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         textContent: textContent,
         original: email.html,
       };
+
+      if (ev.target.textContent === "Enviar" && texto === "Reenviar Email") {
+        _mail = {
+          subject: subjectValue,
+          messageId: email.messageId,
+          from: "info@richelet.com.ar",
+          to: fromValues,
+          textContent: textContent,
+          original: email.html,
+        };
+
+        if (ev.target.textContent === "Enviar" && texto === "Responder a Todos") {
+          _mail = {
+            subject: subjectValue,
+            messageId: email.messageId,
+            from: "info@richelet.com.ar",
+            to: fromValues,
+            textContent: textContent,
+            original: email.html,
+          };
 
       sendEmailToDb(
         credenciales,
