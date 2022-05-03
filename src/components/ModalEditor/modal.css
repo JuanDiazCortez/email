@@ -23,3 +23,12 @@
   display: block;
   margin-bottom: 12px;
 }
+.email {
+  border: 4px;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-style: double;
+  background-color: darkgray;
+}

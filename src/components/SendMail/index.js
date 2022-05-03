@@ -8,30 +8,8 @@ import { sendEmailToDb, getDataAdreesBook } from "../constants";
 import "./sendmail.css";
 
 const __MODULE_FILE__ = "SendMail.js";
-/*
-  user: "info@richelet.com.ar", // generated ethereal user
-      pass: "RR%%1info", // generated ethereal password
-    },
-  });
 
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <info@richelet.com.ar>', // sender address
-    to: "mdc_marcelo@yahoo.com", // list of receivers
-    subject: "Prueba correo II   ✔", // Subject line
-    text: "Prueba correo desde app?", // plain text body
-    html: "<b>Hola Fer ya mando cor
-*/
-
-/* const getItems = (email) => {
-  let result = [];
-  email.from.forEach((item) => {
-    result.push(item.address);
-  });
-  return result;
-}; */
-
-function SendMail({ email, credenciales, onClose }) {
+function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   if (!email.messageId) console.log(`sendMail-> ${JSON.stringify(email)}`);
 
   const [showAddressBookList, setShowAddressBookList] = useState(false);
@@ -69,7 +47,6 @@ function SendMail({ email, credenciales, onClose }) {
       console.log(`compomentUnmount-->SendMail ${__MODULE_FILE__}`);
     };
   }, [addressBook]);
-
 
   console.log(`selectedRows ${JSON.stringify(selectedRows, null, 2)}`);
   if (selectedRows.length === 0) {
@@ -151,7 +128,8 @@ function SendMail({ email, credenciales, onClose }) {
 
     return (
       <div
-        className="container border border-4 border-primary"
+        id="id-window-modal-edit"
+        className={windowClass}
         style={{
           maxWidth: "80rem",
           maxHeight: "42rem",
@@ -252,7 +230,7 @@ function SendMail({ email, credenciales, onClose }) {
   };
   return (
     <div className="container">
-      <h2 className="mt-0">Responder email</h2>
+      <h2 className="mt-0">{tittle}</h2>
       <hr />
       <form
         className="form"
