@@ -20,6 +20,8 @@ import {
   faPaperclip,
   faSyncAlt,
   faReply,
+  faReplyAll,
+  faRepeat,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -63,6 +65,8 @@ function BrowserEmail({
   const [filterReenviados, setFilterReenviados] = useState(false);
 
   const [showModalEmail, setShowModalEmail] = useState(false);
+
+  const [textoEmail, setTextoEmail] = useState("");
 
   const [hover, setHover] = useState(false);
   //  const [hoverDestino, setHoverDestino] = useState(false);
@@ -160,8 +164,9 @@ function BrowserEmail({
     return self.indexOf(value) === index;
   }
 
-  const onResponderClick = (ev) => {
+  const onResponderClick = (ev, tittle) => {
     // console.log("onResponderClick");
+    setTextoEmail(tittle);
     setShowModalEmail(!showModalEmail);
   };
 
@@ -378,6 +383,35 @@ function BrowserEmail({
     return false;
   };
 
+  const ButtonMail = ({ icon, texto, clickHandle }) => {
+    return (
+      <div
+        className="button"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          border: "2px",
+          borderColor: "white",
+          borderWidth: "1px",
+          borderStyle: "solid",
+        }}
+        onClick={clickHandle}
+      >
+        <FontAwesomeIcon
+          className="fa fa-bars ml-4 button"
+          role="button"
+          type="filter_todos"
+          onClick={clickHandle}
+          icon={icon}
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={texto}
+        />
+        <p style={{ fontSize: "smaller" }}> {texto}</p>
+      </div>
+    );
+  };
+
   const TableHeaderTool = () => {
     return (
       <div id="tabletool-div" className="d-flex flex-row h-15 position-sticky">
@@ -560,16 +594,48 @@ function BrowserEmail({
             />
           </div>
 
-          <div className="ml-4" style={toolbarStyle}>
-            <FontAwesomeIcon
-              className="fa-2 ml-4 button"
-              role="button"
-              type="filter_todos"
-              onClick={(ev) => onResponderClick(ev)}
+          <div
+            className="ml-4"
+            style={{
+              marginLeft: "1rem",
+              display: "flex",
+              flexDirection: "row",
+              backgroundColor: "darkgrey",
+              alignItems: "center",
+              width: "22rem",
+              justifyContent: "space-around",
+              border: "2px",
+              borderColor: "black",
+              borderWidth: "1px",
+              borderStyle: "solid",
+              marginTop: "1px",
+            }}
+          >
+            <ButtonMail
+              id="buton-responder"
               icon={faReply}
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="responder"
+              texto="Responder"
+              clickHandle={(ev) => {
+                onResponderClick(ev, "Responder Email");
+              }}
+            />
+
+            <ButtonMail
+              id="buton-reenviar"
+              icon={faReplyAll}
+              texto="reenviar"
+              clickHandle={(ev) => {
+                onResponderClick(ev, "Reenviar Email ");
+              }}
+            />
+
+            <ButtonMail
+              id="buton-reenviar-todos"
+              icon={faRepeat}
+              texto="Reenviar Todos"
+              clickHandle={(ev) => {
+                onResponderClick(ev, "Responder a Todos");
+              }}
             />
           </div>
           {/* 
@@ -768,11 +834,16 @@ function BrowserEmail({
         }}
       >
         {showModalEmail && (
-          <ModalEditor onClose={handleCloseModal}>
+          <ModalEditor
+            onClose={handleCloseModal}
+            windowClass="modale border border border-primary border-4 email"
+          >
             <SendMail
               email={email}
+              tittle={textoEmail}
               credenciales={credenciales}
               onClose={handleCloseModal}
+              windowClass="modale border border border-primary border-4 email"
             />
           </ModalEditor>
         )}
