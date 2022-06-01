@@ -5,13 +5,11 @@ const { saveMailToDb } = require("../backend-postgres-api/postgresql");
 const dotenv = require("dotenv");
 const config = dotenv.config({ path: "../.env" });
 
-
 console.log(config);
 const path = require("path");
 const data = require("dotenv").config({
   path: path.resolve(__dirname, "../.env"),
 });
-
 
 var _numero = 0;
 const mailparser = new MailParser();
@@ -31,9 +29,6 @@ const client = new Client({
   username: process.env.EMAIL_USER,
   password: process.env.EMAIL_PASSWD,
 });
-
-
-
 
 console.log(`CLIENT->${JSON.stringify(client, null, 2)} `);
 
@@ -217,7 +212,8 @@ const retrieveAllFromMail = (objConn, callBack) => {
   let log;
   let pop3Server = client;
 
-  pop3Server.connect(function () {
+  pop3Server.connect(function (err) {
+    return callBack(err, null);
     try {
       pop3Server.retrieveAll(function (err, messages) {
         if (!messages)

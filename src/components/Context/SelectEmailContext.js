@@ -10,6 +10,7 @@ export function SelectEmailContextProvider({ children, credenciales }) {
   const [spam, setSpam] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
   const [sentEmails, setSentEmails] = useState([]);
+  const [sentOuterEmails, setOuterEmails] = useState([]);
   const [readedEmails, setReaderEmails] = useState([]);
   const [changeFilter, setChangeFilter] = useState(false);
 
@@ -35,10 +36,12 @@ export function SelectEmailContextProvider({ children, credenciales }) {
         setSelectedRows,
         readedEmails,
         setReaderEmails,
+        sentOuterEmails,
+        setOuterEmails,
         changeFilter,
         setChangeFilter,
         spam,
-        setSpam
+        setSpam,
       }}
     >
       {children}
