@@ -263,7 +263,11 @@ const retrieveAllFromMail = (objConn, callBack) => {
 /* pepe */
 
 const count = (callBack, lClose = false) => {
-  client.connect(function () {
+  client.connect(function (err) {
+  if( err ) {
+   console.log(err);
+   return callBack( err, null);
+   }
     client.count(callBack);
     if (lClose) {
       client.quit();
