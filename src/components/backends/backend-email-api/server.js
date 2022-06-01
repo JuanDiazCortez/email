@@ -73,7 +73,8 @@ const retrievePromess = async (popServer, callback) => {
       reject(error);
     });
 
-    popServer.connect(() => {
+    popServer.connect((err) => {
+      if (err) return callback(err, null);
       callback(popServer);
     });
   });
@@ -136,7 +137,8 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
   //  console.log(`client-->${JSON.stringify(client, null, 2)}`);
 
   try {
-    pop3Server.connect(function () {
+    pop3Server.connect(function (err) {
+      if (err) return callBack(err, null);
       count((error, cantidad) => {
         if (error) console.log(error);
         console.log(cantidad);
@@ -263,11 +265,13 @@ const retrieveAllFromMail = (objConn, callBack) => {
 /* pepe */
 
 const count = (callBack, lClose = false) => {
+
   client.connect(function (err) {
   if( err ) {
    console.log(err);
    return callBack( err, null);
    }
+
     client.count(callBack);
     if (lClose) {
       client.quit();
@@ -281,7 +285,8 @@ const retrieve = (nro, callback) => {
   try {
     console.log("__!");
     if (client.connected) client.quit();
-    client.connect(function () {
+    client.connect(function (err) {
+      if (err) return callback(err, null);
       console.log(`__!! ${nro}`);
       try {
         client.retrieve(nro, (err, msg) => {
