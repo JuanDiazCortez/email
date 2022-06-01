@@ -8,30 +8,8 @@ import { sendEmailToDb, getDataAdreesBook } from "../constants";
 import "./sendmail.css";
 
 const __MODULE_FILE__ = "SendMail.js";
-/*
-  user: "info@richelet.com.ar", // generated ethereal user
-      pass: "RR%%1info", // generated ethereal password
-    },
-  });
 
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <info@richelet.com.ar>', // sender address
-    to: "mdc_marcelo@yahoo.com", // list of receivers
-    subject: "Prueba correo II   ✔", // Subject line
-    text: "Prueba correo desde app?", // plain text body
-    html: "<b>Hola Fer ya mando cor
-*/
-
-/* const getItems = (email) => {
-  let result = [];
-  email.from.forEach((item) => {
-    result.push(item.address);
-  });
-  return result;
-}; */
-
-function SendMail({ email, credenciales, onClose }) {
+function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   if (!email.messageId) console.log(`sendMail-> ${JSON.stringify(email)}`);
 
   const [showAddressBookList, setShowAddressBookList] = useState(false);
@@ -70,7 +48,6 @@ function SendMail({ email, credenciales, onClose }) {
     };
   }, [addressBook]);
 
-
   console.log(`selectedRows ${JSON.stringify(selectedRows, null, 2)}`);
   if (selectedRows.length === 0) {
     return alert("no seleccionó correo a responder");
@@ -84,11 +61,12 @@ function SendMail({ email, credenciales, onClose }) {
   }
 
   const handleSend = (ev) => {
+    let _mail;
     ev.preventDefault();
     console.log("handleSend");
     console.log(ev.target.textContent);
-    if (ev.target.textContent === "Enviar") {
-      let _mail = {
+    if (ev.target.textContent === "Enviar" && tittle === "Responder Email") {
+      _mail = {
         subject: subjectValue,
         messageId: email.messageId,
         from: "info@richelet.com.ar",
@@ -96,20 +74,42 @@ function SendMail({ email, credenciales, onClose }) {
         textContent: textContent,
         original: email.html,
       };
-
-      sendEmailToDb(
-        credenciales,
-        _mail,
-
-        (data, err) => {
-          if (err) {
-            return console.log(err);
-          }
-          console.log(data);
-          onClose();
-        }
-      );
     }
+
+    if (ev.target.textContent === "Enviar" && tittle === "Reenviar Email") {
+      _mail = {
+        subject: subjectValue,
+        messageId: email.messageId,
+        from: "info@richelet.com.ar",
+        to: fromValues,
+        textContent: textContent,
+        original: email.html,
+      };
+    }
+
+    if (ev.target.textContent === "Enviar" && tittle === "Responder a Todos") {
+      _mail = {
+        subject: subjectValue,
+        messageId: email.messageId,
+        from: "info@richelet.com.ar",
+        to: fromValues,
+        textContent: textContent,
+        original: email.html,
+      };
+    }
+
+    sendEmailToDb(
+      credenciales,
+      _mail,
+
+      (data, err) => {
+        if (err) {
+          return console.log(err);
+        }
+        console.log(data);
+        onClose();
+      }
+    );
   };
 
   const handleOnChangeSubject = (ev) => {
@@ -133,7 +133,7 @@ function SendMail({ email, credenciales, onClose }) {
       return () => {
         console.log(`compomentUnmount-->RenderBookList ${__MODULE_FILE__}`);
       };
-    }, []);
+    });
 
     const handleClickBook = (ev, address) => {
       console.log(`handleClickBook ${address}`);
@@ -151,7 +151,8 @@ function SendMail({ email, credenciales, onClose }) {
 
     return (
       <div
-        className="container border border-4 border-primary"
+        id="id-window-modal-edit"
+        className={windowClass}
         style={{
           maxWidth: "80rem",
           maxHeight: "42rem",
@@ -252,7 +253,7 @@ function SendMail({ email, credenciales, onClose }) {
   };
   return (
     <div className="container">
-      <h2 className="mt-0">Responder email</h2>
+      <h2 className="mt-0">{tittle}</h2>
       <hr />
       <form
         className="form"

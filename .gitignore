@@ -1,7 +1,8 @@
-node_modules
-.env
 
-/opt/nodes/richelet/richelet-info-last/.gitignore                                                                                                                                         551/551               100%
+yarn-error.log
+k
+
+.env
 # Logs
 logs
 *.log
@@ -9,8 +10,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 src/components/backend/lista.txt
-src/components/constants.js
+
+src/components/constants.js 
 constants.js
+package.lock
 
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)

@@ -4,7 +4,7 @@ import {
   searchStatus,
   getBorderForState,
   onClickDownLoadAttach,
-  isIMG
+  isIMG,
 } from "./BrowserRowHooks";
 
 import { faEnvelopeOpen, faPaperclip } from "@fortawesome/free-solid-svg-icons";
@@ -23,7 +23,7 @@ const medium = "text-md-start fs-4"; // medium
 const large = "text-lg-start"; // large
 
 const RenderAttachs = ({ email }) => {
-  const [showAttach, setShowAttach] = useState(false);
+  const [showAttach, setShowAttach] = useState(true);
   const { attachments } = email;
   // console.log(attachments);
   const handleClickAttach = (ev) => {
@@ -49,7 +49,7 @@ const RenderAttachs = ({ email }) => {
                 overflowY: attachments.length > 2 ? "scroll" : "auto",
                 maxHeight: "10rem",
                 maxWidth: "22rem",
-                overflowX: "auto"
+                overflowX: "auto",
               }}
             >
               {attachments.map(
@@ -60,11 +60,13 @@ const RenderAttachs = ({ email }) => {
                       key={shortid.generate()}
                       style={{
                         fontSize: medium,
-                        fontWeight: !email.leido ? "bold" : "nornal"
+                        fontWeight: !email.leido ? "bold" : "nornal",
                       }}
                     >
                       <div>
                         <a
+                          className="a-attach"
+                          target="_blank"
                           href="#"
                           onClick={(ev) => {
                             onClickDownLoadAttach(ev, attach);
@@ -93,7 +95,7 @@ const BrowserRow = ({
   onClickRow,
   onSelectMenu,
   credenciales,
-  changeRow
+  changeRow,
 }) => {
   const [hover, setHover] = useState(false);
   const [showList, setShowList] = useState([]);
@@ -162,7 +164,7 @@ const BrowserRow = ({
               style={{
                 ...style.normal,
                 ...(hover ? style.hover : null),
-                borderRadius: "10%"
+                borderRadius: "10%",
               }}
             >
               <option>Menu</option>
@@ -208,7 +210,7 @@ const BrowserRow = ({
               key={shortid.generate()}
               style={{
                 fontSize: medium,
-                fontWeight: !email.leido ? "bold" : "nornal"
+                fontWeight: !email.leido ? "bold" : "nornal",
               }}
             >
               <div
@@ -225,7 +227,7 @@ const BrowserRow = ({
                         style={{
                           marginTop: "0px",
                           marginBottom: "0px",
-                          fontSize: "12px"
+                          fontSize: "12px",
                         }}
                       >
                         {st}
@@ -260,7 +262,7 @@ const BrowserRow = ({
                 className={medium}
                 style={{
                   fontSize: medium,
-                  fontWeight: !email.leido ? "bold" : "nornal"
+                  fontWeight: !email.leido ? "bold" : "nornal",
                 }}
               >
                 {email.from[0].address}
@@ -277,13 +279,13 @@ const BrowserRow = ({
                 type="row"
                 style={{
                   fontSize: medium,
-                  fontWeight: !email.leido ? "bold" : "nornal"
+                  fontWeight: !email.leido ? "bold" : "nornal",
                 }}
               >
                 {`${new Date(email.receivedDate).toLocaleDateString(
                   navigator.language
                 )}  ${new Date(email.receivedDate).toLocaleTimeString("es-AR", {
-                  hour12: false
+                  hour12: false,
                 })}`}
               </p>
             </span>
@@ -306,7 +308,7 @@ const BrowserRow = ({
                 type="row"
                 data-hovercard-owner-id={email.messageId}
                 style={{
-                  fontWeight: !email.leido ? "bold" : "nornal"
+                  fontWeight: !email.leido ? "bold" : "nornal",
                 }}
               >
                 {email.subject}
@@ -326,7 +328,7 @@ const BrowserRow = ({
               type="row"
               data-hovercard-owner-id={email.messageId}
               style={{
-                fontWeight: !email.leido ? "bold" : "nornal"
+                fontWeight: !email.leido ? "bold" : "nornal",
               }}
             >
               {email.text ? email.text.substring(0, 300) : ""}

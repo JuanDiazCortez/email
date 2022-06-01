@@ -6,7 +6,7 @@ import BrowserRow from "../BrowserRow";
 import {
   updateReenviado,
   onListFilter,
-  processChange
+  processChange,
 } from "./BrowserEmailHelpers";
 // import FilterForStatus from "../FilterForStatus";
 import ModalEditor from "../ModalEditor";
@@ -19,14 +19,16 @@ import {
   faArrowDown,
   faPaperclip,
   faSyncAlt,
-  faReply
+  faReply,
+  faReplyAll,
+  faRepeat,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
   URL_DATABASE,
   PORT_BACKEND,
   Status,
-  onRetrieveUrl
+  onRetrieveUrl,
   // pritMail
 } from "../constants";
 
@@ -54,7 +56,7 @@ function BrowserEmail({
   setIdUserReenviar,
   userReenviado,
   changeRow,
-  loading
+  loading,
 }) {
   const [showFilter, setshowFilter] = useState(false);
   const [filterTodos, setfilterTodos] = useState(true);
@@ -63,6 +65,8 @@ function BrowserEmail({
   const [filterReenviados, setFilterReenviados] = useState(false);
 
   const [showModalEmail, setShowModalEmail] = useState(false);
+
+  const [textoEmail, setTextoEmail] = useState("");
 
   const [hover, setHover] = useState(false);
   //  const [hoverDestino, setHoverDestino] = useState(false);
@@ -138,7 +142,7 @@ function BrowserEmail({
       id: mail.messageId,
       newStatus: ev.target.value,
       leido: !mail.leido,
-      mail: mail.messageId
+      mail: mail.messageId,
     };
     onRetrieveUrl(
       `http://${URL_DATABASE}:${PORT_BACKEND}/changeStatus`,
@@ -146,9 +150,9 @@ function BrowserEmail({
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newMail)
+        body: JSON.stringify(newMail),
       },
       function (content) {
         processChange(content, ev, mail, data, setData, newMail, setChangeFlag);
@@ -160,8 +164,9 @@ function BrowserEmail({
     return self.indexOf(value) === index;
   }
 
-  const onResponderClick = (ev) => {
+  const onResponderClick = (ev, tittle) => {
     // console.log("onResponderClick");
+    setTextoEmail(tittle);
     setShowModalEmail(!showModalEmail);
   };
 
@@ -360,7 +365,7 @@ function BrowserEmail({
   };
 
   const toolbarStyle = {
-    marginLeft: "1rem"
+    marginLeft: "1rem",
   };
 
   const medium = "text-md-start"; // medium
@@ -376,6 +381,35 @@ function BrowserEmail({
     if (filterReenviados) return true;
     if (filterNoLeidos && !email.leido) return true;
     return false;
+  };
+
+  const ButtonMail = ({ icon, texto, clickHandle }) => {
+    return (
+      <div
+        className="button"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          border: "2px",
+          borderColor: "white",
+          borderWidth: "1px",
+          borderStyle: "solid",
+        }}
+        onClick={clickHandle}
+      >
+        <FontAwesomeIcon
+          className="fa fa-bars ml-4 button"
+          role="button"
+          type="filter_todos"
+          onClick={clickHandle}
+          icon={icon}
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={texto}
+        />
+        <p style={{ fontSize: "smaller" }}> {texto}</p>
+      </div>
+    );
   };
 
   const TableHeaderTool = () => {
@@ -407,11 +441,11 @@ function BrowserEmail({
                   }}
                   style={{
                     "&:hover": {
-                      background: "#efefef"
+                      background: "#efefef",
                     },
                     "&:lastChild": {
-                      borderRight: "solid 1px #cccccc"
-                    }
+                      borderRight: "solid 1px #cccccc",
+                    },
                   }}
                 >
                   <a
@@ -433,7 +467,7 @@ function BrowserEmail({
                   }}
                   style={{
                     ...style.normal,
-                    ...(hover ? style.hover : null)
+                    ...(hover ? style.hover : null),
                   }}
                 >
                   <a
@@ -455,7 +489,7 @@ function BrowserEmail({
                   }}
                   style={{
                     ...style.normal,
-                    ...(hover ? style.hover : null)
+                    ...(hover ? style.hover : null),
                   }}
                 >
                   <a
@@ -478,7 +512,7 @@ function BrowserEmail({
                   }}
                   style={{
                     ...style.normal,
-                    ...(hover ? style.hover : null)
+                    ...(hover ? style.hover : null),
                   }}
                 >
                   <a
@@ -560,16 +594,48 @@ function BrowserEmail({
             />
           </div>
 
-          <div className="ml-4" style={toolbarStyle}>
-            <FontAwesomeIcon
-              className="fa-2 ml-4 button"
-              role="button"
-              type="filter_todos"
-              onClick={(ev) => onResponderClick(ev)}
+          <div
+            className="ml-4"
+            style={{
+              marginLeft: "1rem",
+              display: "flex",
+              flexDirection: "row",
+              backgroundColor: "darkgrey",
+              alignItems: "center",
+              width: "22rem",
+              justifyContent: "space-around",
+              border: "2px",
+              borderColor: "black",
+              borderWidth: "1px",
+              borderStyle: "solid",
+              marginTop: "1px",
+            }}
+          >
+            <ButtonMail
+              id="buton-responder"
               icon={faReply}
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="responder"
+              texto="Responder"
+              clickHandle={(ev) => {
+                onResponderClick(ev, "Responder Email");
+              }}
+            />
+
+            <ButtonMail
+              id="buton-reenviar"
+              icon={faReplyAll}
+              texto="reenviar"
+              clickHandle={(ev) => {
+                onResponderClick(ev, "Reenviar Email");
+              }}
+            />
+
+            <ButtonMail
+              id="buton-reenviar-todos"
+              icon={faRepeat}
+              texto="Reenviar Todos"
+              clickHandle={(ev) => {
+                onResponderClick(ev, "Responder a Todos");
+              }}
             />
           </div>
           {/* 
@@ -688,7 +754,7 @@ function BrowserEmail({
               onChange={(ev) => setFilterText(ev.target.value)}
               style={{
                 width: "40rem",
-                marginLeft: "4rem"
+                marginLeft: "4rem",
               }}
             />
 
@@ -701,11 +767,11 @@ function BrowserEmail({
                   aria-current="true"
                   style={{
                     "&:hover": {
-                      background: "white#cadetblue"
+                      background: "white#cadetblue",
                     },
                     "&:last-child": {
-                      borderRight: "solid 1px #cccccc"
-                    }
+                      borderRight: "solid 1px #cccccc",
+                    },
                   }}
                 >
                   {filterList.map((item) => (
@@ -754,7 +820,8 @@ function BrowserEmail({
         style={{
           borderRightStyle: "dashed",
           position: "fixed",
-          top: "0"
+          position: "sticky",
+          top: "0",
         }}
       />
 
@@ -763,15 +830,20 @@ function BrowserEmail({
         id="browser-email"
         style={{
           overflow: "scroll",
-          maxHeight: "40rem"
+          maxHeight: "40rem",
         }}
       >
         {showModalEmail && (
-          <ModalEditor onClose={handleCloseModal}>
+          <ModalEditor
+            onClose={handleCloseModal}
+            windowClass="modale border border border-primary border-4 email"
+          >
             <SendMail
               email={email}
+              tittle={textoEmail}
               credenciales={credenciales}
               onClose={handleCloseModal}
+              windowClass="modale border border border-primary border-4 email"
             />
           </ModalEditor>
         )}
@@ -786,8 +858,9 @@ function BrowserEmail({
             className="border-bottom fs-3"
             style={{
               borderRightStyle: "dashed",
+              maxHeight: "20px",
               position: "sticky",
-              top: "1"
+              top: "1",
             }}
           >
             <tr className="fs-4" style={{ backgroundColor: "#c7c7c7" }}>
@@ -796,7 +869,10 @@ function BrowserEmail({
                 scope="col"
                 role="button"
                 onClick={(ev) => onClickSelTodos(ev)}
-                style={{ width: "20px" }}
+                style={{
+                  width: "42px",
+                  maxHeight: "20px",
+                }}
               >
                 Sel
               </th>
