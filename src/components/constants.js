@@ -3,9 +3,9 @@
 
 var PORT_BACKEND = "5100";
 
-const URL_DATABASE = "192.168.0.100";
+const URL_DATABASE = "192.168.1.27";
 var URL_PROTOCOL = "http";
-const URL_BACKEND = "192.168.0.100";
+const URL_BACKEND = "192.168.1.27";
 
 
 const DEFAULT_POST_HEADER = {
