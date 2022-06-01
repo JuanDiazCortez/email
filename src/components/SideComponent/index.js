@@ -8,7 +8,7 @@ import {
   faEnvelopeOpen,
   faEnvelopeOpenText,
   faHandSparkles,
-  faEnvelope
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useContext, useEffect } from "react";
@@ -20,6 +20,7 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
   console.log(`SideComponent ${JSON.stringify(credenciales)}`);
 
   const { sentEmails, setSentEmails } = useContext(SelectEmailContext);
+  const { sentOuterEmails, setOuterEmails } = useContext(SelectEmailContext);
   const { readedEmails, setReaderEmails } = useContext(SelectEmailContext);
   const { spam, setSpam } = useContext(SelectEmailContext);
   const { data } = useContext(EmailContext);
@@ -33,6 +34,11 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
   const drawSpam = () => {
     console.log("drawSpam");
     return <p>{spam.length}</p>;
+  };
+
+  const drawOuterEmails = () => {
+    console.log("drawOuterEmails");
+    return <p>{sentOuterEmails.length}</p>;
   };
 
   const drawSentEmails = () => {
@@ -87,7 +93,15 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
             process: drawInboxEmails,
             onClick: function () {
               onChangeVista("G");
-            }
+            },
+          },
+          {
+            text: "Bandeja de Salida",
+            icon: faEnvelope,
+            process: drawReadedEmails,
+            onClick: function () {
+              onChangeVista("Z");
+            },
           },
           {
             text: "Leidos",
@@ -95,7 +109,7 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
             process: drawReadedEmails,
             onClick: function () {
               onChangeVista("L");
-            }
+            },
           },
           {
             text: "Enviados",
@@ -103,7 +117,7 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
             process: drawSentEmails,
             onClick: function () {
               onChangeVista("E");
-            }
+            },
           },
           {
             text: "Spam",
@@ -111,8 +125,8 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
             process: drawSpam,
             onClick: function () {
               onChangeVista("S");
-            }
-          }
+            },
+          },
         ].map((item, i) => (
           <li
             className="list-group-item list-group-item-secondary li-side "
@@ -123,11 +137,11 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
               width: "auto",
               overflowY: "hidden",
               "&:hover": {
-                background: "#efefef"
+                background: "#efefef",
               },
               "&:lastChild": {
-                borderRight: "solid 1px #cccccc"
-              }
+                borderRight: "solid 1px #cccccc",
+              },
             }}
             onClick={item.onClick}
             value={item.text}
@@ -138,14 +152,14 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
                 className="separador"
                 style={{
                   "&:hover": {
-                    background: "#efefef"
+                    background: "#efefef",
                   },
                   "&:lastChild": {
-                    borderRight: "solid 1px #cccccc"
+                    borderRight: "solid 1px #cccccc",
                   },
 
                   maxWidth: "1rem",
-                  width: "2rem"
+                  width: "2rem",
                 }}
               />
               <a id="side-menu" className="fs-4 ms-3 ml-2">
