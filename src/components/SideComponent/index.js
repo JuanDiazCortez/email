@@ -98,7 +98,7 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
           {
             text: "Bandeja de Salida",
             icon: faEnvelope,
-            process: drawReadedEmails,
+            process: drawOuterEmails,
             onClick: function () {
               onChangeVista("Z");
             },
