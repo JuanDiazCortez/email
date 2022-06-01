@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import EmailContext from "../Context/EmailContext";
-import { getSentEmails } from "../constants";
+// import { getSentEmails } from "../constants";
 
 const SelectEmailContext = React.createContext({});
 
 export function SelectEmailContextProvider({ children, credenciales }) {
-  console.log(`SelectEmailContextProvider ${credenciales}`);
+  // console.log(`SelectEmailContextProvider ${credenciales}`);
   const { data, setData } = useContext(EmailContext);
   const [spam, setSpam] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);

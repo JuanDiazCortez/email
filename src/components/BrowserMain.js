@@ -8,7 +8,6 @@ import ModalUserSelect from "./ModalUsersSelect";
 import EmailContext from "./Context/EmailContext";
 import SelectEmailContext from "./Context/SelectEmailContext";
 
-
 import Modal from "react-modal";
 const __MODULE__ = "BrowserMain.js";
 //
@@ -19,8 +18,8 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
+    transform: "translate(-50%, -50%)",
+  },
 };
 
 function BrowserMain({
@@ -28,11 +27,10 @@ function BrowserMain({
   setVolver,
   onClickButton,
   credenciales,
-  loading
+  loading,
 }) {
   const [showDetail, setShowDetail] = useState(false);
   const [detail, setdetail] = useState();
-  const [positiony, setPositionY] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [userSelect, setUserSelect] = useState();
   const [idUserReenviar, setIdUserReenviar] = useState();
@@ -112,7 +110,7 @@ function BrowserMain({
       setuserReenviado({
         id: idUserReenviar.messageId,
         leido: idUserReenviar.leido,
-        toUser: userSelect
+        toUser: userSelect,
       });
     }
   }, [userSelect]);
@@ -148,7 +146,7 @@ function BrowserMain({
           minHeight: "20rem",
           minWidth: "18rem",
           borderLeft: "4px solid blue",
-          overflow: "scroll"
+          overflow: "scroll",
         }}
       >
         <SideComponent

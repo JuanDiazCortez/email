@@ -78,11 +78,12 @@ function BrowserEmail({
   const [filterOption, setFilterOption] = useState("texto");
   const [reenviadoModel, setReenviadoModel] = useState(null);
   const [idModal, setIdModal] = useState(null);
-  console.log(data);
+  //console.log(data);
 
   const { selectedRows, setSelectedRows } = useContext(SelectEmailContext);
 
   let email = selectedRows.length === 0 ? null : selectedRows[0];
+
   // component didmount
   useEffect(() => {
     console.log("component bRowserMain mount");
@@ -373,6 +374,7 @@ function BrowserEmail({
 
   const isRowForShow = (email) => {
     /* leido not show in gral */
+    if (email === null || email === undefined ) return false;
     if (vista === "G" && email.leido) {
       return false;
     }
@@ -638,14 +640,7 @@ function BrowserEmail({
               }}
             />
           </div>
-          {/* 
-        <FilterForStatus
-          data={data}
-          setData={setData}
-          status={Status}
-          releer={loadDataRows}
-          loading={loading}
-        /> */}
+
           <div className="ms-4 dropdown rounded-start">
             <button
               className="btn btn-primary  dropdown-toggle fs-4"
@@ -903,7 +898,7 @@ function BrowserEmail({
             {data &&
               data.map(
                 (mail, index) =>
-                  isRowForShow && (
+                  isRowForShow(mail) && (
                     <BrowserRow
                       key={shortid.generate()}
                       isRowForShow={isRowForShow(mail)}

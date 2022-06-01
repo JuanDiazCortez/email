@@ -6,7 +6,6 @@ const EmailContext = React.createContext({});
 export function EmailContextProvider({ children }) {
   const [data, setData] = useState();
 
-
   useEffect(() => {
     // if (changeFilter) {
     //   console.log(changeFilter);

@@ -7,14 +7,14 @@ export async function getEmails(cantidad, credenciales) {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         cantidad: cantidad,
-        credenciales: credenciales
-      })
+        credenciales: credenciales,
+      }),
     }
   );
-  console.log(r);
+  console.log(r[0]);
   return r;
 }

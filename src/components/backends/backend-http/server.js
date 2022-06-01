@@ -251,7 +251,7 @@ app.post("/getSentEmailForUser", (req, resp) => {
   console.log(`getSentEmailForUser ${JSON.stringify(req.body)}`);
   const { credenciales } = req.body;
   PG_getSentEmailForUser(credenciales, (data, err) => {
-    console.log(data);
+    // console.log(data);
     if (err) {
       return resp.status(501).json({ error: err });
     }
@@ -321,7 +321,6 @@ app.post("/retrieveLast", (req, resp) => {
 
 const wrapEmail = (emailSent) => {
   const date = new Date(emailSent.fecha_sent);
-
 
   return {
     cc: [],

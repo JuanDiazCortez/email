@@ -12,7 +12,7 @@ const __MODULE_FILE__ = "SendMail.js";
 function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   if (!email.messageId) console.log(`sendMail-> ${JSON.stringify(email)}`);
 
-  const [showAddressBookList, setShowAddressBookList] = useState(false);
+  //   const [showAddressBookList, setShowAddressBookList] = useState(false);
   const [fromValues, setToFromValues] = useState([
     { id: shortid.generate(), address: "" },
   ]);
@@ -29,6 +29,22 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
 
   const [showFrom, setShowFrom] = useState(true);
 
+  useEffect(() => {
+    if (tittle === "Responder Email") {
+      let to = email.from[0].address;
+
+      console.log(`email from mount Responder ${JSON.stringify(to, null, 2)}`);
+      setToFromValues([{ id: shortid.generate(), address: to }]);
+    }
+
+    if (tittle === "Responder a Todos") {
+      let to = email.from;
+
+      console.log(`email from mount Todos ${JSON.stringify(to, null, 2)}`);
+      setToFromValues(to);
+    }
+  }, []);
+
   console.log(fromValues);
   useEffect(() => {
     console.log(`compomentDidMount-->${__MODULE_FILE__}`);
@@ -36,7 +52,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
 
     const loadBooks = async () => {
       getDataAdreesBook(0, (books) => {
-        let results = [];
+      
         console.log(books);
         setAddresBook(books);
       });
@@ -125,6 +141,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     const [searchValue, setSearchValue] = useState("");
     const [listModel, setListModel] = useState([]);
 
+    
+
     useEffect(() => {
       console.log(`compomentDidMount-->RenderBookList ${__MODULE_FILE__}`);
       let books = [];
@@ -133,7 +151,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
       return () => {
         console.log(`compomentUnmount-->RenderBookList ${__MODULE_FILE__}`);
       };
-    });
+    },[]);
 
     const handleClickBook = (ev, address) => {
       console.log(`handleClickBook ${address}`);
@@ -378,7 +396,13 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
             <hr />
             <div className="form-control">
               <MyEditor
-                texto={email.html}
+                texto={
+                  tittle === "Responder Email"
+                    ? ""
+                    : tittle === "Responder a Todos"
+                    ? ""
+                    : email.html
+                }
                 onChangeContent={onChangeContent}
                 style={{
                   marginTop: "2rem",
