@@ -176,12 +176,11 @@ app.post("/retrieveAll", (req, resp) => {
 
 app.post("/retrieveCount", (req, resp) => {
   let lastRow;
-
   console.log("retrieveCount");
-  count(function (err, info) {
+  count( function (err, info) {
     console.log("count");
     if (err) {
-      console.log(err.info);
+      console.log(err);
       resp.status(501).json({ message: err });
     }
     resp.status(200).json({ cantidad: info });
