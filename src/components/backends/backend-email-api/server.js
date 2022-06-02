@@ -75,7 +75,7 @@ const retrievePromess = async (popServer, callback) => {
     });
 
     popServer.connect((err) => {
-      if (err) return callback(err, null);
+      if (err !== null ) return callback(err, null);
       callback(popServer);
     });
   });
@@ -139,7 +139,7 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
 
   try {
     pop3Server.connect(function (err) {
-      if (err) return callBack(err, null);
+      if (err !== null ) return callBack(err, null);
       count((error, cantidad) => {
         if (error) console.log(error);
         console.log(cantidad);
@@ -216,7 +216,10 @@ const retrieveAllFromMail = (objConn, callBack) => {
   let pop3Server = client;
 
   pop3Server.connect(function (err) {
-    return callBack(err, null);
+    if (err !== null) {
+      console.log(`${JSON.stringify(err)} `);
+      // callBack(null, err);
+    }
     try {
       pop3Server.retrieveAll(function (err, messages) {
         if (!messages)
@@ -267,6 +270,19 @@ const retrieveAllFromMail = (objConn, callBack) => {
 
 const count = (callBack, lClose = false) => {
 
+  console.log(`count ${__MODULE_FILE__}`);
+
+  client.connect(function (err) {
+    if (err !== null ) {
+      console.log(err);
+      callBack(err, null);
+    }
+    if (!client.connected)
+      client.connect((err) => {
+        console.log(`${JSON.stringify(err)}`);
+      });
+
+
   console.log(`count ${__MODULE_FILE__}`);  
   client.connect(function (err) {
   if(err) return callBack(err,null);
@@ -280,6 +296,7 @@ const count = (callBack, lClose = false) => {
    console.log(err);
    return callBack( err, null);
    }
+
 
 
     client.count(callBack);
@@ -296,7 +313,7 @@ const retrieve = (nro, callback) => {
     console.log("__!");
     if (client.connected) client.quit();
     client.connect(function (err) {
-      if (err) return callback(err, null);
+      if (err!==null ) return callback(err, null);
       console.log(`__!! ${nro}`);
       try {
         client.retrieve(nro, (err, msg) => {
@@ -349,7 +366,7 @@ const retrieveRef2 = async (ref, callBack) => {
   let nlient = getClientNotParsed();
   console.log("RetrieveRef[0]");
   nlient.connect((err) => {
-    if (err) {
+    if (err !==null ) {
       console.log("error");
       console.log(err);
       callBack(err, null);

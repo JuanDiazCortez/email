@@ -178,10 +178,10 @@ app.post("/retrieveCount", (req, resp) => {
   let lastRow;
 
   console.log(`retrieveCount ${__MODULE_FILE__}`);
-  count(function (err, info) {
+  count( function (err, info) {
     console.log("count");
     if (err) {
-      console.log(err.info);
+      console.log(`inf: ${err}`);
       resp.status(501).json({ message: err });
     }
     resp.status(200).json({ cantidad: info });
