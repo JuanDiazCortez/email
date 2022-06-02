@@ -315,7 +315,7 @@ const count = (callBack, lClose = false) => {
 };
 
 const retrieve = (nro, callback) => {
-  // console.log(`retireve -->${__MODULE_FILE__} ${typeof callback}`);
+  console.log(`retireve -->${__MODULE_FILE__}`);
 
   try {
     console.log("__!");
