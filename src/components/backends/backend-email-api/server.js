@@ -266,6 +266,9 @@ const retrieveAllFromMail = (objConn, callBack) => {
 
 const count = (callBack, lClose = false) => {
 
+  console.log(`count ${__MODULE_FILE__}`);
+  
+
   client.connect(function (err) {
   if( err ) {
    console.log(err);
