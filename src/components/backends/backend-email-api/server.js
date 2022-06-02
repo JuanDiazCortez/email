@@ -96,7 +96,6 @@ atravieza todos los mensajes y
 los inserta en la db si es exitoso no hace nada
 al final informa el total de insertados
 */
-
 const saveEmailToDb = async (fConn, query, email) => {
   console.log(`saveEmailToDb->${__MODULE_FILE__}`);
   let conn = fConn();
@@ -280,7 +279,6 @@ const count = (callBack, lClose = false) => {
 
 
   console.log(`count ${__MODULE_FILE__}`);
-
   client.connect(function (err) {
     if (err !== null) {
       console.log(err);
@@ -372,7 +370,8 @@ const retrieveRef = async (ref, callBackHTTP) => {
 };
 
 const retrieveRef2 = async (ref, callBack) => {
-  console.log("RetrieveRef[pop-api]");
+  console.log("RetrieveRef2[pop-api]");
+
   let nlient = getClientNotParsed();
   console.log("RetrieveRef[0]");
   nlient.connect((err) => {
