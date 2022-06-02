@@ -103,6 +103,16 @@ function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
               onChangeVista("Z");
             },
           },
+          
+          {
+            text: "Bandeja de Salida",
+            icon: faInbox,
+            process: drawInboxEmails,
+            onClick: function () {
+              onChangeVista("Z");
+            }
+          }
+          ,
           {
             text: "Leidos",
             icon: faEnvelope,

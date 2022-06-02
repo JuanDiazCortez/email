@@ -30,6 +30,7 @@ const client = new Client({
   password: process.env.EMAIL_PASSWD,
 });
 
+// client.connect();
 console.log(`CLIENT->${JSON.stringify(client, null, 2)} `);
 
 const getClientNotParsed = () => {
@@ -268,6 +269,15 @@ const retrieveAllFromMail = (objConn, callBack) => {
 /* pepe */
 
 const count = (callBack, lClose = false) => {
+ develos
+  console.log(`count ${__MODULE_FILE__}` );
+  client.connect(function (err) {
+  // if(err)  console.log(`count error  ${JSON.stringify(err)}` );
+   
+   // if(client.connected) client.connect();
+    
+
+
   console.log(`count ${__MODULE_FILE__}`);
   client.connect(function (err) {
     if (err !== null) {
@@ -278,6 +288,25 @@ const count = (callBack, lClose = false) => {
       client.connect((err) => {
         console.log(`${JSON.stringify(err)}`);
       });
+
+
+  console.log(`count ${__MODULE_FILE__}`);  
+  client.connect(function (err) {
+  if(err) return callBack(err,null);
+
+
+
+  
+
+  client.connect(function (err) {
+  if( err ) {
+   console.log(err);
+   return callBack( err, null);
+   }
+
+
+
+
     client.count(callBack);
     if (lClose) {
       client.quit();
