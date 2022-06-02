@@ -265,13 +265,16 @@ const retrieveAllFromMail = (objConn, callBack) => {
 /* pepe */
 
 const count = (callBack, lClose = false) => {
+
   console.log(`count ${__MODULE_FILE__}`);
   
+
   client.connect(function (err) {
-    if (err) {
-      console.log(err);
-      return callBack(err, null);
-    }
+  if( err ) {
+   console.log(err);
+   return callBack( err, null);
+   }
+
     client.count(callBack);
     if (lClose) {
       client.quit();
