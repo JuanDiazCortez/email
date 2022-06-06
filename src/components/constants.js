@@ -1,22 +1,16 @@
-/*
- */
-
 var PORT_BACKEND = "5100";
-
-const URL_DATABASE = "192.168.0.100";
+const URL_DATABASE = "192.168.0.120";
 var URL_PROTOCOL = "http";
-const URL_BACKEND = "192.168.0.100";
-
+const URL_BACKEND = "192.168.0.120";
 
 const DEFAULT_POST_HEADER = {
   method: "POST",
   headers: {
     Accept: "application/json",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   },
-  body: JSON.stringify({ cantidad: 0 })
+  body: JSON.stringify({ cantidad: 0 }),
 };
-
 
 const Status = {
   normal: {
@@ -26,7 +20,7 @@ const Status = {
     key: "normal",
     print: function () {
       return this.title;
-    }
+    },
   },
   delete: {
     title: "Borrar",
@@ -35,7 +29,7 @@ const Status = {
     key: "delete",
     print: function () {
       return this.title;
-    }
+    },
   },
   spam: {
     title: "Spam",
@@ -44,7 +38,7 @@ const Status = {
     key: "spam",
     print: function () {
       return this.title;
-    }
+    },
   },
   reenviar: {
     title: "Reenviar",
@@ -53,7 +47,7 @@ const Status = {
     key: "reenviar",
     print: function () {
       return this.title;
-    }
+    },
   },
   leido: {
     title: "leido",
@@ -62,7 +56,7 @@ const Status = {
     key: "leido",
     print: function () {
       return this.title;
-    }
+    },
   },
   ignorar: {
     title: "Ignorar",
@@ -71,7 +65,7 @@ const Status = {
     key: "ignorar",
     print: function () {
       return this.title;
-    }
+    },
   },
   reenviado: {
     title: "Reenviado",
@@ -81,8 +75,8 @@ const Status = {
     key: "reenviado",
     print: function () {
       return this.title;
-    }
-  }
+    },
+  },
 };
 const onRetrieveUrl = async (url, options, callback) => {
   console.log(`url=${url}`);
@@ -99,9 +93,9 @@ const getSentEmails = (credenciales) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ credenciales })
+      body: JSON.stringify({ credenciales }),
     }
   );
 };
@@ -119,8 +113,8 @@ const getDataAdreesBook = async (page, callback) => {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   let url = `${URL_PROTOCOL}://${URL_DATABASE}:${PORT_BACKEND}/getAddressBook?page=${page}`;
@@ -136,9 +130,9 @@ const sendEmailToDb = (credenciales, email, callback) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ credenciales, email })
+      body: JSON.stringify({ credenciales, email }),
     },
     (data, err) => {
       callback(data, err);
@@ -153,9 +147,9 @@ const retrieveAllFromDb = async (callback) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ cantidad: 0 })
+      body: JSON.stringify({ cantidad: 0 }),
     },
     (data, err) => {
       return callback(data, err);
@@ -210,5 +204,5 @@ module.exports = {
   Status,
   makeReduce,
   getDataAdreesBook,
-  getStyleForState
+  getStyleForState,
 };

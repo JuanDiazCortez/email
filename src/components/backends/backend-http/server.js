@@ -175,23 +175,27 @@ app.post("/retrieveAll", (req, resp) => {
 });
 
 app.post("/retrieveCount", (req, resp) => {
+
+
  let lastRow;
+
   console.log(`retrieveCount ${__MODULE_FILE__}`);
-  count( function (err, info) {
-    console.log("count");
-    if (err) {
+
+  count(function (err, info) {
+    console.log("count callback");
+    if (err !== null) {
       console.log(`inf: ${err}`);
 
       resp.status(501).json({ message: err });
     }
     resp.status(200).json({ cantidad: info });
-  }, true);
+  }, false);
 });
 
 app.get("/statusApp", (req, resp) => {
   response.status(200).json({ status: "ok" });
 });
-
+/*
 app.get("/api/password", (request, response) => {
   let p = [];
   console.log(JSON.stringify(request.body));
@@ -220,7 +224,7 @@ app.get("/api/password", (request, response) => {
     }
   });
 });
-
+*/
 app.post("/setdtos", (req, resp) => {
   console.log(req.body);
   addUser(req.body, function (count, error) {

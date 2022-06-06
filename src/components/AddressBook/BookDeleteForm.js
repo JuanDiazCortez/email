@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./adressBook.css";
 
 function BookEditorForm({ onClose, book }) {
-  const [company, setCompany] = useState(book.company);
-  const [adress, setAdress] = useState(book.adress);
+  // const [company, setCompany] = useState(book.company);
+  // const [adress, setAdress] = useState(book.adress);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -25,12 +25,12 @@ function BookEditorForm({ onClose, book }) {
       <form className="mt-4" onSubmit={(ev) => handleSubmit(ev)}>
         <div className="d-flex flex-row">
           <label className="form-label mt-2">Companía</label>
-          <label className="form-control ms-3">{company}</label>
+          <label className="form-control ms-3">{book.company}</label>
         </div>
         <div className="d-flex flex-row">
           <label className="form-label mt-2">Address</label>
           <label className="form-control" style={{ marginLeft: "2rem" }}>
-            {adress}
+            {book.adress}
           </label>
         </div>
         <div className="d-grid gap-2 mt-5" onClick={handleOk}>

@@ -3,7 +3,7 @@ import {
   PORT_BACKEND,
   Status,
   onRetrieveUrl,
-  printMail
+  // printMail
 } from "../constants";
 
 export const onListFilter = (
@@ -59,7 +59,15 @@ export const onListFilter = (
     document.getElementById("side-toolbar").setBoundingClientRect = n; 
 }; */
 
-export const processChange = (content, ev, mail, data, setData,newMail,setChangeFlag) => {
+export const processChange = (
+  content,
+  ev,
+  mail,
+  data,
+  setData,
+  newMail,
+  setChangeFlag
+) => {
   if (ev) {
     console.log(ev);
   } else {
@@ -87,7 +95,7 @@ export const processChange = (content, ev, mail, data, setData,newMail,setChange
       const updateItem = {
         ...item,
         state: newState,
-        leido: ev.target.value === "leido" ? !l : l
+        leido: ev.target.value === "leido" ? !l : l,
       };
       return updateItem;
     }
@@ -102,7 +110,7 @@ const uPdateGlobalData = (newEmail, data, setData) => {
       const updateItem = {
         ...item,
         state: newEmail.state,
-        leido: newEmail.leido
+        leido: newEmail.leido,
       };
       return updateItem;
     }
@@ -119,7 +127,7 @@ export const updateReenviado = (user, credenciales, setData, data) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         id_generador: credenciales.id,
@@ -127,8 +135,8 @@ export const updateReenviado = (user, credenciales, setData, data) => {
         newStatus: "reenviado",
         leido: user.leido,
         mail: user.id,
-        to_id: user.toUser.id
-      })
+        to_id: user.toUser.id,
+      }),
     },
     (respuesta) => {
       console.log(`onRetrieveUrl ->respuesta ${respuesta}`);
@@ -143,7 +151,7 @@ export const updateReenviado = (user, credenciales, setData, data) => {
         ...item,
         state: newState,
         leido: l,
-        reenviado: user.toUser
+        reenviado: user.toUser,
       };
       return updateItem;
     }

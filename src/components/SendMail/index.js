@@ -30,6 +30,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   const [showFrom, setShowFrom] = useState(true);
 
   useEffect(() => {
+    console.log(`attach =${email.attachments}`);
     if (tittle === "Responder Email") {
       let to = email.from[0].address;
 
@@ -52,7 +53,6 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
 
     const loadBooks = async () => {
       getDataAdreesBook(0, (books) => {
-      
         console.log(books);
         setAddresBook(books);
       });
@@ -100,6 +100,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         to: fromValues,
         textContent: textContent,
         original: email.html,
+     //   attachments: [email.html],
       };
     }
 
@@ -141,8 +142,6 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     const [searchValue, setSearchValue] = useState("");
     const [listModel, setListModel] = useState([]);
 
-    
-
     useEffect(() => {
       console.log(`compomentDidMount-->RenderBookList ${__MODULE_FILE__}`);
       let books = [];
@@ -151,7 +150,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
       return () => {
         console.log(`compomentUnmount-->RenderBookList ${__MODULE_FILE__}`);
       };
-    },[]);
+    }, []);
 
     const handleClickBook = (ev, address) => {
       console.log(`handleClickBook ${address}`);

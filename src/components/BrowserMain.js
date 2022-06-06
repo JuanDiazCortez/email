@@ -173,7 +173,7 @@ function BrowserMain({
       </Modal>
       <div>
         {!showDetail && (
-          <div horizontal minSecondarySize="15%">
+          <div horizontal minsecondarysize="15%">
             <BrowserEmail
               data={dataRows}
               setData={setDataRows}

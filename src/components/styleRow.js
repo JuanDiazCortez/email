@@ -8,4 +8,4 @@ const styles = {
     color: "grey",
   },
 };
-export default { styles };
+export default styles ;

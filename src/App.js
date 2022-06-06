@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Configuration from "./components/Configuration/Configuration";
 import EEditor from "./components/EEditor";
@@ -23,8 +23,8 @@ function App() {
   const [credenciales, setCredenciales] = useState(
     JSON.parse(localStorage.getItem("creds"))
   );
-
-  const [salir, setSalir] = useState(false);
+let p=""
+ // const [salir, setSalir] = useState(false);
 
   const salirOfSystem = () => {
     localStorage.removeItem("creds");
@@ -76,7 +76,7 @@ function App() {
           setters={{
             setUser: setUser,
             setPassword: setPassword,
-            setCredenciales: setCred
+            setCredenciales: setCred,
           }}
         />
       </div>
@@ -108,7 +108,7 @@ function App() {
         id="id-main"
         className="container-fluid mb-3"
         style={{
-          backgroundColor: "darkgrey"
+          backgroundColor: "darkgrey",
         }}
       >
         <h1 className="fw-bolder">{`Richelet Info Email `}</h1>
@@ -120,7 +120,7 @@ function App() {
             <ul
               className="nav  nav-tabs bg-secundary fw-bold fs-2 ms-auto border border-4 border-top"
               style={{
-                backgroundColor: "##d9d2d2"
+                backgroundColor: "##d9d2d2",
               }}
             >
               <li className="nav-item fw-bold">

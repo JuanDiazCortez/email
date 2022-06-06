@@ -1,5 +1,4 @@
 import React from "react";
-import { icon } from "@fortawesome/fontawesome-svg-core";
 import { getSentEmails } from "../constants";
 import SelectEmailContext from "../Context/SelectEmailContext";
 import EmailContext from "../Context/EmailContext";
