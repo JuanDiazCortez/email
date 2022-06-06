@@ -6,19 +6,19 @@ import BookEditorForm from "./BookEditorForm";
 import BookDeleteForm from "./BookDeleteForm";
 
 import {
-  onRetrieveUrl,
+  //  onRetrieveUrl,
   getDataAdreesBook,
-  URL_DATABASE,
-  PORT_BACKEND,
-  URL_PROTOCOL
+  // URL_DATABASE,
+  //  PORT_BACKEND,
+  //  URL_PROTOCOL,
 } from "../constants";
 
 function AddressFilter({ companyFilter, setCompanyFilter }) {
   return (
     <div className="mt-2">
       <form className="form ms-2" onSubmit={(ev) => ev.preventDefault()}>
-        <div className="row" role="row">
-          <div className="col" role="col">
+        <div className="row">
+          <div className="col">
             <div className="d-flex flex-row ">
               <div className="form-control">
                 <label className="form-label">Companía</label>
@@ -53,15 +53,12 @@ function AddressBook() {
   const [book, setBook] = useState();
   const [page, setPage] = useState(0);
   const [companyFilter, setCompanyFilter] = useState("");
-  const [filter, setFilter] = useState(false);
+  // const [filter, setFilter] = useState(false);
   const [showEditor, setShowEditor] = useState(false);
   const [showDeletion, setShowDeletion] = useState(false);
 
   useEffect(() => {
     console.log("mount AddressBook");
-    setBooks([
-      { id: 12142, company: "3 Arroyos", adress: "elamarque@3arroyos.com" }
-    ]);
     const loadBooks = async () => {
       getDataAdreesBook(page, (libros) => {
         console.log(libros);
@@ -70,7 +67,7 @@ function AddressBook() {
     };
     loadBooks();
     console.log("salio");
-  }, []);
+  },[page]);
 
   const onClose = () => {
     setShowEditor(false);
@@ -154,7 +151,7 @@ function AddressBook() {
                         />
                       </div>
                     </td>
-                    <td /* contenteditable="true" */>
+                    <td>
                       <div>
                         <p>{book.company}</p>
                       </div>

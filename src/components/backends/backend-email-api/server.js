@@ -20,17 +20,24 @@ mailparser.on("end", function (mail_object) {
   console.log("Text body:", mail_object.text); // How are you today?
 });
 
-const client = new Client({
-  hostname: process.env.EMAIL_URL,
-  port: process.env.EMAIL_PORT,
-  tls: true,
-  mailparser: true,
-  parserOptions: { mailParser: mailparser, showAttachmentLinks: false },
-  username: process.env.EMAIL_USER,
-  password: process.env.EMAIL_PASSWD,
-});
+const getClient = () => {
+  const client = new Client({
+    hostname: process.env.EMAIL_URL,
+    port: process.env.EMAIL_PORT,
+    tls: true,
+    mailparser: true,
+    parserOptions: { mailParser: mailparser, showAttachmentLinks: false },
+    username: process.env.EMAIL_USER,
+    password: process.env.EMAIL_PASSWD,
+    // debug: true,
+  });
+  client.connect((ee) => {
+    console.log(ee);
+  });
+  return client;
+};
 
-console.log(`CLIENT->${JSON.stringify(client, null, 2)} `);
+console.log(`CLIENT->${JSON.stringify(getClient(), null, 2)} `);
 
 const getClientNotParsed = () => {
   return new Client({
@@ -99,6 +106,7 @@ const saveEmailToDb = async (fConn, query, email) => {
   console.log(`saveEmailToDb->${__MODULE_FILE__}`);
   let conn = fConn();
   let retVal;
+  /* postgres */
   await conn.connect();
   try {
     console.log("__1");
@@ -212,13 +220,9 @@ const retrieveAllFromMail = (objConn, callBack) => {
   let connection = clientPG();
 
   let log;
-  let pop3Server = client;
+  let pop3Server = getClient();
 
-  pop3Server.connect(function (err) {
-    if (err !== null) {
-      console.log(`${JSON.stringify(err)} `);
-      // callBack(null, err);
-    }
+  pop3Server.connect(function () {
     try {
       pop3Server.retrieveAll(function (err, messages) {
         if (!messages)
@@ -265,47 +269,25 @@ const retrieveAllFromMail = (objConn, callBack) => {
     }
   });
 };
-/* pepe */
 
-const count = (callBack, lClose = false) => {
+const count = (callBack) => {
   console.log(`count ${__MODULE_FILE__}`);
-  client.connect(function (err) {
-    if (err !== null) {
-      console.log(err);
-      callBack(err, null);
-    }
-    if (!client.connected)
-      client.connect((err) => {
-        console.log(`${JSON.stringify(err)}`);
-      });
-    client.count(callBack);
-    if (lClose) {
-      client.quit();
-    }
-  });
+  let client = getClient();
+  client.count(callBack);
+  client.quit();
 };
 
 const retrieve = (nro, callback) => {
   console.log(`retireve -->${__MODULE_FILE__}`);
-
+  let client = getClient();
   try {
-    console.log("__!");
-    if (client.connected) client.quit();
-    client.connect(function (err) {
-      if (err !== null) return callback(err, null);
-      console.log(`__!! ${nro}`);
-      try {
-        client.retrieve(nro, (err, msg) => {
-          if (err) {
-            console.log(err);
-            callback(err, null);
-          }
-          console.log(msg);
-          callback(null, msg);
-        });
-      } catch (error) {
-        console.log(`${error.message}`);
+    client.retrieve(nro, (err, msg) => {
+      if (err) {
+        console.log(err);
+        callback(err, null);
       }
+      console.log(msg);
+      callback(null, msg);
     });
   } catch (error) {
     console.error(`retrieve catch ->${__MODULE_FILE__}
@@ -317,12 +299,12 @@ const retrieve = (nro, callback) => {
     client.quit();
   }
 };
+
 var result, contador, email;
 
 const retrieveRef = async (ref, callBackHTTP) => {
   result = [];
   let pop3 = getClientNotParsed();
-  //
   const _retrieveAll = (pop) => {
     pop.retrieveAll((messages) => {
       let parser = new MailParser({ showAttachmentLinks: true });
@@ -340,71 +322,20 @@ const retrieveRef = async (ref, callBackHTTP) => {
   return emails;
 };
 
-const retrieveRef2 = async (ref, callBack) => {
-  console.log("RetrieveRef2[pop-api]");
-
-  let nlient = getClientNotParsed();
-  console.log("RetrieveRef[0]");
-  nlient.connect((err) => {
-    if (err !== null) {
-      console.log("error");
-      console.log(err);
-      callBack(err, null);
-    }
-    console.log("2");
-    nlient.count(function (err, contador) {
-      if (err) {
-        console.log("error");
-        console.log(err);
-        callBack(err, null);
-      }
-      console.log("3");
-      console.log(contador);
-
-      for (let index = contador; index > 0; index--) {
-        retrieve(nlient, index, async (err, msg) => {
-          console.log(`index ${index}`);
-          if (err) {
-            console.log("error");
-            console.log(err);
-            callBack(err, null);
-          }
-          console.log(msg.messageId);
-          if (msg.messageId === ref) {
-            console.log("Lo encontroo");
-            index = -999999;
-            callBack(null, msg);
-          }
-        });
-      }
-      console.log("quit");
-      callBack(null, "not Found");
-      nlient.quit();
-    });
-  });
-};
-
 const retrieveLast = async (nro, fcallback) => {
-  console.log("retrieveLast");
+  console.log(`retrieveLast->${__MODULE_FILE__}`);
   console.log(nro);
-  console.log(client.connected);
-  if (!client.connected) client.connect();
+  let client = getClient();
 
   client.retrieve(nro, (err, messages) => {
     console.log("retrieve in call");
     if (err) {
-      client.quit();
       fcallback(err, null);
     }
-    client.quit();
     fcallback(null, messages);
   });
+  client.quit();
 };
-
-/* const pp = async (email) => {
-  const item = await parse(new MailParser(), email);
-  response.push(item);
-}; */
 
 module.exports = {
   retrieve,

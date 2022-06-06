@@ -374,7 +374,7 @@ function BrowserEmail({
 
   const isRowForShow = (email) => {
     /* leido not show in gral */
-    if (email === null || email === undefined ) return false;
+    if (email === null || email === undefined) return false;
     if (vista === "G" && email.leido) {
       return false;
     }

@@ -9749,11 +9749,6 @@ node-int64@^0.4.0:
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
   integrity sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==
 
-node-pop3@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/node-pop3/-/node-pop3-0.8.0.tgz#574e546443b0340aac4bd4f5b84c3e758d799809"
-  integrity sha512-UqUPMpgnF6+FNlV6GU9PdfLb2Wg9AOJ5suqmnKuZqYTjPCfYvboSy7H/xGWI9Zp0aY3Lntm5UfIQIe/uBCb+xA==
-
 node-poplib-yapc@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/node-poplib-yapc/-/node-poplib-yapc-0.0.1.tgz#682621be47910f66554ecd00eb51f3bee5a848fd"

@@ -189,7 +189,7 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
               data-bs-toggle="tooltip"
               data-bs-placement="bottom"
               title="recupera todos los correos del server de correo info"
-              style={{ borderRadius: "1rem " }}
+              style={{ borderRadius: "1rem ", maxHeight:"4rem" }}
             >
               Recuperar todos los emails del server
             </button>
