@@ -32,8 +32,8 @@ const getClient = () => {
     // debug: true,
   });
   client.connect((ee) => {
-   console.log(ee);
-   });
+    if (ee !== null) console.log(ee);
+  });
   return client;
 };
 
@@ -217,7 +217,7 @@ const retrieveAllFromMail = (objConn, callBack) => {
 
   const { clientPG, query } = objConn;
   let connection = clientPG();
-  let log=0;
+  let log = 0;
   let pop3Server = getClient();
 
   try {
