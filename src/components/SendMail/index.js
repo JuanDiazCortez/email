@@ -100,7 +100,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         to: fromValues,
         textContent: textContent,
         original: email.html,
-     //   attachments: [email.html],
+        //   attachments: [email.html],
       };
     }
 

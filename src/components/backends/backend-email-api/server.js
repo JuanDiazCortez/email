@@ -23,7 +23,7 @@ mailparser.on("end", function (mail_object) {
 const getClient = () => {
   const client = new Client({
     hostname: process.env.EMAIL_URL,
-    port: process.env.EMAIL_PORT,
+    port: process.env.EMAIL_PORT_CLIENT,
     tls: true,
     mailparser: true,
     parserOptions: { mailParser: mailparser, showAttachmentLinks: false },
@@ -32,8 +32,8 @@ const getClient = () => {
     // debug: true,
   });
   client.connect((ee) => {
-    console.log(ee);
-  });
+   console.log(ee);
+   });
   return client;
 };
 
@@ -213,61 +213,56 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
 };
 
 const retrieveAllFromMail = (objConn, callBack) => {
-  console.log(`retrieveAllFromMail-.->${__MODULE_FILE__} `);
-  //  console.log(objConn);
+  console.log(`retrieveAllFromMail-->${__MODULE_FILE__} `);
+
   const { clientPG, query } = objConn;
-
   let connection = clientPG();
-
-  let log;
+  let log=0;
   let pop3Server = getClient();
 
-  pop3Server.connect(function () {
-    try {
-      pop3Server.retrieveAll(function (err, messages) {
-        if (!messages)
-          return callBack({ message: "error not messages " }, null);
-        //
-        console.log(messages.length);
-        log = messages.length;
-        console.log(`al for each  ${log}`);
-        _numero = 0;
-        messages.reverse().forEach(function (message) {
-          if (!connection._connected && !connection._connecting)
-            connection.connect();
+  try {
+    pop3Server.retrieveAll(function (err, messages) {
+      if (!messages) return callBack({ message: "error not messages " }, null);
+      //
+      console.log(messages.length);
+      log = messages.length;
+      console.log(`al for each  ${log}`);
+      _numero = 0;
+      messages.reverse().forEach(function (message) {
+        if (!connection._connected && !connection._connecting)
+          connection.connect();
 
-          connection
-            .query(query, [message])
-            .then((result) => {
-              connection.end();
-              console.log(`res= ${result.rows[0].updateemails}`);
-              if (_numero === 0)
-                console.log(` update[0]==> ${result.rows[0].updateemails}`);
-              if (result.rows[0].updateemails) {
-                _numero++;
-              }
-            })
-            .catch((error) => {
-              if (error.message !== "Connection terminated") {
-                pop3Server.quit();
-                console.log(`error 157 ${error.stack}`);
-                //    connection.end();
-                callBack(error, null);
-              }
-            });
-        }); // for each
+        connection
+          .query(query, [message])
+          .then((result) => {
+            connection.end();
+            console.log(`res= ${result.rows[0].updateemails}`);
+            if (_numero === 0)
+              console.log(` update[0]==> ${result.rows[0].updateemails}`);
+            if (result.rows[0].updateemails) {
+              _numero++;
+            }
+          })
+          .catch((error) => {
+            if (error.message !== "Connection terminated") {
+              pop3Server.quit();
+              console.log(`error 157 ${error.stack}`);
+              //    connection.end();
+              callBack(error, null);
+            }
+          });
+      }); // for each
 
-        pop3Server.quit();
-        callBack(null, { response: "ok", largo: log, updated: _numero });
-      });
-    } catch (err) {
-      // try connect
-      console.log(`error ppal 176 ${err.stack}`);
-      if (connection._connected) connection.end();
       pop3Server.quit();
-      callBack(null, { response: "error", largo: log, updated: _numero });
-    }
-  });
+      callBack(null, { response: "ok", largo: log, updated: _numero });
+    });
+  } catch (err) {
+    // try connect
+    console.log(`error ppal 176 ${err.stack}`);
+    if (connection._connected) connection.end();
+    pop3Server.quit();
+    callBack(null, { response: "error", largo: log, updated: _numero });
+  }
 };
 
 const count = (callBack) => {

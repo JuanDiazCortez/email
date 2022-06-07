@@ -33,14 +33,23 @@ async function sendMail(email, creds) {
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_DNS,
-    port: process.env.EMAIL_TRANSPORT_PORT,
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
     secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.EMAIL_USER, // generated ethereal user
       pass: process.env.EMAIL_PASSWD, // generated ethereal password
     },
   });
+
+  transporter.verify(function (error, success) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Server is ready to take our messages");
+    }
+  });
+
   console.log(transporter);
   // console.log(JSON.stringify(email.original, null, 2));
 
@@ -51,7 +60,7 @@ async function sendMail(email, creds) {
       from: '"Richelet & Richelet " <info@richelet.com.ar>', // sender address
       to: makeTo(email.to), // list of receivers
       subject: email.subject,
-      // text: email.original, // plain text body
+      text: email.original, // plain text body
       html: email.original, // html body
     });
 

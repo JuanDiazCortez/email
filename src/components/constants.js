@@ -6,6 +6,8 @@ const URL_BACKEND = "192.168.0.120";
 const DEFAULT_POST_HEADER = {
   method: "POST",
   headers: {
+
+    
     Accept: "application/json",
     "Content-Type": "application/json",
   },
