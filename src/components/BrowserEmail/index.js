@@ -24,20 +24,18 @@ import {
   faRepeat,
 } from "@fortawesome/free-solid-svg-icons";
 
-import {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./browser.css";
+// import EmailContext from "../Context/EmailContext";
+import SelectEmailContext from "../Context/SelectEmailContext";
+// const small = "fs2";
+const {
   URL_DATABASE,
   PORT_BACKEND,
   Status,
   onRetrieveUrl,
   // pritMail
-} from "../constants";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./browser.css";
-
-// import EmailContext from "../Context/EmailContext";
-import SelectEmailContext from "../Context/SelectEmailContext";
-// const small = "fs2";
+} = require("../constants");
 
 function BrowserEmail({
   data,
@@ -167,8 +165,10 @@ function BrowserEmail({
 
   const onResponderClick = (ev, tittle) => {
     // console.log("onResponderClick");
-    setTextoEmail(tittle);
-    setShowModalEmail(!showModalEmail);
+    if (selectedRows.length > 0) {
+      setTextoEmail(tittle);
+      setShowModalEmail(!showModalEmail);
+    }
   };
 
   const onClickSelTodos = () => {
@@ -834,7 +834,7 @@ function BrowserEmail({
             windowClass="modale border border border-primary border-4 email"
           >
             <SendMail
-              email={email}
+              email={selectedRows[0]}
               tittle={textoEmail}
               credenciales={credenciales}
               onClose={handleCloseModal}

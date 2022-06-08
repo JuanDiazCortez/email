@@ -1,4 +1,4 @@
-import { onRetrieveUrl2, URL_DATABASE, PORT_BACKEND } from "../constants";
+const { onRetrieveUrl2, URL_DATABASE, PORT_BACKEND } = require("../constants");
 
 export async function getEmails(cantidad, credenciales) {
   const r = await onRetrieveUrl2(

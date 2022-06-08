@@ -5,13 +5,13 @@ import ModalBookEditor from "./ModalBookEditor";
 import BookEditorForm from "./BookEditorForm";
 import BookDeleteForm from "./BookDeleteForm";
 
-import {
+const {
   //  onRetrieveUrl,
   getDataAdreesBook,
   // URL_DATABASE,
   //  PORT_BACKEND,
   //  URL_PROTOCOL,
-} from "../constants";
+} = require("../constants");
 
 function AddressFilter({ companyFilter, setCompanyFilter }) {
   return (
@@ -67,7 +67,7 @@ function AddressBook() {
     };
     loadBooks();
     console.log("salio");
-  },[page]);
+  }, [page]);
 
   const onClose = () => {
     setShowEditor(false);

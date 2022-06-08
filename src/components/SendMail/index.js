@@ -1,16 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
 import SelectEmailContext from "../Context/SelectEmailContext";
+import { Buffer } from "buffer";
 import shortid from "shortid";
 import MyEditor from "../MyEditor";
+import pako from "pako";
 import { faReplyAll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { sendEmailToDb, getDataAdreesBook } from "../constants";
 import "./sendmail.css";
+const { sendEmailToDb, getDataAdreesBook } = require("../constants");
+
+// const zlib = require("zlib");
 
 const __MODULE_FILE__ = "SendMail.js";
 
 function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
-  if (!email.messageId) console.log(`sendMail-> ${JSON.stringify(email)}`);
+  if (!email.messageId)
+    console.log(`No tiene MessageId --> sendMail-> ${JSON.stringify(email)}`);
 
   //   const [showAddressBookList, setShowAddressBookList] = useState(false);
   const [fromValues, setToFromValues] = useState([
@@ -23,14 +28,14 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
 
   const [subjectValue, setSubjectValue] = useState(email.subject);
   const [addressBook, setAddresBook] = useState([]);
-  const { selectedRows, setSelectedRows } = useContext(SelectEmailContext);
+  const { selectedRows } = useContext(SelectEmailContext);
   const [textContent, settextContent] = useState("");
   const [showHelp, setShowHelp] = useState(false);
 
   const [showFrom, setShowFrom] = useState(true);
 
   useEffect(() => {
-    console.log(`attach =${email.attachments}`);
+    console.log(`attach =${JSON.stringify(email)}`);
     if (tittle === "Responder Email") {
       let to = email.from[0].address;
 
@@ -76,11 +81,27 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     from.map((item) => console.log(item.address));
   }
 
+  /*             */
+  function encodeMessage(message) {
+    let enc = encodeURIComponent(message);
+    let zlib = pako.deflate(enc);
+    let binstring = convertUint8ArrayToBinaryString(zlib);
+    let b64 = window.btoa(binstring);
+    return b64;
+  }
+  function convertUint8ArrayToBinaryString(u8Array) {
+    let b_str = "";
+    for (let i = 0; i < u8Array.length; i++) {
+      b_str += String.fromCharCode(u8Array[i]);
+    }
+    return b_str;
+  }
+
   const handleSend = (ev) => {
     let _mail;
     ev.preventDefault();
     console.log("handleSend");
-    console.log(ev.target.textContent);
+    // console.log(ev.target.textContent);
     if (ev.target.textContent === "Enviar" && tittle === "Responder Email") {
       _mail = {
         subject: subjectValue,
@@ -100,7 +121,15 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         to: fromValues,
         textContent: textContent,
         original: email.html,
-        //   attachments: [email.html],
+        attachments: [
+          {
+            // binary buffer as an attachment
+            filename: "attach.html ",
+            content: email.html,
+            contentType: "text/plain",
+            // encoding: "base64",
+          },
+        ],
       };
     }
 

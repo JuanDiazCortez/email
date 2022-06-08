@@ -4,8 +4,8 @@ import { Circles } from "react-loader-spinner";
 import BrowserMain from "./BrowserMain";
 import EmailFilter from "./EmailFilter";
 import EmailContext from "./Context/EmailContext";
-import { printMail, Status, onRetrieveUrl } from "./constants";
 import { getEmails } from "./Hooks/ApiHooks";
+const {  Status, onRetrieveUrl } = require("./constants");
 
 function LoguedAppComponent({ credenciales }) {
   const { data, setData } = useContext(EmailContext);
@@ -30,7 +30,7 @@ function LoguedAppComponent({ credenciales }) {
       <div
         className="form"
         style={{
-          backgroundColor: "cornflowerblue"
+          backgroundColor: "cornflowerblue",
         }}
       >
         <EmailFilter
@@ -45,7 +45,7 @@ function LoguedAppComponent({ credenciales }) {
           style={{
             position: "fixed",
             left: "50%",
-            transform: "translate(-50%, 0)"
+            transform: "translate(-50%, 0)",
           }}
         >
           <Circles

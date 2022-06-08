@@ -1,9 +1,9 @@
-import {
- // getSentEmails,
+const {
+  // getSentEmails,
   onRetrieveUrl2,
   URL_DATABASE,
-  PORT_BACKEND
-} from "../constants";
+  PORT_BACKEND,
+} = require("../constants");
 
 export const updateSpam = async (setSpam, credenciales) => {
   const result = await onRetrieveUrl2(
@@ -12,9 +12,9 @@ export const updateSpam = async (setSpam, credenciales) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ cantidad: 20, credenciales, status: "spam" })
+      body: JSON.stringify({ cantidad: 20, credenciales, status: "spam" }),
     }
   );
 
@@ -29,9 +29,9 @@ export const updateReaded = async (setReaderEmails, credenciales) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ cantidad: 20, credenciales })
+      body: JSON.stringify({ cantidad: 20, credenciales }),
     }
   );
 

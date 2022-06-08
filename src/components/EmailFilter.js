@@ -4,11 +4,9 @@ import { Watch } from "react-loader-spinner";
 const {
   URL_DATABASE,
   PORT_BACKEND,
-  printMail,
-  Status,
   onRetrieveUrl,
   retrieveAllFromDb,
-  getStyleForState
+  getStyleForState,
 } = require("./constants");
 
 function ShowColorState() {
@@ -21,7 +19,7 @@ function ShowColorState() {
           color: "green",
           borderRadius: "1rem ",
           marginLeft: "1rem",
-          backgroundColor: getStyleForState({ state: "normal", leido: false })
+          backgroundColor: getStyleForState({ state: "normal", leido: false }),
         }}
       >
         Normal
@@ -36,8 +34,8 @@ function ShowColorState() {
             marginLeft: "4px",
             backgroundColor: getStyleForState({
               state: "reenviado",
-              leido: false
-            })
+              leido: false,
+            }),
           }}
         >
           Reenviados
@@ -51,7 +49,7 @@ function ShowColorState() {
             color: "red",
             borderRadius: "1rem ",
             marginLeft: "4px",
-            backgroundColor: getStyleForState({ state: "spam", leido: false })
+            backgroundColor: getStyleForState({ state: "spam", leido: false }),
           }}
         >
           Spam
@@ -80,9 +78,9 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ cantidad: cantidad })
+        body: JSON.stringify({ cantidad: cantidad }),
       },
       function (content) {
         sethistoricos(content.cantidad);
@@ -112,7 +110,7 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
         marginLeft: "1rem",
         fontSize: "4rem",
         height: "4rem",
-        backgroundColor: "cornflowerblue"
+        backgroundColor: "cornflowerblue",
       }}
     >
       <form className="form fs-4 d-flex" onSubmit={(e) => e.preventDefault()}>
@@ -123,7 +121,7 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
                 className="form-label "
                 htmlFor="id_cantidad"
                 style={{
-                  marginTop: "-7px"
+                  marginTop: "-7px",
                 }}
               >
                 Traer los últimos
@@ -179,7 +177,7 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
         <div
           className="col"
           style={{
-            alignItems: "flex-start"
+            alignItems: "flex-start",
           }}
         >
           <div className="btn-primary fs-4" style={{ borderRadius: "1rem " }}>
@@ -189,7 +187,7 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
               data-bs-toggle="tooltip"
               data-bs-placement="bottom"
               title="recupera todos los correos del server de correo info"
-              style={{ borderRadius: "1rem ", maxHeight:"4rem" }}
+              style={{ borderRadius: "1rem ", maxHeight: "4rem" }}
             >
               Recuperar todos los emails del server
             </button>
@@ -202,14 +200,14 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
         style={{
           backgroundColor: "catblue",
           width: "calc(30% - 10px)",
-          marginLeft: "2rem"
+          marginLeft: "2rem",
         }}
       >
         {loadingDb ? (
           <div
             className="d-flex flex-row"
             style={{
-              marginTop: "-10px"
+              marginTop: "-10px",
             }}
           >
             <Watch
@@ -219,14 +217,14 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
               height={50}
               width={50}
               style={{
-                left: "50%"
+                left: "50%",
               }}
             />
             <h2
               style={{
                 marginTop: "0px",
                 marginLeft: "18px",
-                color: "white"
+                color: "white",
               }}
             >
               Cargando emails

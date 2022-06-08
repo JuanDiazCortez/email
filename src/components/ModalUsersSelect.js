@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import shortid from "shortid";
-import { onRetrieveUrl } from "./constants";
 import "./modal.css";
+const { onRetrieveUrl } = require("./constants");
 const URL_DATABASE = require("./constants").URL_DATABASE;
 const PORT_BACKEND = require("./constants").PORT_BACKEND;
 
@@ -10,7 +10,7 @@ function ModalUsersSelect({
   credenciales,
   setShowModal,
   closeModal,
-  setUserSelect
+  setUserSelect,
 }) {
   //
   const [listUsers, setListUsers] = useState([]);
@@ -23,18 +23,18 @@ function ModalUsersSelect({
           method: "POST",
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            rows: []
-          })
+            rows: [],
+          }),
         },
         function (result) {
           setListUsers(result.rows);
         }
       );
     };
-    let result = retrieveList();
+    retrieveList();
   }, []);
   const selectUser = (user) => {
     setUserSelect(user);

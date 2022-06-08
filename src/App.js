@@ -5,7 +5,6 @@ import EEditor from "./components/EEditor";
 import Inscripcion from "./components/Inscripcion";
 import AddressBook from "./components/AddressBook";
 import LoguedAppComponent from "./components/LoguedAppComponent";
-import { PORT_BACKEND } from "./components/constants";
 import UserPassword from "./components/UserPassword";
 import TestComponent from "./components/TestComponent";
 
@@ -14,7 +13,8 @@ import { EmailContextProvider } from "./components/Context/EmailContext";
 
 import { SelectEmailContextProvider } from "./components/Context/SelectEmailContext";
 import "./App.css";
-const { URL_DATABASE } = require("./components/constants");
+
+const { URL_DATABASE, PORT_BACKEND } = require("./components/constants");
 
 function App() {
   console.log(`${URL_DATABASE}:${PORT_BACKEND}`);
@@ -23,8 +23,8 @@ function App() {
   const [credenciales, setCredenciales] = useState(
     JSON.parse(localStorage.getItem("creds"))
   );
-let p=""
- // const [salir, setSalir] = useState(false);
+
+  // const [salir, setSalir] = useState(false);
 
   const salirOfSystem = () => {
     localStorage.removeItem("creds");
