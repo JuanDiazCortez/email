@@ -12,11 +12,10 @@ function RenderAttach({ attach }) {
   const {
     length,
     content,
-    checksum,
     fileName,
     contentType,
     transferEncoding,
-    generatedFileName
+    generatedFileName,
   } = attach;
 
   const isIMG = (t) => {
@@ -41,7 +40,7 @@ function RenderAttach({ attach }) {
       {generatedFileName && generatedFileName.includes("eml") ? (
         <div>
           <a
-            href="#"
+            href="javascript(0)"
             data-bs-toggle="tooltip"
             data-bs-placement="bottom"
             title="Click para bajar attach"
@@ -70,7 +69,7 @@ function RenderAttach({ attach }) {
                 minWidth: "100rem",
                 minHeight: "40rem",
                 overflowx: "hidden",
-                overflowy: "hidden"
+                overflowy: "hidden",
               }}
               allowFullScreen
             />
@@ -88,7 +87,7 @@ function RenderAttach({ attach }) {
                 width: "100%",
                 heigth: "100% ",
                 overflowx: "hidden",
-                overflowy: "hidden"
+                overflowy: "hidden",
               }}
               allowFullScreen
             />
@@ -107,7 +106,7 @@ function RenderAttach({ attach }) {
                 width: "100%",
                 heigth: "100% ",
                 overflowx: "hidden",
-                overflowy: "hidden"
+                overflowy: "hidden",
               }}
             />
           ) : null}
@@ -148,7 +147,7 @@ function EmailComponent({ data, name }) {
         }}
         style={{
           backgroundColor: "grey",
-          color: "white"
+          color: "white",
         }}
       >
         {showHeader ? "- hide header details" : "+ show header details"}
@@ -210,7 +209,7 @@ function EmailComponent({ data, name }) {
               {` ${new Date(date).toLocaleDateString(
                 navigator.language
               )}  ${new Date(date).toLocaleTimeString("es-AR", {
-                hour12: false
+                hour12: false,
               })}`}
             </p>
           </div>
@@ -248,7 +247,7 @@ function EmailComponent({ data, name }) {
                       alt={domNode.attribs.src}
                       stilo={{
                         height: domNode.attribs.heigt,
-                        width: domNode.attribs.width
+                        width: domNode.attribs.width,
                       }}
                     />
                   );
@@ -263,7 +262,7 @@ function EmailComponent({ data, name }) {
                   // console.log(domNode);
                 }
                 if (domNode.name && domNode.name === "html") return null;
-              }
+              },
             })
           : null}
         {!html ? (

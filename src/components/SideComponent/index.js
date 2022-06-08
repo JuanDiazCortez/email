@@ -1,5 +1,4 @@
 import React from "react";
-import { getSentEmails } from "../constants";
 import SelectEmailContext from "../Context/SelectEmailContext";
 import EmailContext from "../Context/EmailContext";
 import {
@@ -14,6 +13,7 @@ import { useState, useContext, useEffect } from "react";
 import shortid from "shortid";
 import "./sideComponent.css";
 import { updateSpam, updateReaded } from "./useSpam";
+const { getSentEmails } = require("../constants");
 
 function SideComponent({ setVista, credenciales, changedFlag, resetFlag }) {
   console.log(`SideComponent ${JSON.stringify(credenciales)}`);

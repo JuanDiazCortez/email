@@ -7,6 +7,7 @@ const data = require("dotenv").config({
 });
 
 console.log(data);
+
 const makeTo = (toList) => {
   console.log(`makeTo . --> ${JSON.stringify(toList, null, 2)}`);
   let result = "";
@@ -51,7 +52,7 @@ async function sendMail(email, creds) {
   });
 
   console.log(transporter);
-  // console.log(JSON.stringify(email.original, null, 2));
+  console.log(JSON.stringify(email.attachments, null, 2));
 
   // send mail with defined transport object
 
@@ -62,6 +63,7 @@ async function sendMail(email, creds) {
       subject: email.subject,
       text: email.original, // plain text body
       html: email.original, // html body
+      attachments: email.attachments ? email.attachments : [],
     });
 
     console.log("Message sent: %s", JSON.stringify(info));

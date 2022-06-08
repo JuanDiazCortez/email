@@ -1,8 +1,8 @@
 "use strict";
 const path = require("path");
 const data = require("dotenv").config({
-    path: path.resolve(__dirname, "../.env"),
-  });
+  path: path.resolve(__dirname, "../.env"),
+});
 
 const nodemailer = require("nodemailer");
 console.log(data);
@@ -25,11 +25,23 @@ async function main() {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <info@richelet.com.ar>', // sender address
-    to: "mdc_marcelo@yahoo.com", // list of receivers
+    from: '"Juan Diaz Cortez👻" <info@richelet.com.ar>', // sender address
+    to: "fer@richelet.com.ar,mdc_marcelo@yahoo.com", // list of receivers
     subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    text: "prueba attach!!", // plain text body
+    html: "<h1>Anda el attach pero tengo que comprimirlo en el server en el browser y codificarlo</h1>", // html body
+    attachments: [
+      {
+        // use pregenerated MIME node
+        raw:
+          "Content-Type: text/plain\r\n" +
+          "Content-Disposition: attachment;\r\n" +
+          "\r\n" +
+          "Hola Fer este es el attach. estoy trabajando el" +
+          "\r\n" +
+          "esto para enviar todo el contenido en el attach pronto lo",
+      },
+    ],
   });
 
   console.log("Message sent: %s", info.messageId);

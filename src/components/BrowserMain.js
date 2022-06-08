@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import ReactDOM from "react-dom";
 import BrowserEmail from "./BrowserEmail";
 import { useState, useEffect } from "react";
 import EmailComponent from "./EmailComponent";
@@ -39,7 +38,7 @@ function BrowserMain({
   const [changedFlag, setChangeFlag] = useState(false);
   const [vista, setVista] = useState("G");
   const [dataRows, setDataRows] = useState([]);
-  const { data, setData } = useContext(EmailContext);
+  const { data } = useContext(EmailContext);
   const { readedEmails, setReaderEmails } = useContext(SelectEmailContext);
   const { spam } = useContext(SelectEmailContext);
   const { sentEmails } = useContext(SelectEmailContext);

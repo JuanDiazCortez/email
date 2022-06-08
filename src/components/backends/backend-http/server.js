@@ -273,19 +273,7 @@ app.post("/sendEmailToDb", (req, resp) => {
     return resp.status(200).json({ result: data });
   });
 });
-
-app.post("/getSentEmailForUser_old ", (req, resp) => {
-  console.log(`getSentEmailForUser ${JSON.stringify(req.body)}`);
-  const { credenciales } = req.body;
-  PG_getSentEmailForUser(credenciales, (data, err) => {
-    console.log(data);
-    if (err) {
-      return resp.status(501).json({ error: err });
-    }
-    return resp.status(200).json({ result: data });
-  });
-});
-
+/*
 app.post("/sendEmailToDb", (req, resp) => {
   console.log("/sendEmailToDb");
   console.log(req.body);
@@ -293,6 +281,19 @@ app.post("/sendEmailToDb", (req, resp) => {
   console.log(credenciales);
 
   PG_sendEmailToDb(credenciales, email, (data, err) => {
+    if (err) {
+      return resp.status(501).json({ error: err });
+    }
+    return resp.status(200).json({ result: data });
+  });
+});
+*/
+
+app.post("/getSentEmailForUser_old ", (req, resp) => {
+  console.log(`getSentEmailForUser ${JSON.stringify(req.body)}`);
+  const { credenciales } = req.body;
+  PG_getSentEmailForUser(credenciales, (data, err) => {
+    console.log(data);
     if (err) {
       return resp.status(501).json({ error: err });
     }
@@ -464,4 +465,3 @@ app.post("/loginUser", (req, resp) => {
 });
 
 app.listen(port, () => console.log(`server started port:${port}`));
-

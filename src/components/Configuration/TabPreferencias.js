@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
+import shortid from "shortid";
+const {
   onRetrieveUrl,
   URL_DATABASE,
-  PORT_BACKEND,
   URL_PROTOCOL,
-  DEFAULT_POST_HEADER
-} from "../constants";
-
-import shortid from "shortid";
+  PORT_BACKEND,
+  DEFAULT_POST_HEADER,
+} = require("../constants");
 
 function ListSites({ lista }) {
   console.log(lista);
@@ -54,8 +53,8 @@ function TabPreferencias({ credenciales }) {
     let header = {
       ...DEFAULT_POST_HEADER,
       body: JSON.stringify({
-        user: credenciales
-      })
+        user: credenciales,
+      }),
     };
     console.log(header);
     onRetrieveUrl(

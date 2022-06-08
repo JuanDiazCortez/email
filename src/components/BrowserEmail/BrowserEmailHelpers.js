@@ -1,10 +1,10 @@
-import {
+const {
   URL_DATABASE,
   PORT_BACKEND,
   Status,
   onRetrieveUrl,
   // printMail
-} from "../constants";
+} = require("../constants");
 
 export const onListFilter = (
   ev,
@@ -23,10 +23,12 @@ export const onListFilter = (
   switch (ev) {
     case "origen":
       let result = [];
-      data.filter((mail) => {
+      data.map((mail) => {
+        
         mail.from.forEach((element) => {
           if (result.indexOf(element.address) === -1) {
-            result.push(element.address);
+             result.push(element.address);
+
           }
         });
       });

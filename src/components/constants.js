@@ -1,13 +1,11 @@
-var PORT_BACKEND = "5100";
+const PORT_BACKEND = "5100";
 const URL_DATABASE = "192.168.0.120";
-var URL_PROTOCOL = "http";
+const URL_PROTOCOL = "http";
 const URL_BACKEND = "192.168.0.120";
 
 const DEFAULT_POST_HEADER = {
   method: "POST",
   headers: {
-
-    
     Accept: "application/json",
     "Content-Type": "application/json",
   },
@@ -163,7 +161,7 @@ const printMail = (mail) => {
   console.log(JSON.stringify({ ...mail, html: "" }, null, 2));
 };
 
-const makeReduce = (arrayBuffer) => {
+const makeReduce=(arrayBuffer) => {
   return window.btoa(
     new Uint8Array(arrayBuffer).reduce(function (data, byte) {
       return data + String.fromCharCode(byte);
@@ -176,35 +174,35 @@ const getStyleForState = (email) => {
   if (leido) {
     return "#1f11";
   }
+
   switch (state) {
     case "reenviado":
       return "#ffc107";
-      break;
+
     case "normal":
       return "#79dd79";
-      break;
+
     case "spam":
       return "#ef6868";
-      break;
+
     default:
       return "white";
-      break;
   }
 };
+
 
 module.exports = {
   PORT_BACKEND,
   URL_DATABASE,
   URL_PROTOCOL,
-  printMail,
-  onRetrieveUrl,
-  onRetrieveUrl2,
-  retrieveAllFromDb,
-  sendEmailToDb,
-  getSentEmails,
   DEFAULT_POST_HEADER,
   Status,
   makeReduce,
+  onRetrieveUrl,
+  sendEmailToDb,
+  getSentEmails,
+  onRetrieveUrl2,
   getDataAdreesBook,
+  DEFAULT_POST_HEADER,
   getStyleForState,
 };

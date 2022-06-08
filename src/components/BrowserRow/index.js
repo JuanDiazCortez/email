@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   getIconFromName,
   searchStatus,
@@ -13,14 +13,14 @@ import shortid from "shortid";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "../styleRow.js";
-import { Status, printMail, getStyleForState } from "../constants";
-import { useHref } from "react-router-dom";
+
 import EmailContext from "../Context/EmailContext";
 import SelectEmailContext from "../Context/SelectEmailContext";
 import "./browserRow.css";
+const { Status, getStyleForState } = require("../constants");
 
 const medium = "text-md-start fs-4"; // medium
-const large = "text-lg-start"; // large
+// const large = "text-lg-start"; // large
 
 const RenderAttachs = ({ email }) => {
   const [showAttach, setShowAttach] = useState(true);

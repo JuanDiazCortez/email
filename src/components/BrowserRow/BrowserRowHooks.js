@@ -9,7 +9,7 @@ import {
   faPaperclip,
   faReply,
 } from "@fortawesome/free-solid-svg-icons";
-import { Status, makeReduce } from "../constants";
+const { Status, makeReduce } = require("../constants");
 
 /*
 
@@ -34,10 +34,10 @@ export const onClickDownLoadAttach = (ev, attach) => {
     content.data
   )}`;
   // alert(dataUrl);
-  
+
   //  target.href = dataUrl;
   target.setAttribute("download", `${attach.fileName} `);
-  var win = window.open(dataUrl, '_blank');
+  var win = window.open(dataUrl, "_blank");
   win.focus();
 };
 

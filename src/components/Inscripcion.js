@@ -2,12 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import ErroresStack from "./ErroresStack";
 
-const {
-  URL_DATABASE,
-  PORT_BACKEND,
-  printMail,
-  status,
-} = require("./constants");
+const { URL_DATABASE, PORT_BACKEND } = require("./constants");
 
 function Inscripcion({ setter, isInScript }) {
   const [nombre, setNombre] = useState("");
