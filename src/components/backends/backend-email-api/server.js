@@ -37,7 +37,6 @@ const getClient = () => {
   return client;
 };
 
-console.log(`CLIENT->${JSON.stringify(getClient(), null, 2)} `);
 
 const getClientNotParsed = () => {
   return new Client({
@@ -264,6 +263,7 @@ const retrieveAllFromMail = (objConn, callBack) => {
     callBack(null, { response: "error", largo: log, updated: _numero });
   }
 };
+
 
 const count = (callBack) => {
   console.log(`count ${__MODULE_FILE__}`);
