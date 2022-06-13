@@ -105,7 +105,7 @@ async function sendMail(email, creds) {
       from: '"Richelet & Richelet " <info@richelet.com.ar>', // sender address
       to: makeTo(email.to), // list of receivers
       subject: email.subject,
-      text: email.original, // plain text body
+      text: email.text, // plain text body
       html: email.original, // html body
       attachments: email.attachments,
     });

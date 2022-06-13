@@ -140,22 +140,22 @@ const sendEmailToDb = (credenciales, email, callback) => {
   console.log(`constants=>sendEmailToDb`);
 
   try {
-    let stringtogzip = JSON.stringify({ credenciales, email });
-    if (typeof stringtogzip === "string") console.log("es String stringtozip");
-    console.log(`largo:${stringtogzip.length} ${stringtogzip}`);
+   // let stringtogzip = JSON.stringify({ credenciales, email });
+   // if (typeof stringtogzip === "string") console.log("es String stringtozip");
+   // console.log(`largo:${stringtogzip.length} ${stringtogzip}`);
     /* gzip devuelve object  */
-    let gZipString = pako.gzip(stringtogzip, { to: "string" });
+  //  let gZipString = pako.gzip(stringtogzip, { to: "string" });
 
-    if (typeof gZipString === "string") {
-      console.log(`Es String largo:${gZipString.length} es:${gZipString}`);
-    } else {
-      console.log(typeof gZipString);
-      console.log(`Es Object ${JSON.stringify(gZipString)}`);
-      console.log(`${typeof JSON.stringify(gZipString)}`);
-    }
+  //  if (typeof gZipString === "string") {
+  //    console.log(`Es String largo:${gZipString.length} es:${gZipString}`);
+  //  } else {
+  //    console.log(typeof gZipString);
+  //    console.log(`Es Object ${JSON.stringify(gZipString)}`);
+  //    console.log(`${typeof JSON.stringify(gZipString)}`);
+  //  }
     
-    let stringBody = JSON.stringify(gZipString);
-    console.log(stringBody.length);
+  //  let stringBody = JSON.stringify(gZipString);
+  //  console.log(stringBody.length);
     onRetrieveUrl(
       `${URL_PROTOCOL}://${URL_DATABASE}:${PORT_BACKEND}/sendEmailToDb`,
       {
