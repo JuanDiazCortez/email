@@ -82,7 +82,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     from.map((item) => console.log(item.address));
   }
 
-  /*             */
+  /*           
   const makeAttachments = (attachments) => {
     console.log(`makeAttachments-->_SendMail.js`);
     let encode;
@@ -127,7 +127,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     }
     return b_str;
   }
-
+*/
   const handleSend = (ev) => {
     ev.preventDefault();
     let _mail;
