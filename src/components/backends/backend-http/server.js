@@ -290,7 +290,7 @@ function Uint8ToBase64(u8Arr) {
     slice = u8Arr.subarray(index, Math.min(index + CHUNK_SIZE, length));
     result += String.fromCharCode.apply(null, slice);
     index += CHUNK_SIZE;
-  }
+  git }
   return btoa(result);
 }
 
