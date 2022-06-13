@@ -1,6 +1,8 @@
 "use strict";
+const pako = require("pako");
 const { log } = require("console");
 const nodemailer = require("nodemailer");
+const printMail = require("../../constants");
 const path = require("path");
 const data = require("dotenv").config({
   path: path.resolve(__dirname, "../.env"),
@@ -30,7 +32,7 @@ const makeTo = (toList) => {
 };
 // async..await is not allowed in global scope, must use a wrapper
 async function sendMail(email, creds) {
-  console.log(`sendMail->_SendMail.js ${JSON.stringify(email, null, 2)}`);
+  console.log(`sendMail->_SendMail.js `);
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
@@ -43,6 +45,48 @@ async function sendMail(email, creds) {
     },
   });
 
+  function encodeMessage(message) {
+    let enc = encodeURIComponent(message);
+    let zlib = pako.deflate(enc);
+    let binstring = convertUint8ArrayToBinaryString(zlib);
+    let b64 = window.btoa(binstring);
+    return b64;
+  }
+  function convertUint8ArrayToBinaryString(u8Array) {
+    let b_str = "";
+    for (let i = 0; i < u8Array.length; i++) {
+      b_str += String.fromCharCode(u8Array[i]);
+    }
+    return b_str;
+  }
+
+  const makeAttachments = (attachments) => {
+    console.log(`makeAttachments-->_SendMail.js`);
+    let encode;
+    let attachs = [];
+    if (attachments.length === 0) return [];
+    for (let index = 0; index < attachments.length; index++) {
+      const attach = attachments[index];
+
+      let { contentType, fileName, content, transferEncoding } = attach;
+      let { data, type } = content;
+      console.log(`contentType ${contentType}
+                  transferEncoding: ${transferEncoding}`);
+      encode = data;
+      if (contentType === "base64") {
+        encode = encodeMessage(data);
+      }
+      attachs.push({
+        fileName,
+        contentType,
+        content: encode,
+        encodding: transferEncoding,
+      });
+    }
+
+    return attachs;
+  };
+
   transporter.verify(function (error, success) {
     if (error) {
       console.log(error);
@@ -51,7 +95,7 @@ async function sendMail(email, creds) {
     }
   });
 
-  console.log(transporter);
+  // console.log(transporter);
   console.log(JSON.stringify(email.attachments, null, 2));
 
   // send mail with defined transport object
@@ -63,7 +107,7 @@ async function sendMail(email, creds) {
       subject: email.subject,
       text: email.original, // plain text body
       html: email.original, // html body
-      attachments: email.attachments ? email.attachments : [],
+      attachments: email.attachments,
     });
 
     console.log("Message sent: %s", JSON.stringify(info));
@@ -77,7 +121,6 @@ async function sendMail(email, creds) {
   }
 }
 
-// main().catch(console.error);
 module.exports = {
   sendMail,
 };

@@ -2,7 +2,7 @@ const PORT_BACKEND = "5100";
 const URL_DATABASE = "192.168.0.120";
 const URL_PROTOCOL = "http";
 const URL_BACKEND = "192.168.0.120";
-
+const pako = require("pako");
 const DEFAULT_POST_HEADER = {
   method: "POST",
   headers: {
@@ -117,27 +117,64 @@ const getDataAdreesBook = async (page, callback) => {
     },
   };
 
+  /*   function compressBody(body) {
+    return new Promise(function (resolve, reject) {
+      zlib.deflate(body, (err, buffer) => {
+        if (err) {
+          console.log("Error Zipping");
+          reject(err);
+        }
+        console.log("Zipped");
+
+        resolve(buffer);
+      });
+    });
+  } */
+
   let url = `${URL_PROTOCOL}://${URL_DATABASE}:${PORT_BACKEND}/getAddressBook?page=${page}`;
   console.log(url);
   onRetrieveUrl(url, header, callback);
 };
 
 const sendEmailToDb = (credenciales, email, callback) => {
-  console.log("constants=>sendEmailToDb");
-  onRetrieveUrl(
-    `${URL_PROTOCOL}://${URL_DATABASE}:${PORT_BACKEND}/sendEmailToDb`,
-    {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ credenciales, email }),
-    },
-    (data, err) => {
-      callback(data, err);
+  console.log(`constants=>sendEmailToDb`);
+
+  try {
+    let stringtogzip = JSON.stringify({ credenciales, email });
+    if (typeof stringtogzip === "string") console.log("es String stringtozip");
+    console.log(`largo:${stringtogzip.length} ${stringtogzip}`);
+    /* gzip devuelve object  */
+    let gZipString = pako.gzip(stringtogzip, { to: "string" });
+
+    if (typeof gZipString === "string") {
+      console.log(`Es String largo:${gZipString.length} es:${gZipString}`);
+    } else {
+      console.log(typeof gZipString);
+      console.log(`Es Object ${JSON.stringify(gZipString)}`);
+      console.log(`${typeof JSON.stringify(gZipString)}`);
     }
-  );
+    
+    let stringBody = JSON.stringify(gZipString);
+    console.log(stringBody.length);
+    onRetrieveUrl(
+      `${URL_PROTOCOL}://${URL_DATABASE}:${PORT_BACKEND}/sendEmailToDb`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          //    "Content-Encoding": "gzip",
+          // "Content-Length": stringBody.byteLength,
+        },
+        body: JSON.stringify({ credenciales, email }),
+      },
+      (data, err) => {
+        callback(data, err);
+      }
+
+    );
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const retrieveAllFromDb = async (callback) => {
@@ -161,7 +198,7 @@ const printMail = (mail) => {
   console.log(JSON.stringify({ ...mail, html: "" }, null, 2));
 };
 
-const makeReduce=(arrayBuffer) => {
+const makeReduce = (arrayBuffer) => {
   return window.btoa(
     new Uint8Array(arrayBuffer).reduce(function (data, byte) {
       return data + String.fromCharCode(byte);
@@ -190,7 +227,6 @@ const getStyleForState = (email) => {
   }
 };
 
-
 module.exports = {
   PORT_BACKEND,
   URL_DATABASE,
@@ -200,9 +236,10 @@ module.exports = {
   makeReduce,
   onRetrieveUrl,
   sendEmailToDb,
+  retrieveAllFromDb,
   getSentEmails,
   onRetrieveUrl2,
   getDataAdreesBook,
-  DEFAULT_POST_HEADER,
   getStyleForState,
+  printMail,
 };
