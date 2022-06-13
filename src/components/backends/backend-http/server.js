@@ -1,4 +1,4 @@
-const Blob = require("node:buffer").Blob;
+// const Blob = require("node:buffer").Blob;
 const __MODULE_FILE__ = "BACKEND-HTTP";
 const express = require("express");
 const cors = require("cors");
@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const compression = require("compression");
 const path = require("path");
 const pako = require("pako");
-const FileReader = require("filereader");
+// const FileReader = require("filereader");
 
 const {
   retrieveLast,
@@ -274,6 +274,9 @@ app.post("/getSentEmailForUser", (req, resp) => {
 const getEmailForAttach = async (id) => {
   let resu = await PG_getEmailForMessageId(id);
   return resu;
+};
+const btoa = (text) => {
+  return Buffer.from(text, 'binary').toString('base64');
 };
 
 function Uint8ToBase64(u8Arr) {
