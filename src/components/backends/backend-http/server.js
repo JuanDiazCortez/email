@@ -281,7 +281,7 @@ const getEmailForAttach = async (id) => {
   return resu;
 };
 const btoa = (text) => {
-  return Buffer.from(text, 'binary').toString('base64');
+  return Buffer.from(text, "binary").toString("base64");
 };
 
 function Uint8ToBase64(u8Arr) {
@@ -295,7 +295,8 @@ function Uint8ToBase64(u8Arr) {
     slice = u8Arr.subarray(index, Math.min(index + CHUNK_SIZE, length));
     result += String.fromCharCode.apply(null, slice);
     index += CHUNK_SIZE;
-  git }
+    git;
+  }
   return btoa(result);
 }
 
@@ -381,7 +382,7 @@ function arrayBufferToBase64(buffer) {
 app.post("/sendEmailToDb", async (req, resp) => {
   let attachments;
   console.log(`${__MODULE_FILE__}-->sendEmailToDb`);
-//  console.log(req.body);
+  //  console.log(req.body);
 
   try {
     // let stringBody = pako.ungzip(req.body.gZipString, { to: "string" });
@@ -400,9 +401,16 @@ app.post("/sendEmailToDb", async (req, resp) => {
         let buffer = arrayBufferToBase64(element.content.data);
 
         email.attachments.push({
-          fileName: element.fileName,
-          path: `data:${element.contentType};base64,${buffer}`,
+          // encoded string as an attachment
+          filename: element.fileName,
+          content: buffer,
+          encoding: "base64",
+          contentType: element.contentType,
         });
+        // email.attachments.push({
+        //   fileName: element.fileName,
+        //   path: `data:${element.contentType};base64,${buffer}`,
+        // });
       }
       // console.log(attachmentOf(attachments[0]));
     }
