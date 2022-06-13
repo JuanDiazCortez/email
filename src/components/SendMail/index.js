@@ -3,11 +3,11 @@ import SelectEmailContext from "../Context/SelectEmailContext";
 import { Buffer } from "buffer";
 import shortid from "shortid";
 import MyEditor from "../MyEditor";
-import pako from "pako";
 import { faReplyAll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./sendmail.css";
-const { sendEmailToDb, getDataAdreesBook } = require("../constants");
+const { sendEmailToDb, getDataAdreesBook, printMail } = require("../constants");
+const pako = require("pako");
 
 // const zlib = require("zlib");
 
@@ -35,7 +35,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   const [showFrom, setShowFrom] = useState(true);
 
   useEffect(() => {
-    console.log(`attach =${JSON.stringify(email)}`);
+    console.log(`sendMail->useefeectmail`);
+    //  printMail(email);
     if (tittle === "Responder Email") {
       let to = email.from[0].address;
 
@@ -82,11 +83,41 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   }
 
   /*             */
+  const makeAttachments = (attachments) => {
+    console.log(`makeAttachments-->_SendMail.js`);
+    let encode;
+    let attachs = [];
+    if (attachments.length === 0) return [];
+    for (let index = 0; index < attachments.length; index++) {
+      const attach = attachments[index];
+
+      let { contentType, fileName, content, transferEncoding } = attach;
+      let { data, type } = content;
+      console.log(`contentType ${contentType}
+      transferEncoding: ${transferEncoding}
+      contentType:${contentType}`);
+      encode = data;
+      if (transferEncoding === "base64") {
+        console.log("base64");
+        encode = encodeMessage(data);
+      }
+      let att = {
+        fileName,
+        contentType,
+        content: encode,
+        encodding: transferEncoding,
+      };
+      console.log(`attachments=${JSON.stringify(att)}`);
+      attachs.push(att);
+    }
+    return attachs;
+  };
+
   function encodeMessage(message) {
     let enc = encodeURIComponent(message);
     let zlib = pako.deflate(enc);
     let binstring = convertUint8ArrayToBinaryString(zlib);
-    let b64 = window.btoa(binstring);
+    let b64 = btoa(binstring);
     return b64;
   }
   function convertUint8ArrayToBinaryString(u8Array) {
@@ -98,8 +129,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   }
 
   const handleSend = (ev) => {
-    let _mail;
     ev.preventDefault();
+    let _mail;
     console.log("handleSend");
     // console.log(ev.target.textContent);
     if (ev.target.textContent === "Enviar" && tittle === "Responder Email") {
@@ -110,6 +141,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         to: fromValues,
         textContent: textContent,
         original: email.html,
+        sendAttach: false,
       };
     }
 
@@ -121,15 +153,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         to: fromValues,
         textContent: textContent,
         original: email.html,
-        attachments: [
-          {
-            // binary buffer as an attachment
-            filename: "attach.html ",
-            content: email.html,
-            contentType: "text/plain",
-            // encoding: "base64",
-          },
-        ],
+        attachments: [],
+        sendAttach: email.attachments.length > 0 ? true : false,
       };
     }
 
@@ -141,6 +166,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         to: fromValues,
         textContent: textContent,
         original: email.html,
+        attachments: [],
+        sendAttach: email.attachments.length > 0 ? true : false,
       };
     }
 
@@ -150,9 +177,9 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
 
       (data, err) => {
         if (err) {
-          return console.log(err);
+          return console.error(err);
         }
-        console.log(data);
+        //   console.log(data);
         onClose();
       }
     );

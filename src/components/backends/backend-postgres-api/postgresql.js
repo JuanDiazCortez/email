@@ -249,6 +249,26 @@ const retrieveLastFromDb = async (cant, credenciales, callBack) => {
   }
 };
 
+const PG_getEmailForMessageId = async (id) => {
+  const query = {
+    text: `select mail  from  webinfo.emails  where mail ->> 'messageId' = $1;`,
+    values: [id],
+    rowAsArray: true,
+  };
+
+  let client = getClient();
+  try {
+    await client.connect();
+    let result = await client.query(query);
+    console.log(result.rows.length);
+    client.end();
+    return { error: null, result: result.rows[0].mail.attachments };
+  } catch (error) {
+    return { error: error, result: null };
+    console.log(error);
+  }
+};
+
 const PG_getSentEmailForUser = async (credenciales, callback) => {
   console.log(`Pg: getSentEmailForUser`);
   console.log(credenciales);
@@ -267,7 +287,7 @@ const PG_getSentEmailForUser = async (credenciales, callback) => {
     let result = await client.query(query);
     console.log(result.rows.length);
     client.end();
-    console.log(result.rows);
+    //  console.log(result.rows);
     callback(result.rows, null);
   } catch (error) {
     callback(1, error);
@@ -275,7 +295,7 @@ const PG_getSentEmailForUser = async (credenciales, callback) => {
   }
 };
 const PG_sendEmailToDb = async (credenciales, email, callback) => {
-  console.log(`Pg: sendEmailToDb ${JSON.stringify(email, null, 2)}`);
+  // console.log(`Pg: sendEmailToDb ${JSON.stringify(email, null, 2)}`);
   //  console.log(credenciales);
 
   const query = {
@@ -443,6 +463,7 @@ const addStatus = async (emails, callbackReturn) => {
     client.end();
   }
 };
+
 const retrieveMailFromDb = async (callBack) => {
   let client = getClient();
   // let Qry =
@@ -533,7 +554,7 @@ const updateAllMailToDb = async (callBack) => {
   };
   var retrieveAllFromMail =
     require("../backend-email-api/server").retrieveAllFromMail;
-  await retrieveAllFromMail(object, callBack);
+  retrieveAllFromMail(object, callBack);
 };
 
 const saveMailToDb = async (callBack) => {
@@ -611,6 +632,7 @@ module.exports = {
   PG_sendEmailToDb,
   PG_retrieveReaded,
   retrieveLastFromDb,
+  PG_getEmailForMessageId,
   getAdressBook,
   saveMailToDb,
   addUser,

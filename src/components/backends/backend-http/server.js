@@ -1,12 +1,14 @@
+const Blob = require("node:buffer").Blob;
 const __MODULE_FILE__ = "BACKEND-HTTP";
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const compression = require("compression");
 const path = require("path");
+const pako = require("pako");
+const FileReader = require("filereader");
+
 const {
-  retrieveLastNew,
-  retrieveLastOld,
   retrieveLast,
   retrieveRef,
   retrieve,
@@ -25,6 +27,7 @@ const {
   PG_retrieveReaded,
   PG_getSentEmailForUser,
   PG_retrieveForStatus,
+  PG_getEmailForMessageId,
   getAdressBook,
   saveMailToDb,
   addUser,
@@ -32,18 +35,25 @@ const {
 } = require("../../backends/backend-postgres-api/postgresql");
 
 const { PORT_BACKEND, printMail } = require("../../constants");
-const { CLIENT_RENEG_LIMIT } = require("tls");
+// const { CLIENT_RENEG_LIMIT } = require("tls");
 
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.raw());
+
 app.use(compression());
+
+app.use(bodyParser.json({ limit: "50mb", type: "application/json" }));
+app.use(bodyParser.json());
+app.use(express.json({ limit: "50mb" }));
+// app.use(express.urlencoded({ limit: "50mb" }));
 app.use(
-  bodyParser.json({
-    limit: "10mb",
+  bodyParser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 5000,
   })
 );
 
@@ -193,7 +203,8 @@ app.post("/retrieveCount", (req, resp) => {
 });
 
 app.get("/statusApp", (req, resp) => {
-  response.status(200).json({ status: "ok" });
+  console.log(`${__MODULE_FILE__} status`);
+  resp.status(200).json({ status: "ok" });
 });
 /*
 app.get("/api/password", (request, response) => {
@@ -252,7 +263,7 @@ app.post("/retrievePrefs", (req, resp) => {
 });
 
 app.post("/getSentEmailForUser", (req, resp) => {
-  console.log(`getSentEmailForUser ${JSON.stringify(req.body)}`);
+  // console.log(`getSentEmailForUser ${JSON.stringify(req.body)}`);
   const { credenciales } = req.body;
   PG_getSentEmailForUser(credenciales, (data, err) => {
     // console.log(data);
@@ -265,45 +276,148 @@ app.post("/getSentEmailForUser", (req, resp) => {
   });
 });
 
-app.post("/sendEmailToDb", (req, resp) => {
+const getEmailForAttach = async (id) => {
+  let resu = await PG_getEmailForMessageId(id);
+  return resu;
+};
+
+function Uint8ToBase64(u8Arr) {
+  console.log(u8Arr);
+  var CHUNK_SIZE = 0x8000; //arbitrary number
+  var index = 0;
+  var length = u8Arr.length;
+  var result = "";
+  var slice;
+  while (index < length) {
+    slice = u8Arr.subarray(index, Math.min(index + CHUNK_SIZE, length));
+    result += String.fromCharCode.apply(null, slice);
+    index += CHUNK_SIZE;
+  }
+  return btoa(result);
+}
+
+function Utf8ArrayToStr(array) {
+  var out, i, len, c;
+  var char2, char3;
+
+  out = "";
+  len = array.length;
+  i = 0;
+  while (i < len) {
+    c = array[i++];
+    switch (c >> 4) {
+      case 0:
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+      case 7:
+        // 0xxxxxxx
+        out += String.fromCharCode(c);
+        break;
+      case 12:
+      case 13:
+        // 110x xxxx   10xx xxxx
+        char2 = array[i++];
+        out += String.fromCharCode(((c & 0x1f) << 6) | (char2 & 0x3f));
+        break;
+      case 14:
+        // 1110 xxxx  10xx xxxx  10xx xxxx
+        char2 = array[i++];
+        char3 = array[i++];
+        out += String.fromCharCode(
+          ((c & 0x0f) << 12) | ((char2 & 0x3f) << 6) | ((char3 & 0x3f) << 0)
+        );
+        break;
+    }
+  }
+
+  return out;
+}
+
+const base64_arraybuffer = async (data) => {
+  // Use a FileReader to generate a base64 data URI
+  console.log(data);
+  const base64url = await new Promise((r) => {
+    const reader = new FileReader();
+    reader.onload = () => r(reader.result);
+    reader.readAsDataURL(new Blob([data]));
+  });
+
+  /*
+  The result looks like 
+  "data:application/octet-stream;base64,<your base64 data>", 
+  so we split off the beginning:
+  */
+  return base64url.split(",", 2)[1];
+};
+
+const attachmentOf = async (attach) => {
+  console.log(`data ${attach.content.data}`);
+  let data = await base64_arraybuffer(attach.content.data);
+
+  return {
+    fileName: attach.fileName,
+    content: data,
+    encoding: "base64",
+  };
+};
+
+function arrayBufferToBase64(buffer) {
+  var binary = "";
+  var bytes = new Uint8Array(buffer);
+  var len = bytes.byteLength;
+  for (var i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+}
+
+app.post("/sendEmailToDb", async (req, resp) => {
+  let attachments;
   console.log(`${__MODULE_FILE__}-->sendEmailToDb`);
-  console.log(req.body);
-  let { email, credenciales } = req.body;
-  // console.log(credenciales);
+//  console.log(req.body);
 
-  PG_sendEmailToDb(credenciales, email, (data, err) => {
-    if (err) {
-      return resp.status(500).json({ error: err });
-    }
-    return resp.status(200).json({ result: data });
-  });
-});
-/*
-app.post("/sendEmailToDb", (req, resp) => {
-  console.log("/sendEmailToDb");
-  console.log(req.body);
-  let { email, credenciales } = req.body;
-  console.log(credenciales);
+  try {
+    // let stringBody = pako.ungzip(req.body.gZipString, { to: "string" });
+    //  let body = JSON.parse(stringBody);
 
-  PG_sendEmailToDb(credenciales, email, (data, err) => {
-    if (err) {
-      return resp.status(501).json({ error: err });
-    }
-    return resp.status(200).json({ result: data });
-  });
-});
-*/
+    // console.log(`body=${req.body}`);
+    let { email, credenciales } = req.body;
 
-app.post("/getSentEmailForUser_old ", (req, resp) => {
-  console.log(`getSentEmailForUser ${JSON.stringify(req.body)}`);
-  const { credenciales } = req.body;
-  PG_getSentEmailForUser(credenciales, (data, err) => {
-    console.log(data);
-    if (err) {
-      return resp.status(501).json({ error: err });
+    if (email.sendAttach) {
+      if (!email.attachments) console.log("No tenia attachments");
+      let result = await getEmailForAttach(email.messageId);
+      attachments = result.result;
+      //  console.log(attachments);
+      for (let index = 0; index < attachments.length; index++) {
+        const element = attachments[index];
+        let buffer = arrayBufferToBase64(element.content.data);
+
+        email.attachments.push({
+          fileName: element.fileName,
+          path: `data:${element.contentType};base64,${buffer}`,
+        });
+      }
+      // console.log(attachmentOf(attachments[0]));
     }
-    return resp.status(200).json({ result: data });
-  });
+    PG_sendEmailToDb(
+      credenciales,
+
+      email,
+      (data, err) => {
+        if (err) {
+          return resp.status(500).json({ error: err });
+        }
+        return resp.status(200).json({ result: data });
+      }
+    );
+  } catch (error) {
+    console.error(error);
+    return resp.status(500).json({ error });
+  }
 });
 
 app.post("/retrieveLast", (req, resp) => {
@@ -348,42 +462,6 @@ const wrapEmail = (emailSent) => {
   };
 };
 
-app.post("/retrieveLast2", (req, resp) => {
-  console.log(`retrieveLast2-${__MODULE_FILE__}`);
-  let registros = req.body.cantidad || 20;
-
-  console.log(`retrieveLast ${registros}`);
-  count(function (err, info) {
-    if (err) {
-      console.log(err.info);
-      return resp.status(501).json({ message: err.message });
-    }
-
-    console.log(`info ${info}`);
-    lastRow = info;
-    const regs = range(lastRow - registros, lastRow);
-    console.log(`Regs: ${regs} length ${regs.length}`);
-    /* del api de email retrievelast */
-
-    retrieveLast(regs, function (error, messages) {
-      if (error) {
-        return resp.status(501).json(error);
-      }
-      if (!messages) {
-        messages = [];
-      }
-      console.log(`Enviados ${messages.length} emails`);
-      let data = messages.filter((e, i) => e !== null);
-      console.log("addStatus call");
-      addStatus(data, function (rows) {
-        //  printMail(rows[0]);
-        // console.log(rows);
-        resp.status(200).json({ data: rows });
-      });
-    });
-  });
-});
-
 app.post("/getMailFromDb", (req, resp) => {
   retrieveMailFromDb((error, mail) => {
     if (error) {
@@ -403,7 +481,6 @@ app.get("/getAddressBook", async (req, resp) => {
       console.error(error);
       resp.status(521).json(error);
     } else {
-      console.log("finalizó");
       resp.status(200).send(response);
     }
   });
