@@ -58,6 +58,7 @@ app.use(
 );
 
 app.use(express.static(path.join(__dirname, "public")));
+
 const port = PORT_BACKEND || 5000;
 
 function range(start, end) {

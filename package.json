@@ -2,6 +2,7 @@
     "name": "richelet-info",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://localhost/",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.1.1",
         "@fortawesome/free-brands-svg-icons": "^6.1.1",
@@ -15,7 +16,7 @@
         "@tiptap/extension-text": "^2.0.0-beta.15",
         "@tiptap/extension-text-align": "^2.0.0-beta.29",
         "@tiptap/react": "^2.0.0-beta.109",
-        "@tiptap/starter-kit": "^2.0.0-beta.185",
+        "@tiptap/starter-kit": "^2.0.0-beta.188",
         "ajv": "^8.11.0",
         "body-parser": "^1.20.0",
         "bootstrap": "^5.1.3",
@@ -60,11 +61,15 @@
         "shortid": "^2.2.16",
         "stream-browserify": "^3.0.0"
     },
+    "resolutions": {
+        "autoprefixer": "10.4.5"
+    },
     "engines": {
         "npm": ">=8.7.0"
     },
     "overrides": {
-        "react": "$react"
+        "react": "$react",
+        "autoprefixer": "10.4.5"
     },
     "scripts": {
         "start": "react-scripts start",

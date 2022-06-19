@@ -8,7 +8,7 @@ import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 
 import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+// import {StarterKit} from "@tiptap/starter-kit";
 // import ReactComponent from "./Extension.js";
 // import "./styles.scss";
 import "./toolbar.css";
@@ -362,7 +362,7 @@ const MyEditor = ({ texto, onChangeContent }) => {
       Paragraph,
       Text,
       Image,
-      StarterKit,
+//      StarterKit,
       TextAlign.configure({
         types: ["heading", "paragraph"]
       }),

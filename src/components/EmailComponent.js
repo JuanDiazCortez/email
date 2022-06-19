@@ -20,15 +20,15 @@ function RenderAttach({ attach }) {
 
   const isIMG = (t) => {
     return (
-      contentType === "image/jpeg" ||
-      contentType === "image/png" ||
-      contentType === "image/gif" ||
-      contentType === "image/jpeg"
+      t === "image/jpeg" ||
+      t === "image/png" ||
+      t === "image/gif" ||
+      t === "image/jpg"
     );
   };
 
   if (isIMG(contentType)) {
-    return <div></div>;
+    return <div>{generatedFileName}</div>;
   }
 
   return (
@@ -40,13 +40,14 @@ function RenderAttach({ attach }) {
       {generatedFileName && generatedFileName.includes("eml") ? (
         <div>
           <a
+            className="clip-brow"
             href="javascript(0)"
             data-bs-toggle="tooltip"
             data-bs-placement="bottom"
             title="Click para bajar attach"
             style={{ color: "white" }}
           >
-            {generatedFileName}
+            {fileName ? fileName : generatedFileName}
           </a>
           <button className="ml-1" style={{ marginLeft: "8px" }}>
             click download
@@ -155,7 +156,7 @@ function EmailComponent({ data, name }) {
       {showHeader && (
         <div id="ecomponent" className="bg-dark.bg-gradient mt-2 fs-4">
           <div>
-            <ul className="list-unstyled">
+            <ul className="c3 list-unstyled">
               {to
                 ? to.map((element, index) => (
                     <li key={shortid.generate()}>
@@ -252,8 +253,8 @@ function EmailComponent({ data, name }) {
                     />
                   );
                 } else {
-                  if (domNode && typeof domNode !== "Text");
-                  // console.log(domNode);
+                  if (domNode && domNode.type !== "text");
+                  //  console.log(domNode);
                 }
                 if (domNode.name && domNode.name === "o:p") {
                   return null;
@@ -282,9 +283,9 @@ function EmailComponent({ data, name }) {
       {attachments ? (
         <div className="d-flex ">
           <h5>Attachments</h5>
-          <ul>
+          <ul className="lista">
             {attachments.map((attach) => (
-              <li>
+              <li key={shortid.generate()}>
                 <RenderAttach attach={attach} />
               </li>
             ))}

@@ -21,6 +21,7 @@ export const isIMG = (attach) => {
   return (
     attach.contentType !== "image/png" &&
     attach.contentType !== "image/jpeg" &&
+    attach.contentType !== "image/jpg" &&
     attach.contentType !== "image/gif"
   );
 };

@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import Context from "./Context/GlobalContext";
 import { Watch } from "react-loader-spinner";
-const {
-  URL_DATABASE,
-  PORT_BACKEND,
-  onRetrieveUrl,
-  retrieveAllFromDb,
-  getStyleForState,
-} = require("./constants");
+import * as modules from "./constants";
 
+const {
+  PORT_BACKEND,
+  getStyleForState,
+  onRetrieveUrl,
+  URL_DATABASE,
+  retrieveAllFromDb,
+} = modules;
+
+console.log(modules);
 function ShowColorState() {
   return (
     <div className="d-flex flex-row flex-start">

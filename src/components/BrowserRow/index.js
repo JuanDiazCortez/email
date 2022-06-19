@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+
 import {
   getIconFromName,
   searchStatus,
@@ -17,7 +18,7 @@ import style from "../styleRow.js";
 import EmailContext from "../Context/EmailContext";
 import SelectEmailContext from "../Context/SelectEmailContext";
 import "./browserRow.css";
-const { Status, getStyleForState } = require("../constants");
+const { Status, getStyleForState, printMail } = require("../constants");
 
 const medium = "text-md-start fs-4"; // medium
 // const large = "text-lg-start"; // large
@@ -29,6 +30,20 @@ const RenderAttachs = ({ email }) => {
   const handleClickAttach = (ev) => {
     console.log("handleClickAttach");
     setShowAttach(!showAttach);
+  };
+
+  const showCAttach = (attach) => {
+    if (attach.fileName) {
+      console.log(attach.fileName);
+      return attach.fileName;
+    }
+    if (attach.generatedName) {
+      console.log(attach.generatedName);
+      return attach.generatedName;
+    }
+    return attach.generatedFileName;
+
+    return "img_1";
   };
   return (
     <div>
@@ -52,35 +67,33 @@ const RenderAttachs = ({ email }) => {
                 overflowX: "auto",
               }}
             >
-              {attachments.map(
-                (attach) =>
-                  isIMG(attach) && (
-                    <li
-                      className="fs-5"
-                      key={shortid.generate()}
-                      style={{
-                        fontSize: medium,
-                        fontWeight: !email.leido ? "bold" : "nornal",
+              {attachments.map((attach) => (
+                <li
+                  className="fs-5"
+                  key={shortid.generate()}
+                  style={{
+                    fontSize: medium,
+                    fontWeight: !email.leido ? "bold" : "nornal",
+                  }}
+                >
+                  <div className={attach.fileName}>
+                    <a
+                      className="a-attach"
+                      target="_blank"
+                      href="#"
+                      onClick={(ev) => {
+                        console.log(JSON.stringify(attach));
+                        onClickDownLoadAttach(ev, attach);
                       }}
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title="Click para bajar attach"
                     >
-                      <div>
-                        <a
-                          className="a-attach"
-                          target="_blank"
-                          href="#"
-                          onClick={(ev) => {
-                            onClickDownLoadAttach(ev, attach);
-                          }}
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="bottom"
-                          title="Click para bajar attach"
-                        >
-                          {attach.fileName}
-                        </a>
-                      </div>
-                    </li>
-                  )
-              )}
+                      {showCAttach(attach)}
+                    </a>
+                  </div>
+                </li>
+              ))}
             </ul>
           )}
         </div>
