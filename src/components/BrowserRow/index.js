@@ -255,6 +255,9 @@ const BrowserRow = ({
           onDoubleClick={(ev) => {
             onClickRow(ev, email);
           }}
+          onClick={(ev) => {
+            changeRow(email);
+          }}
         >
           <span className="bA4">
             <span>
@@ -271,7 +274,13 @@ const BrowserRow = ({
             </span>
           </span>
         </td>
-        <td key={shortid.generate()} className="table-row">
+        <td
+          key={shortid.generate()}
+          className="table-row"
+          onClick={(ev) => {
+            changeRow(email);
+          }}
+        >
           <span className="span">
             <span data-hovercard-owner-id={email.messageId}>
               <p
@@ -317,7 +326,13 @@ const BrowserRow = ({
           </div>
         </td>
 
-        <td key={shortid.generate()} className="table-row">
+        <td
+          key={shortid.generate()}
+          className="table-row"
+          onClick={(ev) => {
+            changeRow(email);
+          }}
+        >
           <div
             className="d-flex flex-row "
             style={{ maxHeight: "9rem", overflow: "auto" }}
