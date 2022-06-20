@@ -2,7 +2,7 @@
     "name": "richelet-info",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://localhost/",
+    "homepage": "http://wwwlocalhost/",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.1.1",
         "@fortawesome/free-brands-svg-icons": "^6.1.1",

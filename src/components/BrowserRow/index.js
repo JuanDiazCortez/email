@@ -41,9 +41,8 @@ const RenderAttachs = ({ email }) => {
       console.log(attach.generatedName);
       return attach.generatedName;
     }
+    console.log(attach);
     return attach.generatedFileName;
-
-    return "img_1";
   };
   return (
     <div>
