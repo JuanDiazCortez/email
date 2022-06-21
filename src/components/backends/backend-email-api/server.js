@@ -31,12 +31,9 @@ const getClient = () => {
     password: process.env.EMAIL_PASSWD,
     // debug: true,
   });
-  client.connect((ee) => {
-    if (ee !== null) console.log(ee);
-  });
+
   return client;
 };
-
 
 const getClientNotParsed = () => {
   return new Client({
@@ -218,63 +215,79 @@ const retrieveAllFromMail = (objConn, callBack) => {
   let connection = clientPG();
   let log = 0;
   let pop3Server = getClient();
+  pop3Server.connect((e) => {
+    if (e) callBack(e, null);
+    try {
+      pop3Server.retrieveAll(function (err, messages) {
+        if (!messages)
+          return callBack({ message: "error not messages " }, null);
+        //
+        console.log(messages.length);
+        log = messages.length;
+        console.log(`al for each  ${log}`);
+        _numero = 0;
+        messages.reverse().forEach(function (message) {
+          if (!connection._connected && !connection._connecting)
+            connection.connect();
 
-  try {
-    pop3Server.retrieveAll(function (err, messages) {
-      if (!messages) return callBack({ message: "error not messages " }, null);
-      //
-      console.log(messages.length);
-      log = messages.length;
-      console.log(`al for each  ${log}`);
-      _numero = 0;
-      messages.reverse().forEach(function (message) {
-        if (!connection._connected && !connection._connecting)
-          connection.connect();
+          connection
+            .query(query, [message])
+            .then((result) => {
+              connection.end();
+              console.log(`res= ${result.rows[0].updateemails}`);
+              if (_numero === 0)
+                console.log(` update[0]==> ${result.rows[0].updateemails}`);
+              if (result.rows[0].updateemails) {
+                _numero++;
+              }
+            })
+            .catch((error) => {
+              if (error.message !== "Connection terminated") {
+                pop3Server.quit();
+                console.log(`error 157 ${error.stack}`);
+                //    connection.end();
+                callBack(error, null);
+              }
+            });
+        }); // for each
 
-        connection
-          .query(query, [message])
-          .then((result) => {
-            connection.end();
-            console.log(`res= ${result.rows[0].updateemails}`);
-            if (_numero === 0)
-              console.log(` update[0]==> ${result.rows[0].updateemails}`);
-            if (result.rows[0].updateemails) {
-              _numero++;
-            }
-          })
-          .catch((error) => {
-            if (error.message !== "Connection terminated") {
-              pop3Server.quit();
-              console.log(`error 157 ${error.stack}`);
-              //    connection.end();
-              callBack(error, null);
-            }
-          });
-      }); // for each
-
+        pop3Server.quit();
+        callBack(null, { response: "ok", largo: log, updated: _numero });
+      });
+    } catch (err) {
+      // try connect
+      console.log(`error ppal 176 ${err.stack}`);
+      if (connection._connected) connection.end();
       pop3Server.quit();
-      callBack(null, { response: "ok", largo: log, updated: _numero });
-    });
-  } catch (err) {
-    // try connect
-    console.log(`error ppal 176 ${err.stack}`);
-    if (connection._connected) connection.end();
-    pop3Server.quit();
-    callBack(null, { response: "error", largo: log, updated: _numero });
-  }
+      callBack(null, { response: "error", largo: log, updated: _numero });
+    }
+  });
 };
 
-
-const count = (callBack) => {
+const count = async (callBack) => {
   console.log(`count ${__MODULE_FILE__}`);
-  let client = getClient();
-  client.count(callBack);
-  client.quit();
+  let client;
+
+  client = getClient();
+
+  client.on("error", (e) => {
+    return callBack(e, null);
+  });
+
+  client.connect((e) => {
+    if (e) {
+      console.log(e);
+      return callBack(e, null);
+    }
+    client.count(callBack);
+  });
 };
 
 const retrieve = (nro, callback) => {
   console.log(`retireve -->${__MODULE_FILE__}`);
-  let client = getClient();
+  let client = getClient().catch((e) => {
+    callback(e, null);
+  });
   try {
     client.retrieve(nro, (err, msg) => {
       if (err) {

@@ -186,20 +186,16 @@ app.post("/retrieveAll", (req, resp) => {
 });
 
 app.post("/retrieveCount", (req, resp) => {
-
-
- let lastRow;
-
   console.log(`retrieveCount ${__MODULE_FILE__}`);
 
   count(function (err, info) {
     console.log("count callback");
     if (err !== null) {
-      console.log(`inf: ${err}`);
-
-      resp.status(501).json({ message: err });
+      console.log(`inf (http): ${err}`);
+      return resp.status(501).json({ message: err });
+    } else {
+      resp.status(200).json({ cantidad: info });
     }
-    resp.status(200).json({ cantidad: info });
   }, false);
 });
 
