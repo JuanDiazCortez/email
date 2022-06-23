@@ -158,7 +158,7 @@ const BrowserRow = ({
     navigator.clipboard.writeText(`de:${email.from[0]}
                                 fecha:${email.date}
                                 subject:${email.subject}
-                                attach:${mail.attachments.length
+                                attach:${email.attachments.length
                                     ? email.attachments[0].fileName
                                     : "No attach"
                                 }  `);
