@@ -227,7 +227,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         id="id-window-modal-edit"
         className={windowClass}
         style={{
-          maxWidth: "80rem",
+          width: "80rem",
           maxHeight: "42rem",
           overflow: "scroll",
         }}

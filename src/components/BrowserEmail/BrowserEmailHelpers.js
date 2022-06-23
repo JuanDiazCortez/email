@@ -24,11 +24,9 @@ export const onListFilter = (
     case "origen":
       let result = [];
       data.map((mail) => {
-        
-        mail.from.forEach((element) => {
+        return mail.from.forEach((element) => {
           if (result.indexOf(element.address) === -1) {
-             result.push(element.address);
-
+            result.push(element.address);
           }
         });
       });
@@ -121,8 +119,9 @@ const uPdateGlobalData = (newEmail, data, setData) => {
   setData(newList);
 };
 
-export const updateReenviado = (user, credenciales, setData, data) => {
+export const updateReenviado = (user, credenciales, setData, data, email) => {
   console.log(`update Reenviado ${JSON.stringify(user)}`);
+  console.log(`change data ${JSON.stringify(email.messageId)}`);
   onRetrieveUrl(
     `http://${URL_DATABASE}:${PORT_BACKEND}/changeStatus`,
     {
@@ -144,21 +143,45 @@ export const updateReenviado = (user, credenciales, setData, data) => {
       console.log(`onRetrieveUrl ->respuesta ${respuesta}`);
     }
   );
-  let newList = data.map((item) => {
-    if (item.messageId === user.id) {
-      let l = item.leido;
+
+  let newList = [];
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+    console.log(`index:${index}`);
+    if (element) {
+      if (element.messageId === email.messageId) {
+        let newState = Status["reenviado"].key;
+
+        const updateItem = {
+          ...element,
+          state: newState,
+          leido: true,
+          reenviado: user.toUser,
+        };
+        newList.push(updateItem);
+      } else newList.push(element);
+    } else {
+      console.log(`NULL ${index}`);
+    }
+  }
+  setData(newList);
+  /*
+  data.map((element, index) => {
+    console.log(`index:${index}`);
+    if (element.messageId === user.id) {
       let newState = Status["reenviado"].key;
 
       const updateItem = {
-        ...item,
+        ...element,
         state: newState,
-        leido: l,
+        leido: true,
         reenviado: user.toUser,
       };
       return updateItem;
     }
-    return item;
+    return element;
   });
 
   setData(newList);
+  */
 };

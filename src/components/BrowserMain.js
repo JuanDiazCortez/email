@@ -172,7 +172,7 @@ function BrowserMain({
       </Modal>
       <div>
         {!showDetail && (
-          <div horizontal minsecondarysize="15%">
+          <div horizontal="true" minsecondarysize="15%">
             <BrowserEmail
               data={dataRows}
               setData={setDataRows}
@@ -187,6 +187,7 @@ function BrowserMain({
               showModal={showModal}
               setShowModal={setShowModal}
               setIdUserReenviar={setIdUserReenviar}
+              idUserReenviar={idUserReenviar}
               userReenviado={userReenviado}
               pushedRow={pushedRow}
               changeRow={onChangeRow}

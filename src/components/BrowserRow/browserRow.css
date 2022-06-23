@@ -7,19 +7,23 @@
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 10px;
-    scrollbar-width: thin;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 1px grey;
-    border-radius: 6px;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(144, 142, 148);
-    border-radius: 6px;
-  }
+  width: 8px;
+  height: 10px;
+  scrollbar-width: thin;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px grey;
+  border-radius: 6px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(144, 142, 148);
+  border-radius: 6px;
+}
+
+.from {
+  width: 18rem;
+}

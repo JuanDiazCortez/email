@@ -5,7 +5,7 @@ import {
   searchStatus,
   getBorderForState,
   onClickDownLoadAttach,
-  isIMG,
+  // isIMG,
 } from "./BrowserRowHooks";
 
 import { faEnvelopeOpen, faPaperclip } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +18,11 @@ import style from "../styleRow.js";
 import EmailContext from "../Context/EmailContext";
 import SelectEmailContext from "../Context/SelectEmailContext";
 import "./browserRow.css";
-const { Status, getStyleForState, printMail } = require("../constants");
+const {
+  Status,
+  getStyleForState,
+  //printMail
+} = require("../constants");
 
 const medium = "text-md-start fs-4"; // medium
 // const large = "text-lg-start"; // large
@@ -45,7 +49,7 @@ const RenderAttachs = ({ email }) => {
     return attach.generatedFileName;
   };
   return (
-    <div>
+    <div style={{ width: "20rem" }}>
       {attachments && (
         <div>
           <FontAwesomeIcon
@@ -61,8 +65,7 @@ const RenderAttachs = ({ email }) => {
               className="list-unstyled"
               style={{
                 overflowY: attachments.length > 2 ? "scroll" : "auto",
-                maxHeight: "10rem",
-                maxWidth: "22rem",
+                //    maxHeight: "10rem",
                 overflowX: "auto",
               }}
             >
@@ -79,7 +82,7 @@ const RenderAttachs = ({ email }) => {
                     <a
                       className="a-attach"
                       target="_blank"
-                      href="#"
+                      href="javascript(0)"
                       onClick={(ev) => {
                         console.log(JSON.stringify(attach));
                         onClickDownLoadAttach(ev, attach);
@@ -140,7 +143,27 @@ const BrowserRow = ({
       setSelectedRows([...selectedRows, mail]);
     }
   };
-
+  //
+  const handleClick = (ev, row) => {
+    if (ev.type === "click" || ev.nativeEvent.button === 0) {
+      console.log("Left click");
+    } else if (ev.type === "contextmenu") {
+      console.log("Right click");
+    }
+  };
+  //
+  const handleRigthClick = (ev, email) => {
+    ev.preventDefault();
+    console.log("Rigth click");
+    navigator.clipboard.writeText(`de:${email.from[0]}
+                                fecha:${email.date}
+                                subject:${email.subject}
+                                attach:${mail.attachments.length
+                                    ? email.attachments[0].fileName
+                                    : "No attach"
+                                }  `);
+  };
+  //
   return isRowForShow ? (
     <React.Fragment>
       <tr
@@ -149,6 +172,12 @@ const BrowserRow = ({
         className={`table-row fs-4 ${getBorderForState(email.state)}`}
         style={{ backgroundColor: getStyleForState(email) }}
         tabIndex="0"
+        onClick={(ev) => {
+          handleClick(ev, email);
+        }}
+        onContextMenu={(ev) => {
+          handleRigthClick(ev, email);
+        }}
       >
         <td key={shortid.generate()} className="table-row">
           <input
@@ -157,7 +186,7 @@ const BrowserRow = ({
             defaultChecked={isSelected(email)}
           />
         </td>
-        <td key={shortid.generate()}>
+        <td key={shortid.generate()} style={{ width: "22rem" }}>
           <RenderAttachs email={email} />
         </td>
         <td
@@ -166,6 +195,7 @@ const BrowserRow = ({
           onDoubleClick={(ev) => {
             onClickRow(ev, email);
           }}
+          style={{ width: "8rem" }}
         >
           <div>
             <select
@@ -249,7 +279,7 @@ const BrowserRow = ({
                 ))}
               </div>
             </div>
-            {email.reenviado ? (
+            {email.reenviado !== 0 && (
               <React.Fragment>
                 <p className="fw-bold">{email.reenviado.nombre}</p>
                 <p className="fs-4 fw-bold">{email.reenviado.email}</p>
@@ -257,11 +287,11 @@ const BrowserRow = ({
                   {new Date(email.reenviado_fecha).toLocaleDateString("es-AR")}
                 </p>
               </React.Fragment>
-            ) : null}
+            )}
           </div>
         </td>
         <td
-          className="table-row"
+          className="table-row from"
           key={shortid.generate()}
           type="row"
           onDoubleClick={(ev) => {

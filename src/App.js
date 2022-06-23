@@ -109,18 +109,27 @@ function App() {
         className="container-fluid mb-3"
         style={{
           backgroundColor: "darkgrey",
+          marginTop: "-12px",
         }}
       >
         <h1 className="fw-bolder">{`Richelet Info Email `}</h1>
-        <h5>{`server   :${URL_DATABASE}`}</h5>
+        <h5
+          style={{
+            marginTop: "-12px",
+          }}
+        >{`server   :${URL_DATABASE}`}</h5>
 
         <Router forceRefresh={false}>
-          <nav className="nav-bar navbar-dark  ">
-            <hr style={{ color: "white", marginTop: "14px" }} />
+          <nav
+            className="nav-bar navbar-dark mt-0 "
+            style={{ marginTop: "-8px" }}
+          >
+            <hr style={{ color: "white", marginTop: "8px" }} />
             <ul
               className="nav  nav-tabs bg-secundary fw-bold fs-2 ms-auto border border-4 border-top"
               style={{
                 backgroundColor: "##d9d2d2",
+                marginTop: "8px",
               }}
             >
               <li className="nav-item fw-bold">

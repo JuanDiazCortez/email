@@ -285,9 +285,11 @@ const count = async (callBack) => {
 
 const retrieve = (nro, callback) => {
   console.log(`retireve -->${__MODULE_FILE__}`);
+  //
   let client = getClient().catch((e) => {
     callback(e, null);
   });
+  //
   try {
     client.retrieve(nro, (err, msg) => {
       if (err) {

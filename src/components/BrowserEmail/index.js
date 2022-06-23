@@ -52,6 +52,7 @@ function BrowserEmail({
   setShowModal,
   setChangeFlag,
   setIdUserReenviar,
+  idUserReenviar,
   userReenviado,
   changeRow,
   loading,
@@ -121,7 +122,13 @@ function BrowserEmail({
     console.log("usereffect []");
     if (userReenviado) {
       console.log(`User fue reenviado ${JSON.stringify(userReenviado)}`);
-      updateReenviado(userReenviado, credenciales, setData, data);
+      updateReenviado(
+        userReenviado,
+        credenciales,
+        setData,
+        data,
+        idUserReenviar
+      );
     }
   }, [userReenviado]);
 

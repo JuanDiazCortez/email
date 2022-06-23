@@ -192,7 +192,7 @@ app.post("/retrieveCount", (req, resp) => {
     console.log("count callback");
     if (err !== null) {
       console.log(`inf (http): ${err}`);
-      return resp.status(501).json({ message: err });
+      return resp.status(512).json({ message: err });
     } else {
       resp.status(200).json({ cantidad: info });
     }
