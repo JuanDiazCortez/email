@@ -81,7 +81,7 @@ const RenderAttachs = ({ email }) => {
                   <div className={attach.fileName}>
                     <a
                       className="a-attach"
-                      target="_blank"
+                   //   target="_blank"
                       href="javascript(0)"
                       onClick={(ev) => {
                         console.log(JSON.stringify(attach));
