@@ -50,7 +50,7 @@ function App() {
         return true;
       }
     } else {
-      console.log("6");
+      //  console.log("6");
       return false;
     }
   };
