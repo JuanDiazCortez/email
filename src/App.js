@@ -34,7 +34,7 @@ function App() {
     if (credenciales !== null) {
       return true;
     }
-    console.log("1");
+ //   console.log("1");
     let creds = JSON.parse(localStorage.getItem("creds"));
     console.log(`credenciales en ls ${JSON.stringify(creds)}`);
     console.log("2");
