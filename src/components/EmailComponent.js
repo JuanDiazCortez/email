@@ -4,6 +4,7 @@ import Parser from "html-react-parser";
 
 import "moment-timezone";
 const { makeReduce } = require("./constants");
+const NULL_DIV = null;
 // import DocViewer, { PDFRenderer } from "react-doc-viewer";
 
 function RenderAttach({ attach }) {
@@ -190,18 +191,17 @@ function EmailComponent({ data, name }) {
           </div>
           <div>
             <ul className="list-unstyled">
-              {cc
-                ? cc.map((element, index) => (
-                    <li key={shortid.generate()}>
-                      <div className="fs-4">
-                        <p>
-                          {index === 0 ? <b>cc: </b> : null}
-                          {` ${element.name} ${element.address}`}
-                        </p>
-                      </div>
-                    </li>
-                  ))
-                : null}
+              {cc &&
+                cc.map((element, index) => (
+                  <li key={shortid.generate()}>
+                    <div className="fs-4">
+                      <p>
+                        {index === 0 ? <b>cc: </b> : null}
+                        {` ${element.name} ${element.address}`}
+                      </p>
+                    </div>
+                  </li>
+                ))}
             </ul>
           </div>
           <div>
@@ -214,7 +214,6 @@ function EmailComponent({ data, name }) {
               })}`}
             </p>
           </div>
-          {/* <br /> */}
 
           <div className="d-flex flex-row fs-3">
             <b>Subject:</b>
@@ -230,12 +229,12 @@ function EmailComponent({ data, name }) {
             trim: true,
             replace: (domNode) => {
               if (domNode.name && domNode.name === "img") {
-                if (!attachments) return <></>;
+                if (!attachments) return <div></div>;
                 let attach = attachments.find(
                   (attach) => `cid:${attach.contentId}` === domNode.attribs.src
                 );
                 if (!attach) {
-                  return <></>;
+                  return null;
                 }
                 let source = `data:${attach.contentType};${
                   attach.transferEncoding
@@ -257,13 +256,13 @@ function EmailComponent({ data, name }) {
                 //  console.log(domNode);
               }
               if (domNode.name && domNode.name === "o:p") {
-                return <></>;
+                return <div></div>;
               }
               if (domNode.name && domNode.name === "li") {
                 // console.log(domNode);
               }
 
-              if (domNode.name && domNode.name === "html") return <></>;
+              if (domNode.name && domNode.name === "html") return NULL_DIV;
             },
           })}
         {!html && (
