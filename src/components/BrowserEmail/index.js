@@ -423,8 +423,11 @@ function BrowserEmail({
 
   const TableHeaderTool = () => {
     return (
-      <div id="tabletool-div" className="d-flex flex-row h-15 position-sticky">
-        <div className="ml-4" style={toolbarStyle}>
+      <div
+        id="tabletool-div"
+        className="d-flex flex-row h-15 position-sticky  align-items-center"
+      >
+        <div className="ml-4 b-tool" style={toolbarStyle}>
           <FontAwesomeIcon
             onClick={(ev) => setshowFilter(!showFilter)}
             className="fa-2 ml-4 button"
@@ -604,7 +607,7 @@ function BrowserEmail({
           </div>
 
           <div
-            className="ml-4"
+            className="ml-4 b-mail"
             style={{
               marginLeft: "1rem",
               display: "flex",

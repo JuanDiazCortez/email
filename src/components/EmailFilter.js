@@ -11,18 +11,23 @@ const {
   retrieveAllFromDb,
 } = modules;
 
-console.log(modules);
+// console.log(modules);
 function ShowColorState() {
   return (
-    <div className="d-flex flex-row flex-start">
+    <div
+      className="d-flex flex-row flex-start  align-items-center ms-3"
+      style={{ marginTop: "-12px" }}
+    >
       <div
         className="ml-4 fw-ligth"
         style={{
-          marginBottom: "3px",
+          // marginBottom: "3px",
+
           color: "green",
           borderRadius: "1rem ",
           marginLeft: "1rem",
           backgroundColor: getStyleForState({ state: "normal", leido: false }),
+          alignItems: "center",
         }}
       >
         Normal
@@ -116,30 +121,39 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
         backgroundColor: "cornflowerblue",
       }}
     >
-      <form className="form fs-4 d-flex" onSubmit={(e) => e.preventDefault()}>
-        <div className="row ">
-          <div className="col ">
-            <div className="d-flex flex-row ">
-              <label
-                className="form-label "
-                htmlFor="id_cantidad"
-                style={{
-                  marginTop: "-7px",
-                }}
-              >
-                Traer los últimos
-              </label>
-              <input
-                className="form-control fs-4"
-                type="numeric"
-                id="id_cantidad"
-                placeholder="Traer los últimos"
-                value={cantidad}
-                onChange={(ev) => {
-                  setcantidad(ev.target.value);
-                }}
-              />
-            </div>
+      <form
+        className="form fs-4 d-flex  align-items-center"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <div className="row">
+          <div
+            className="col d-flex flex-row "
+            style={{
+              width: "12rem",
+            }}
+          >
+            <label
+              className="form-label "
+              htmlFor="id_cantidad"
+              style={{
+                width: "95px",
+              }}
+            >
+              Traer los últimos
+            </label>
+            <input
+              className="form-control fs-4 w-25"
+              type="numeric"
+              id="id_cantidad"
+              placeholder="Traer los últimos"
+              value={cantidad}
+              onChange={(ev) => {
+                setcantidad(ev.target.value);
+              }}
+              // style={{
+              //   marginTop: "-4px",
+              // }}
+            />
           </div>
           <div className="col fs-4">
             <p className="fs-4 mt-0">
@@ -148,32 +162,42 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
           </div>
           <div className="col fs-4">
             <div
-              className="btn-group ml-1 mp-0 d-flex"
+              id="id-botns"
+              className="d-flex btn-group ml-1 mp-0 col"
               role="group"
               aria-label="Button group example"
             >
-              <div className="col fs-4">
-                <button
-                  type="button"
-                  className="btn btn-primary ml-1 mp-0 fs-4"
-                  onClick={(ev) => {
-                    onClickButton(ev, cantidad);
-                  }}
-                >
-                  Recuperar
-                </button>
-              </div>
-              <div className="col d-flex flex-row  justify-content-center ">
-                <button
-                  type="button"
-                  className="btn btn-primary fs-4"
-                  onClick={(ev) => {
-                    onClickVolverButton(ev);
-                  }}
-                >
-                  Volver
-                </button>
-              </div>
+              <button
+                className="btn btn-primary ms-1"
+                type="button"
+                onClick={(ev) => {
+                  onClickButton(ev, cantidad);
+                }}
+                style={{ borderRadius: "1rem ", maxHeight: "4rem" }}
+              >
+                Recuperar
+              </button>
+
+              <button
+                className="btn btn-primary ms-1"
+                type="button"
+                onClick={onClickVolverButton}
+                style={{ borderRadius: "1rem ", maxHeight: "4rem" }}
+              >
+                Volver
+              </button>
+
+              <button
+                className="btn btn-primary  ms-1"
+                type="button"
+                onClick={onClickTodos}
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="recupera todos los correos del server de correo info"
+                style={{ borderRadius: "1rem ", maxHeight: "4rem" }}
+              >
+                Recuperar todos los emails del server
+              </button>
             </div>
           </div>
         </div>
@@ -182,24 +206,12 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
           style={{
             alignItems: "flex-start",
           }}
-        >
-          <div className="btn-primary fs-4" style={{ borderRadius: "1rem " }}>
-            <button
-              className="btn-primary"
-              onClick={onClickTodos}
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-              title="recupera todos los correos del server de correo info"
-              style={{ borderRadius: "1rem ", maxHeight: "4rem" }}
-            >
-              Recuperar todos los emails del server
-            </button>
-          </div>
-        </div>
+        ></div>
       </form>
-      <ShowColorState className="ml-4 " />
+      <ShowColorState className="ms-4 " />
       <div
         id="spinner"
+        className="ms-1"
         style={{
           backgroundColor: "catblue",
           width: "calc(30% - 10px)",

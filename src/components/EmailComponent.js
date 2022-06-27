@@ -262,6 +262,7 @@ function EmailComponent({ data, name }) {
               if (domNode.name && domNode.name === "li") {
                 // console.log(domNode);
               }
+
               if (domNode.name && domNode.name === "html") return <></>;
             },
           })}

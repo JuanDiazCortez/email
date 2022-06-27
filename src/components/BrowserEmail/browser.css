@@ -4,6 +4,9 @@
 select {
   font-family: "FontAwesome", "Verdana", "Glyphicons Halflings";
 }
+.b-mail {
+  margin-top: -5px;
+}
 td {
   font-size: 15px;
 }
