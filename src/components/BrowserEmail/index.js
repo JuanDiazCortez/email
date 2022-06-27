@@ -632,7 +632,7 @@ function BrowserEmail({
             <ButtonMail
               id="buton-reenviar"
               icon={faReplyAll}
-              texto="reenviar"
+              texto="Reenviar"
               clickHandle={(ev) => {
                 onResponderClick(ev, "Reenviar Email");
               }}

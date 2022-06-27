@@ -96,7 +96,7 @@ async function sendMail(email, creds) {
   });
 
   // console.log(transporter);
-  console.log(JSON.stringify(email.attachments, null, 2));
+  console.log(`sendMail->_SendMail.js ${email.textContent}`);
 
   // send mail with defined transport object
 
@@ -105,8 +105,9 @@ async function sendMail(email, creds) {
       from: '"Richelet & Richelet " <info@richelet.com.ar>', // sender address
       to: makeTo(email.to), // list of receivers
       subject: email.subject,
-      text: email.text, // plain text body
-      html: email.original, // html body
+   //   text: "hola", // plain text body
+      html: email.textContent, //  + email.original, // html body
+      inReplyTo: email.inReplyTo ? email.inReplyTo : null,
       attachments: email.attachments,
     });
 

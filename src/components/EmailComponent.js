@@ -224,49 +224,48 @@ function EmailComponent({ data, name }) {
       )}
       <hr />
       <div id="xweerer" className="mt-4">
-        {html2 && validHTML(html2)
-          ? Parser(html2, {
-              trim: true,
-              replace: (domNode) => {
-                if (domNode.name && domNode.name === "img") {
-                  if (!attachments) return null;
-                  let attach = attachments.find(
-                    (attach) =>
-                      `cid:${attach.contentId}` === domNode.attribs.src
-                  );
-                  if (!attach) {
-                    return null;
-                  }
-                  let source = `data:${attach.contentType};${
-                    attach.transferEncoding
-                  },${makeReduce(attach.content.data)}`;
+        {html2 &&
+          validHTML(html2) &&
+          Parser(html2, {
+            trim: true,
+            replace: (domNode) => {
+              if (domNode.name && domNode.name === "img") {
+                if (!attachments) return <></>;
+                let attach = attachments.find(
+                  (attach) => `cid:${attach.contentId}` === domNode.attribs.src
+                );
+                if (!attach) {
+                  return <></>;
+                }
+                let source = `data:${attach.contentType};${
+                  attach.transferEncoding
+                },${makeReduce(attach.content.data)}`;
 
-                  return (
-                    <RenderedImage
-                      id={domNode.attribs.id}
-                      source={source}
-                      alt={domNode.attribs.src}
-                      stilo={{
-                        height: domNode.attribs.heigt,
-                        width: domNode.attribs.width,
-                      }}
-                    />
-                  );
-                } else {
-                  if (domNode && domNode.type !== "text");
-                  //  console.log(domNode);
-                }
-                if (domNode.name && domNode.name === "o:p") {
-                  return null;
-                }
-                if (domNode.name && domNode.name === "li") {
-                  // console.log(domNode);
-                }
-                if (domNode.name && domNode.name === "html") return null;
-              },
-            })
-          : null}
-        {!html ? (
+                return (
+                  <RenderedImage
+                    id={domNode.attribs.id}
+                    source={source}
+                    alt={domNode.attribs.src}
+                    stilo={{
+                      height: domNode.attribs.heigt,
+                      width: domNode.attribs.width,
+                    }}
+                  />
+                );
+              } else {
+                if (domNode && domNode.type !== "text");
+                //  console.log(domNode);
+              }
+              if (domNode.name && domNode.name === "o:p") {
+                return <></>;
+              }
+              if (domNode.name && domNode.name === "li") {
+                // console.log(domNode);
+              }
+              if (domNode.name && domNode.name === "html") return <></>;
+            },
+          })}
+        {!html && (
           <textarea
             className="p-1 fs-4 ml-2 fw-normal"
             readOnly={true}
@@ -278,9 +277,9 @@ function EmailComponent({ data, name }) {
           >
             {text}
           </textarea>
-        ) : null}
+        )}
       </div>
-      {attachments ? (
+      {attachments && (
         <div className="d-flex ">
           <h5>Attachments</h5>
           <ul className="lista">
@@ -291,7 +290,7 @@ function EmailComponent({ data, name }) {
             ))}
           </ul>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -6,7 +6,12 @@ import MyEditor from "../MyEditor";
 import { faReplyAll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./sendmail.css";
-const { sendEmailToDb, getDataAdreesBook, printMail } = require("../constants");
+const {
+  sendEmailToDb,
+  getDataAdreesBook,
+  getText,
+  printMail,
+} = require("../constants");
 const pako = require("pako");
 
 // const zlib = require("zlib");
@@ -29,7 +34,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   const [subjectValue, setSubjectValue] = useState(email.subject);
   const [addressBook, setAddresBook] = useState([]);
   const { selectedRows } = useContext(SelectEmailContext);
-  const [textContent, settextContent] = useState("");
+  const [textContent, settextContent] = useState(getText());
   const [showHelp, setShowHelp] = useState(false);
 
   const [showFrom, setShowFrom] = useState(true);
@@ -82,70 +87,15 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     from.map((item) => console.log(item.address));
   }
 
-  /*           
-  const makeAttachments = (attachments) => {
-    console.log(`makeAttachments-->_SendMail.js`);
-    let encode;
-    let attachs = [];
-    if (attachments.length === 0) return [];
-    for (let index = 0; index < attachments.length; index++) {
-      const attach = attachments[index];
-
-      let { contentType, fileName, content, transferEncoding } = attach;
-      let { data, type } = content;
-      console.log(`contentType ${contentType}
-      transferEncoding: ${transferEncoding}
-      contentType:${contentType}`);
-      encode = data;
-      if (transferEncoding === "base64") {
-        console.log("base64");
-        encode = encodeMessage(data);
-      }
-      let att = {
-        fileName,
-        contentType,
-        content: encode,
-        encodding: transferEncoding,
-      };
-      console.log(`attachments=${JSON.stringify(att)}`);
-      attachs.push(att);
-    }
-    return attachs;
-  };
-
-  function encodeMessage(message) {
-    let enc = encodeURIComponent(message);
-    let zlib = pako.deflate(enc);
-    let binstring = convertUint8ArrayToBinaryString(zlib);
-    let b64 = btoa(binstring);
-    return b64;
-  }
-  function convertUint8ArrayToBinaryString(u8Array) {
-    let b_str = "";
-    for (let i = 0; i < u8Array.length; i++) {
-      b_str += String.fromCharCode(u8Array[i]);
-    }
-    return b_str;
-  }
-*/
   const handleSend = (ev) => {
     ev.preventDefault();
-    let _mail;
-    console.log("handleSend");
-    // console.log(ev.target.textContent);
-    if (ev.target.textContent === "Enviar" && tittle === "Responder Email") {
-      _mail = {
-        subject: subjectValue,
-        messageId: email.messageId,
-        from: "info@richelet.com.ar",
-        to: fromValues,
-        textContent: textContent,
-        original: email.html,
-        sendAttach: false,
-      };
-    }
 
-    if (ev.target.textContent === "Enviar" && tittle === "Reenviar Email") {
+    let _mail;
+    console.log(
+      `ev.target.textContent ${ev.target.textContent} tittle ${textContent}`
+    );
+    // console.log(ev.target.textContent);
+    if (tittle === "Responder") {
       _mail = {
         subject: subjectValue,
         messageId: email.messageId,
@@ -154,17 +104,31 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         textContent: textContent,
         original: email.html,
         attachments: [],
+        replyTo: email.messageId,
         sendAttach: email.attachments.length > 0 ? true : false,
       };
     }
 
-    if (ev.target.textContent === "Enviar" && tittle === "Responder a Todos") {
+    if (tittle === "Reenviar Email") {
       _mail = {
         subject: subjectValue,
         messageId: email.messageId,
         from: "info@richelet.com.ar",
         to: fromValues,
-        textContent: textContent,
+        textContent: textContent + email.html,
+        original: email.html,
+        attachments: [],
+        sendAttach: email.attachments.length > 0 ? true : false,
+      };
+    }
+
+    if (tittle === "Responder a Todos") {
+      _mail = {
+        subject: subjectValue,
+        messageId: email.messageId,
+        from: "info@richelet.com.ar",
+        to: fromValues,
+        textContent: textContent + email.html,
         original: email.html,
         attachments: [],
         sendAttach: email.attachments.length > 0 ? true : false,
@@ -283,7 +247,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   };
 
   const onChangeContent = (content) => {
-    console.log(content);
+    console.log(`content:${content}`);
     settextContent(content);
   };
 
@@ -452,8 +416,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
             <div className="form-control">
               <MyEditor
                 texto={
-                  tittle === "Responder Email"
-                    ? ""
+                  tittle === "Responder"
+                    ? textContent
                     : tittle === "Responder a Todos"
                     ? ""
                     : email.html
