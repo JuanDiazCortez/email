@@ -439,6 +439,7 @@ app.post("/retrieveLast", (req, resp) => {
       console.error(error);
       return resp.status(511).json(error);
     }
+    
     console.log(`Enviados ${rows.length} emails`);
     addStatus(rows, function (drows) {
       resp.status(200).json({ data: drows });

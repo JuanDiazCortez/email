@@ -47,7 +47,7 @@ const assingStatus = (users, rows, emails) => {
     let dRow = searchInRow(item.messageId);
     let user;
     let newItem;
-    if (dRow.length != 0) {
+    if (dRow.length !== 0) {
       if (dRow[0].status === "reenviado") {
         user = users.find((user) => user.id === dRow[0].id_user_to);
         if (user === undefined) user = {};
