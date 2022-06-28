@@ -5,7 +5,7 @@ import BrowserMain from "./BrowserMain";
 import EmailFilter from "./EmailFilter";
 import EmailContext from "./Context/EmailContext";
 import { getEmails } from "./Hooks/ApiHooks";
-const {  Status, onRetrieveUrl } = require("./constants");
+const { Status, onRetrieveUrl } = require("./constants");
 
 function LoguedAppComponent({ credenciales }) {
   const { data, setData } = useContext(EmailContext);
@@ -13,14 +13,19 @@ function LoguedAppComponent({ credenciales }) {
   const [volver, setVolver] = useState(false);
 
   useEffect(() => {
-    console.log("Cambió data");
-  }, [data]);
+    async function load() {
+      setloading(true);
+      let emails = await getEmails(40, credenciales);
+      setData(emails.data);
+      setloading(false);
+    }
+    load();
+  }, []);
 
   const onClickButton = async (ev, cantidad) => {
     console.log("recuperar");
     setloading(true);
     let emails = await getEmails(cantidad, credenciales);
-    //    console.log(emails);
     setData(emails.data);
     setloading(false);
   };

@@ -150,9 +150,7 @@ function EmailFilter({ onClickButton, setVolver, volver }) {
               onChange={(ev) => {
                 setcantidad(ev.target.value);
               }}
-              // style={{
-              //   marginTop: "-4px",
-              // }}
+       
             />
           </div>
           <div className="col fs-4">
