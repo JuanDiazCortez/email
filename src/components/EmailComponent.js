@@ -8,7 +8,7 @@ const NULL_DIV = null;
 // import DocViewer, { PDFRenderer } from "react-doc-viewer";
 
 function RenderAttach({ attach }) {
-  console.log("render doc");
+ //  console.log("render doc");
   //  console.log(attach);
   const {
     length,

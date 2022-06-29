@@ -1,10 +1,10 @@
 const PORT_BACKEND = "5100";
-const URL_DATABASE = "192.168.0.120";
+const URL_DATABASE = "192.168.1.27";
 const URL_PROTOCOL = "http";
 
 // const pako = require("pako");
 
-const URL_BACKEND = "192.168.0.120";
+const URL_BACKEND = "192.168.1.27";
 
 const DEFAULT_POST_HEADER = {
   method: "POST",
@@ -140,25 +140,9 @@ const getDataAdreesBook = async (page, callback) => {
 };
 
 const sendEmailToDb = (credenciales, email, callback) => {
-  console.log(`constants=>sendEmailToDb `);
+  console.log(`constants=>sendEmailToDb ${email}`);
 
   try {
-    // let stringtogzip = JSON.stringify({ credenciales, email });
-    // if (typeof stringtogzip === "string") console.log("es String stringtozip");
-    // console.log(`largo:${stringtogzip.length} ${stringtogzip}`);
-    /* gzip devuelve object  */
-    //  let gZipString = pako.gzip(stringtogzip, { to: "string" });
-
-    //  if (typeof gZipString === "string") {
-    //    console.log(`Es String largo:${gZipString.length} es:${gZipString}`);
-    //  } else {
-    //    console.log(typeof gZipString);
-    //    console.log(`Es Object ${JSON.stringify(gZipString)}`);
-    //    console.log(`${typeof JSON.stringify(gZipString)}`);
-    //  }
-
-    //  let stringBody = JSON.stringify(gZipString);
-    //  console.log(stringBody.length);
     onRetrieveUrl(
       `${URL_PROTOCOL}://${URL_DATABASE}:${PORT_BACKEND}/sendEmailToDb`,
       {
