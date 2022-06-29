@@ -36,28 +36,33 @@ const getUsers = async () => {
 };
 
 // assign status to row mail
-const assingStatus = (users, rows, emails) => {
-  // console.log(`${JSON.stringify(rows, null, 2)}`);
+const assingStatus = (users, mailStatus, emails) => {
+  // console.log(`${JSON.stringify(mailStatus, null, 2)}`);
+  //
+  // helper search in status
   const searchInRow = (id) => {
-    return rows.filter((row) => row.idmail === id);
+    return mailStatus.filter((row) => row.idmail === id);
   };
 
-  /* sigue con los encontrados */
+  /* sigue con los encontrados 
+  search in staus */
   let newList = emails.map((item) => {
-    let dRow = searchInRow(item.messageId);
+    let emailStatusRow = searchInRow(item.messageId);
     let user;
     let newItem;
-    if (dRow.length !== 0) {
-      if (dRow[0].status === "reenviado") {
-        user = users.find((user) => user.id === dRow[0].id_user_to);
+    if (emailStatusRow.length !== 0) {
+      // find user
+      if (emailStatusRow[0].status === "reenviado") {
+        user = users.find((user) => user.id === emailStatusRow[0].id_user_to);
         if (user === undefined) user = {};
       }
+
       newItem = {
         ...item,
-        state: dRow[0].status,
-        leido: dRow[0].leido,
+        state: emailStatusRow[0].status,
+        leido: emailStatusRow[0].leido,
         reenviado: user,
-        reenviado_fecha: dRow[0].lastdate,
+        reenviado_fecha: emailStatusRow[0].lastdate,
       };
     } else {
       /* aca van defaults cuando no encuentra el status en la db*/
@@ -108,9 +113,7 @@ const isAdmin = async (id) => {
     text: `select admin from webinfo.users where id=$1`,
     values: [id],
   };
-
   let client = getClient();
-
   try {
     await client.connect();
     let result = await client.query(query);
@@ -226,10 +229,9 @@ const PG_retrieveForStatus = async (
 };
 
 const retrieveLastFromDb = async (cant, credenciales, callBack) => {
-  console.log(
-    `retrieve from db cantidad=${cant} de: ${JSON.stringify(credenciales)}`
-  );
+  console.log(`retrievefromdb =${cant} de: ${JSON.stringify(credenciales)}`);
   const admin = await isAdmin(credenciales.id);
+  // sino es admin trae solo los de él
   if (!admin) {
     console.log("no es admin");
     retrieveLastFromUser(credenciales.id, callBack);
@@ -239,6 +241,7 @@ const retrieveLastFromDb = async (cant, credenciales, callBack) => {
     try {
       await client.connect();
       let result = await client.query(Qry);
+      // console.log("result %s", result.rows[0].mail);
       client.end();
       let newList = result.rows.map((item) => item.mail);
       callBack(newList, null);
@@ -435,8 +438,8 @@ async function updateLogin(id) {
   }
 }
 const addStatus = async (emails, callbackReturn) => {
-  console.log("ADDSTATUS!!!!");
-  // console.log(emails[0]);
+  console.log("ADDSTATUS!!!! %s", __filename);
+
   let client = getClient();
   /* collect messageId */
 
@@ -451,10 +454,10 @@ const addStatus = async (emails, callbackReturn) => {
   try {
     await client.connect();
     let users = await getUsers();
-    let results = await client.query(queryString);
-    // console.log(results.rows);
+    let mailStatus = await client.query(queryString);
+    // console.log(mailStatus.rows);
 
-    let asigned = assingStatus(users, results.rows, emails);
+    let asigned = assingStatus(users, mailStatus.rows, emails);
     // console.log(asigned);
     callbackReturn(asigned);
   } catch (error) {

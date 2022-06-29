@@ -282,17 +282,19 @@ const BrowserRow = ({
                   ))}
                 </div>
               </div>
-              {email.reenviado !== 0 && (
-                <React.Fragment>
-                  <p className="fw-bold">{email.reenviado.nombre}</p>
-                  <p className="fs-4 fw-bold">{email.reenviado.email}</p>
-                  <p className="fs-4 fw-bold">
-                    {new Date(email.reenviado_fecha).toLocaleDateString(
-                      "es-AR"
-                    )}
-                  </p>
-                </React.Fragment>
-              )}
+              {email.reenviado
+                ? email.reenviado !== 0
+                : false && (
+                    <React.Fragment>
+                      <p className="fw-bold">{email.reenviado.nombre}</p>
+                      <p className="fs-4 fw-bold">{email.reenviado.email}</p>
+                      <p className="fs-4 fw-bold">
+                        {new Date(email.reenviado_fecha).toLocaleDateString(
+                          "es-AR"
+                        )}
+                      </p>
+                    </React.Fragment>
+                  )}
             </div>
           </td>
           <td

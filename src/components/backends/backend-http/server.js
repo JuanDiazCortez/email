@@ -258,7 +258,7 @@ app.post("/retrievePrefs", (req, resp) => {
     }
   });
 });
-
+// mailes enviados por el user 
 app.post("/getSentEmailForUser", (req, resp) => {
   // console.log(`getSentEmailForUser ${JSON.stringify(req.body)}`);
   const { credenciales } = req.body;
@@ -267,7 +267,7 @@ app.post("/getSentEmailForUser", (req, resp) => {
     if (err) {
       return resp.status(501).json({ error: err });
     }
-
+// wrap para que parezca un email
     let emails = data.map((email) => wrapEmail(email));
     return resp.status(200).json({ result: emails });
   });
@@ -430,9 +430,10 @@ app.post("/sendEmailToDb", async (req, resp) => {
 
 app.post("/retrieveLast", (req, resp) => {
   console.log(`retrieveLast-${__MODULE_FILE__}`);
-  let { cantidad, credenciales } = req.body;
 
+  let { cantidad, credenciales } = req.body;
   console.log(`retrieveLastDB ${cantidad} de ${JSON.stringify(credenciales)}`);
+
   /* del api de email retrievelast */
   retrieveLastFromDb(cantidad, credenciales, function (rows, error) {
     if (error) {
@@ -446,7 +447,7 @@ app.post("/retrieveLast", (req, resp) => {
     });
   });
 });
-
+// para que el enviado se parezca a un  email 
 const wrapEmail = (emailSent) => {
   const date = new Date(emailSent.fecha_sent);
 
@@ -465,7 +466,7 @@ const wrapEmail = (emailSent) => {
     receivedDate: emailSent.fecha_sent,
     priority: "normal",
     state_: "normal",
-    reenviado: 1,
+    reenviado: 0,
     reenviado_fecha: date,
     references: [],
   };
