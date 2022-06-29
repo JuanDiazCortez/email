@@ -1,4 +1,4 @@
-
+src/components/backends/.env
 yarn-error.log
 k
 yarn.lock
@@ -10,7 +10,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 src/components/backend/lista.txt
-
+src/components/constants.js
 src/components/constants.js 
 constants.js
 package.lock
