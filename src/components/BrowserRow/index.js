@@ -38,11 +38,11 @@ const RenderAttachs = ({ email }) => {
 
   const showCAttach = (attach) => {
     if (attach.fileName) {
-      console.log(attach.fileName);
+      //      console.log(attach.fileName);
       return attach.fileName;
     }
     if (attach.generatedName) {
-      console.log(attach.generatedName);
+      //    console.log(attach.generatedName);
       return attach.generatedName;
     }
     //  console.log(attach);
@@ -165,7 +165,7 @@ const BrowserRow = ({
                                 }  `);
   };
   //
-  if (!email.reenviado) console.log(email.messageId);
+  // if (!email.reenviado) console.log(email.messageId);
   return (
     isRowForShow && (
       <React.Fragment>

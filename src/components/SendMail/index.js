@@ -71,20 +71,20 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     if (addressBook.length === 0) loadBooks();
 
     return () => {
-      console.log(`compomentUnmount-->SendMail ${__MODULE_FILE__}`);
+      //  console.log(`compomentUnmount-->SendMail ${__MODULE_FILE__}`);
     };
   }, [addressBook]);
 
-  console.log(`selectedRows ${JSON.stringify(selectedRows, null, 2)}`);
+  // console.log(`selectedRows ${JSON.stringify(selectedRows, null, 2)}`);
   if (selectedRows.length === 0) {
     return alert("no seleccionó correo a responder");
   } else {
-    email = selectedRows[0];
+   // email = selectedRows[0];
     let { subject, from } = email;
 
-    console.log(subject);
+    //  console.log(subject);
 
-    from.map((item) => console.log(item.address));
+    //    from.map((item) => console.log(item.address));
   }
 
   const handleSend = (ev) => {
@@ -94,8 +94,10 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
     console.log(
       `ev.target.textContent ${ev.target.textContent} tittle ${textContent}`
     );
-    // console.log(ev.target.textContent);
-    if (tittle === "Responder") {
+
+    console.log(tittle);
+
+    if (tittle === "Responder Email") {
       _mail = {
         subject: subjectValue,
         messageId: email.messageId,
@@ -259,7 +261,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
       { id: shortid.generate(), address: "" },
     ]);
   };
-  console.log(fromValues);
+  // console.log(fromValues);
 
   const handleCcChanged = (ev, id) => {
     const newFrom = ev.target.value;

@@ -258,7 +258,7 @@ app.post("/retrievePrefs", (req, resp) => {
     }
   });
 });
-// mailes enviados por el user 
+// mailes enviados por el user
 app.post("/getSentEmailForUser", (req, resp) => {
   // console.log(`getSentEmailForUser ${JSON.stringify(req.body)}`);
   const { credenciales } = req.body;
@@ -267,7 +267,7 @@ app.post("/getSentEmailForUser", (req, resp) => {
     if (err) {
       return resp.status(501).json({ error: err });
     }
-// wrap para que parezca un email
+    // wrap para que parezca un email
     let emails = data.map((email) => wrapEmail(email));
     return resp.status(200).json({ result: emails });
   });
@@ -387,7 +387,7 @@ app.post("/sendEmailToDb", async (req, resp) => {
 
     // console.log(`body=${req.body}`);
     let { email, credenciales } = req.body;
-
+    console.log(email);
     if (email.sendAttach) {
       if (!email.attachments) console.log("No tenia attachments");
       let result = await getEmailForAttach(email.messageId);
@@ -440,14 +440,14 @@ app.post("/retrieveLast", (req, resp) => {
       console.error(error);
       return resp.status(511).json(error);
     }
-    
+
     console.log(`Enviados ${rows.length} emails`);
     addStatus(rows, function (drows) {
       resp.status(200).json({ data: drows });
     });
   });
 });
-// para que el enviado se parezca a un  email 
+// para que el enviado se parezca a un  email
 const wrapEmail = (emailSent) => {
   const date = new Date(emailSent.fecha_sent);
 

@@ -443,7 +443,7 @@ const MenuBar = ({ editor }) => {
   );
 };
 const MyEditor = ({ texto, onChangeContent }) => {
-  console.log(`MyEditor texto ${texto}`);
+ // console.log(`MyEditor texto ${texto}`);
   const editor = useEditor({
     extensions: [
       Document,
