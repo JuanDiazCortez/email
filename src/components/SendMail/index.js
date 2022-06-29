@@ -79,7 +79,7 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
   if (selectedRows.length === 0) {
     return alert("no seleccionó correo a responder");
   } else {
-   // email = selectedRows[0];
+    // email = selectedRows[0];
     let { subject, from } = email;
 
     //  console.log(subject);
@@ -107,7 +107,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         original: email.html,
         attachments: [],
         replyTo: email.messageId,
-        sendAttach: email.attachments.length > 0 ? true : false,
+        sendAttach:
+          email.attachments && email.attachments.length > 0 ? true : false,
       };
     }
 
@@ -120,7 +121,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         textContent: textContent + email.html,
         original: email.html,
         attachments: [],
-        sendAttach: email.attachments.length > 0 ? true : false,
+        sendAttach:
+          email.attachments && email.attachments.length > 0 ? true : false,
       };
     }
 
@@ -133,7 +135,8 @@ function SendMail({ email, tittle, windowClass, credenciales, onClose }) {
         textContent: textContent + email.html,
         original: email.html,
         attachments: [],
-        sendAttach: email.attachments.length > 0 ? true : false,
+        sendAttach:
+          email.attachments && email.attachments.length > 0 ? true : false,
       };
     }
 
