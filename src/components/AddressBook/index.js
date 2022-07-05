@@ -14,9 +14,30 @@ const {
 } = require("../constants");
 
 function AddressFilter({ companyFilter, setCompanyFilter }) {
+  const [incremental, setIncremental] = useState(false);
+
+  useEffect(() => {
+    if (incremental) {
+      console.log(`buscar ${companyFilter}`);
+    }
+  }, [companyFilter]);
+
+  const onChangeIncremental = (ev) => {
+    setIncremental(!incremental);
+    console.log(incremental);
+  };
+
+  const onFilterClick = (dataToFilter) => {
+    console.log(`onFilterClick '${dataToFilter}'`);
+  };
   return (
     <div className="mt-2">
-      <form className="form ms-2" onSubmit={(ev) => ev.preventDefault()}>
+      <form
+        className="form ms-2"
+        onSubmit={(ev) => {
+          ev.preventDefault();
+        }}
+      >
         <div className="row">
           <div className="col">
             <div className="d-flex flex-row ">
@@ -33,13 +54,28 @@ function AddressFilter({ companyFilter, setCompanyFilter }) {
               </div>
               <div className="d-flex flex-row">
                 <label className="label">Búsqueda Contínua</label>
-                <input className="input" type="checkbox" />
+                <input
+                  className="input"
+                  checked={incremental}
+                  onChange={(ev) => {
+                    onChangeIncremental(ev);
+                  }}
+                  type="checkbox"
+                />
               </div>
               <div className="form-control">
                 <label className="form-label ms-2">email</label>
                 <input type="text" className="ms-2" />
               </div>
-              <button className="ms-1">Filtrar</button>
+              <button
+                className="ms-1"
+                type="button"
+                onClick={(ev) => {
+                  onFilterClick(companyFilter);
+                }}
+              >
+                Filtrar
+              </button>
             </div>
           </div>
         </div>
@@ -53,7 +89,6 @@ function AddressBook() {
   const [book, setBook] = useState();
   const [page, setPage] = useState(0);
   const [companyFilter, setCompanyFilter] = useState("");
-  // const [filter, setFilter] = useState(false);
   const [showEditor, setShowEditor] = useState(false);
   const [showDeletion, setShowDeletion] = useState(false);
 
@@ -102,6 +137,7 @@ function AddressBook() {
       <AddressFilter
         companyFilter={companyFilter}
         setCompanyFilter={setCompanyFilter}
+        setBooks={setBooks}
       />
       <div>
         <table
@@ -123,46 +159,45 @@ function AddressBook() {
             </tr>
           </thead>
           <tbody>
-            {books
-              ? books.map((book) => (
-                  <tr key={`td-${book.id}`}>
-                    <td key={`tdc-${book.id}`}>
-                      <div className="d-flex flex-row  ">
-                        <FontAwesomeIcon
-                          icon={faTrashAlt}
-                          onClick={(ev) => {
-                            handleClickDeleted(ev, book);
-                          }}
-                          style={{ cursor: "pointer" }}
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="bottom"
-                          title="Borrar entrada"
-                        />
-                        <FontAwesomeIcon
-                          className="ml-3"
-                          onClick={(ev) => {
-                            handleClickEdit(ev, book);
-                          }}
-                          icon={faEdit}
-                          style={{ marginLeft: "0.5rem", cursor: "pointer" }}
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="bottom"
-                          title="Editar entrada"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>
-                        <p>{book.company}</p>
-                      </div>
-                    </td>
+            {books &&
+              books.map((book) => (
+                <tr key={`td-${book.id}`}>
+                  <td key={`tdc-${book.id}`}>
+                    <div className="d-flex flex-row  ">
+                      <FontAwesomeIcon
+                        icon={faTrashAlt}
+                        onClick={(ev) => {
+                          handleClickDeleted(ev, book);
+                        }}
+                        style={{ cursor: "pointer" }}
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        title="Borrar entrada"
+                      />
+                      <FontAwesomeIcon
+                        className="ml-3"
+                        onClick={(ev) => {
+                          handleClickEdit(ev, book);
+                        }}
+                        icon={faEdit}
+                        style={{ marginLeft: "0.5rem", cursor: "pointer" }}
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        title="Editar entrada"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <p>{book.company}</p>
+                    </div>
+                  </td>
 
-                    <td key={`tda-${book.id}`}>
-                      <div>{book.adress}</div>
-                    </td>
-                  </tr>
-                ))
-              : null}
+                  <td key={`tda-${book.id}`}>
+                    <div>{book.adress}</div>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
         <div className="d-flex flex-row justify-content-between mt-1">

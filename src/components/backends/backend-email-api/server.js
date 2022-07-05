@@ -226,7 +226,7 @@ const retrieveAllFromMail = (objConn, callBack) => {
         log = messages.length;
         console.log(`al for each  ${log}`);
         _numero = 0;
-        messages.reverse().forEach(function (message) {
+        messages.forEach(function (message, index) {
           if (!connection._connected && !connection._connecting)
             connection.connect();
 
@@ -236,7 +236,7 @@ const retrieveAllFromMail = (objConn, callBack) => {
               connection.end();
               console.log(`res= ${result.rows[0].updateemails}`);
               if (_numero === 0)
-                console.log(` update[0]==> ${result.rows[0].updateemails}`);
+                console.log(` update[0]==> ${JSON.stringify(result.rows[0])}`);
               if (result.rows[0].updateemails) {
                 _numero++;
               }

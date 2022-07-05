@@ -1,10 +1,10 @@
 const PORT_BACKEND = "5100";
-const URL_DATABASE = "192.168.0.120";
+const URL_DATABASE = "192.168.100.58";
 const URL_PROTOCOL = "http";
 
 // const pako = require("pako");
 
-const URL_BACKEND = "192.168.0.120";
+const URL_BACKEND = "192.168.100.58";
 
 const DEFAULT_POST_HEADER = {
   method: "POST",
@@ -119,20 +119,6 @@ const getDataAdreesBook = async (page, callback) => {
       "Content-Type": "application/json",
     },
   };
-
-  /*   function compressBody(body) {
-    return new Promise(function (resolve, reject) {
-      zlib.deflate(body, (err, buffer) => {
-        if (err) {
-          console.log("Error Zipping");
-          reject(err);
-        }
-        console.log("Zipped");
-
-        resolve(buffer);
-      });
-    });
-  } */
 
   let url = `${URL_PROTOCOL}://${URL_DATABASE}:${PORT_BACKEND}/getAddressBook?page=${page}`;
   console.log(url);
