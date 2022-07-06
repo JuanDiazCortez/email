@@ -39,12 +39,9 @@ const MenuBar = ({ editor }) => {
 
   return (
     <Fragment>
+      
       <div>
-        <div
-          className="d-flex  flex-row flex-wrap"
-          id="edit-toolbar"
-          style={{ backgroundColor: "cadetblue" }}
-        >
+        <div className="d-flex  flex-row flex-wrap" id="edit-toolbar">
           <div>
             <input
               type="color"
@@ -443,7 +440,7 @@ const MenuBar = ({ editor }) => {
   );
 };
 const MyEditor = ({ texto, onChangeContent }) => {
- // console.log(`MyEditor texto ${texto}`);
+  // console.log(`MyEditor texto ${texto}`);
   const editor = useEditor({
     extensions: [
       Document,
