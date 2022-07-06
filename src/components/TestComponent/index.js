@@ -7,8 +7,12 @@ function TestComponent(props) {
     <div>
       <div className="card mt-2">
         <div
-          className="mt-2 mr-4"
-          style={{ height: "6rem", marginRight: "8rem" }}
+          className="mt-0 mr-4"
+          style={{
+            height: "8rem",
+            marginRight: "8rem",
+            background: "linear-gradient(#e66465, #9198e5);",
+          }}
         >
           <MyEditor />
         </div>

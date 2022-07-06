@@ -39,8 +39,13 @@ const MenuBar = ({ editor }) => {
 
   return (
     <Fragment>
-      
-      <div>
+      <div
+        id="id-toolbar-email"
+        style={{
+          background:
+            "rgba(0, 0, 0, 0) linear-gradient(rgb(159, 238, 220), rgb(28, 205, 196)) repeat scroll 0% 0%",
+        }}
+      >
         <div className="d-flex  flex-row flex-wrap" id="edit-toolbar">
           <div>
             <input
