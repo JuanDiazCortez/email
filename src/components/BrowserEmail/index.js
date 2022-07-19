@@ -376,6 +376,7 @@ function BrowserEmail({
     marginLeft: "1rem",
   };
 
+  const small = "text-md-start fs6";
   const medium = "text-md-start"; // medium
   const large = "text-lg-start"; // large
 
@@ -803,7 +804,6 @@ function BrowserEmail({
             onClick={(ev) => onClickFiltrar(ev)}
             style={{ marginLeft: "1rem" }}
           ></i>
-          {/* </div> */}
         </div>
       </div>
     );
@@ -868,7 +868,7 @@ function BrowserEmail({
               top: "1",
             }}
           >
-            <tr className="fs-4" style={{ backgroundColor: "#c7c7c7" }}>
+            <tr className={small} style={{ backgroundColor: "#c7c7c7" }}>
               <th
                 className="fs-4 "
                 scope="col"
@@ -899,9 +899,9 @@ function BrowserEmail({
               <th scope="col" className="fs-3 ">
                 Subject
               </th>
-              <th scope="col" className="fs-3 ">
+              {/* <th scope="col" className="fs-3 ">
                 Text
-              </th>
+              </th> */}
             </tr>
           </thead>
           <tbody>

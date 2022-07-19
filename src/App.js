@@ -34,7 +34,7 @@ function App() {
     if (credenciales !== null) {
       return true;
     }
- //   console.log("1");
+    //   console.log("1");
     let creds = JSON.parse(localStorage.getItem("creds"));
     console.log(`credenciales en ls ${JSON.stringify(creds)}`);
     console.log("2");
@@ -112,7 +112,7 @@ function App() {
           marginTop: "-12px",
         }}
       >
-        <h1 className="fw-bolder">{`Richelet Info Email `}</h1>
+        <h2 className="fw-bolder">{`Richelet Info Email `}</h2>
         <h5
           style={{
             marginTop: "-12px",

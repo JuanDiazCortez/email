@@ -23,9 +23,9 @@ const {
   getStyleForState,
   //printMail
 } = require("../constants");
-
+const small = "text-md-start fs-6";
 const medium = "text-md-start fs-4"; // medium
-// const large = "text-lg-start"; // large
+const large = "text-lg-start"; // large
 
 const RenderAttachs = ({ email }) => {
   const [showAttach, setShowAttach] = useState(true);
@@ -49,7 +49,7 @@ const RenderAttachs = ({ email }) => {
     return attach.generatedFileName;
   };
   return (
-    <div style={{ width: "20rem" }}>
+    <div style={{ width: "20rem", maxHeight:"2rem" }}>
       {attachments && (
         <div>
           <FontAwesomeIcon
@@ -74,7 +74,7 @@ const RenderAttachs = ({ email }) => {
                   className="fs-5"
                   key={shortid.generate()}
                   style={{
-                    fontSize: medium,
+                    fontSize: small,
                     fontWeight: !email.leido ? "bold" : "nornal",
                   }}
                 >
@@ -152,17 +152,42 @@ const BrowserRow = ({
     }
   };
   //
+  // return a promise
+  function copyToClipboard(textToCopy) {
+    // navigator clipboard api needs a secure context (https)
+    if (navigator.clipboard && window.isSecureContext) {
+      // navigator clipboard api method'
+      return navigator.clipboard.writeText(textToCopy);
+    } else {
+      // text area method
+      let textArea = document.createElement("textarea");
+      textArea.value = textToCopy;
+      // make the textarea out of viewport
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      return new Promise((res, rej) => {
+        // here the magic happens
+        document.execCommand("copy") ? res() : rej();
+        textArea.remove();
+      });
+    }
+  }
+  //
   const handleRigthClick = (ev, email) => {
     ev.preventDefault();
     console.log("Rigth click");
-    navigator.clipboard.writeText(`de:${email.from[0]}
+    copyToClipboard(`de:${JSON.stringify(email.from[0])}
                                 fecha:${email.date}
                                 subject:${email.subject}
                                 attach:${
                                   email.attachments
                                     ? email.attachments[0].fileName
                                     : "No attach"
-                                }  `);
+                                }  `).then((data) => console.log(data));
   };
   //
   // if (!email.reenviado) console.log(email.messageId);
@@ -172,7 +197,7 @@ const BrowserRow = ({
         <tr
           key={`key-tr-${email.messageId}`}
           id={`id-tr-${email.messageId}`}
-          className={`table-row fs-4 ${getBorderForState(email.state)}`}
+          className={`table-row ${small} ${getBorderForState(email.state)}`}
           style={{ backgroundColor: getStyleForState(email) }}
           tabIndex="0"
           onClick={(ev) => {
@@ -202,7 +227,7 @@ const BrowserRow = ({
           >
             <div>
               <select
-                className="fs-4"
+                className={small}
                 onChange={(ev) => {
                   onSelectMenu(ev, email, data, setData, credenciales);
                 }}
@@ -251,10 +276,10 @@ const BrowserRow = ({
               />
 
               <div
-                className={medium + " border border-3"}
+                className={small + " border border-3"}
                 key={shortid.generate()}
                 style={{
-                  fontSize: medium,
+                  fontSize: small,
                   fontWeight: !email.leido ? "bold" : "nornal",
                 }}
               >
@@ -287,8 +312,10 @@ const BrowserRow = ({
                 : false && (
                     <React.Fragment>
                       <p className="fw-bold">{email.reenviado.nombre}</p>
-                      <p className="fs-4 fw-bold">{email.reenviado.email}</p>
-                      <p className="fs-4 fw-bold">
+                      <p className={`${small} fw-bold`}>
+                        {email.reenviado.email}
+                      </p>
+                      <p className={`${small} fw-bold`}>
                         {new Date(email.reenviado_fecha).toLocaleDateString(
                           "es-AR"
                         )}
@@ -311,9 +338,9 @@ const BrowserRow = ({
             <span className="bA4">
               <span>
                 <div
-                  className={medium}
+                  className={small}
                   style={{
-                    fontSize: medium,
+                    fontSize: small,
                     fontWeight: !email.leido ? "bold" : "nornal",
                   }}
                 >
@@ -333,10 +360,10 @@ const BrowserRow = ({
             <span className="span">
               <span data-hovercard-owner-id={email.messageId}>
                 <p
-                  className={medium}
+                  className={small}
                   type="row"
                   style={{
-                    fontSize: medium,
+                    fontSize: small,
                     fontWeight: !email.leido ? "bold" : "nornal",
                   }}
                 >
@@ -365,7 +392,7 @@ const BrowserRow = ({
               <span className="bA4">
                 <span
                   translate="no"
-                  className={medium}
+                  className={small}
                   type="row"
                   data-hovercard-owner-id={email.messageId}
                   style={{
@@ -378,7 +405,7 @@ const BrowserRow = ({
             </div>
           </td>
 
-          <td
+          {/* <td
             key={shortid.generate()}
             className="table-row"
             onClick={(ev) => {
@@ -391,7 +418,7 @@ const BrowserRow = ({
             >
               <div
                 translate="no"
-                className={medium + " scrollable-bar"}
+                className={small + " scrollable-bar"}
                 type="row"
                 data-hovercard-owner-id={email.messageId}
                 style={{
@@ -401,7 +428,7 @@ const BrowserRow = ({
                 {email.text ? email.text.substring(0, 300) : ""}
               </div>
             </div>
-          </td>
+          </td> */}
         </tr>
       </React.Fragment>
     )

@@ -9,6 +9,7 @@ const data = require("dotenv").config({
 });
 
 console.log(data);
+
 const getClient = () =>
   new Client({
     user: process.env.DATABASE_USER,
@@ -17,9 +18,6 @@ const getClient = () =>
     password: process.env.DATABASE_PASSWD,
     port: 5432,
   });
-
-const client = getClient();
-client.connect();
 
 const getUsers = async () => {
   let client = getClient();
@@ -241,11 +239,12 @@ const retrieveLastFromDb = async (cant, credenciales, callBack) => {
     try {
       await client.connect();
       let result = await client.query(Qry);
-      // console.log("result %s", result.rows[0].mail);
       client.end();
       let newList = result.rows.map((item) => item.mail);
+      console.log("result %s %s", result.rowCount, newList);
       callBack(newList, null);
     } catch (error) {
+      client.end();
       callBack(null, error);
       console.log(error);
     }
@@ -442,7 +441,8 @@ const addStatus = async (emails, callbackReturn) => {
 
   let client = getClient();
   /* collect messageId */
-
+  await client.connect();
+  console.log(emails[2]);
   let data = emails.map((item) => item.messageId);
   let aString = arrayToString(data);
   // console.log(aString);
@@ -452,7 +452,7 @@ const addStatus = async (emails, callbackReturn) => {
   const queryString = `select id_user,id_user_to, status,idmail,leido ,lastdate from webinfo.mailstatus where idmail in ${aString}`;
   // console.log(queryString);
   try {
-    await client.connect();
+    //  await client.connect();
     let users = await getUsers();
     let mailStatus = await client.query(queryString);
     // console.log(mailStatus.rows);
@@ -548,14 +548,13 @@ const updateAllMailToDb = async (callBack) => {
     text: "select * from webinfo.updateemails($1)",
     rowAsArray: true,
   };
-  let r;
 
-  //  console.log(client._connected);
   let object = {
     clientPG: getClient,
     query: Qry,
   };
-  var retrieveAllFromMail =
+
+  const retrieveAllFromMail =
     require("../backend-email-api/server").retrieveAllFromMail;
   retrieveAllFromMail(object, callBack);
 };

@@ -1,10 +1,10 @@
 const __MODULE_FILE__ = "BACKEND-EMAIL-API";
 const Client = require("node-poplib-yapc").Client;
 const MailParser = require("mailparser-mit").MailParser;
+const fs = require("fs");
 const { saveMailToDb } = require("../backend-postgres-api/postgresql");
 const dotenv = require("dotenv");
 const config = dotenv.config({ path: "../.env" });
-
 console.log(config);
 const path = require("path");
 const data = require("dotenv").config({
@@ -31,7 +31,7 @@ const getClient = () => {
     password: process.env.EMAIL_PASSWD,
     // debug: true,
   });
-
+  client.on("error", (e) => console.error(`Error en client ${e}`));
   return client;
 };
 
@@ -154,7 +154,6 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
         _numero = 0;
         let salir = false;
         for (let index = cantidad; index > 0; index--) {
-          //   console.log(`0000000000000000000002222222 ${index}`);
           retrieve(index, (err, message) => {
             console.log("11112");
             if (err) {
@@ -208,61 +207,150 @@ const retrieveAllFromMail_new = async (objConn, callBack) => {
   }
 };
 
+function memorySizeOf(obj) {
+  var bytes = 0;
+
+  function sizeOf(obj) {
+    if (obj !== null && obj !== undefined) {
+      switch (typeof obj) {
+        case "number":
+          bytes += 8;
+          break;
+        case "string":
+          bytes += obj.length * 2;
+          break;
+        case "boolean":
+          bytes += 4;
+          break;
+        case "object":
+          var objClass = Object.prototype.toString.call(obj).slice(8, -1);
+          if (objClass === "Object" || objClass === "Array") {
+            for (var key in obj) {
+              if (!obj.hasOwnProperty(key)) continue;
+              sizeOf(obj[key]);
+            }
+          } else bytes += obj.toString().length * 2;
+          break;
+      }
+    }
+    return bytes;
+  }
+
+  function formatByteSize(bytes) {
+    if (bytes < 1024) return bytes + " bytes";
+    else if (bytes < 1048576) return (bytes / 1024).toFixed(3) + " KiB";
+    else if (bytes < 1073741824) return (bytes / 1048576).toFixed(3) + " MiB";
+    else return (bytes / 1073741824).toFixed(3) + " GiB";
+  }
+
+  return formatByteSize(sizeOf(obj));
+}
+
+const dumpMessages = (messages) => {
+  for (let index = 0; index < messages.length; index++) {
+    const element = messages[index];
+    if (element !== undefined) {
+      let name = element.messageId;
+      //  fs.unlink(`/home/mongo/almacen/${name}.sql`, (err) => {});
+      fs.writeFile(
+        `/home/mongo/almacen/${name}.sql`,
+        JSON.stringify(element),
+        function (err) {
+          if (err) {
+            return console.log(err);
+          }
+          //   console.log(`The file was /home/mongo/almacen/${name}.sql saved!`);
+        }
+      );
+    } else {
+      console.log(`null en messages at index ${index}`);
+    }
+  }
+};
+// var sizeOfStudentObject = memorySizeOf({Student: {firstName: 'firstName', lastName: 'lastName', marks: 10}});
+// console.log(sizeOfStudentObject);
+
 const retrieveAllFromMail = (objConn, callBack) => {
   console.log(`retrieveAllFromMail-->${__MODULE_FILE__} `);
 
   const { clientPG, query } = objConn;
+
   let connection = clientPG();
   let log = 0;
+  let jRes = { response: "", largo: log, updated: 0 };
   let pop3Server = getClient();
-  pop3Server.connect((e) => {
-    if (e) callBack(e, null);
-    try {
-      pop3Server.retrieveAll(function (err, messages) {
+  try {
+    pop3Server.connect((e) => {
+      if (e) return callBack(e, null);
+
+      pop3Server.retrieveAll(async function (err, messages) {
+        if (err) {
+          return callBack(err, null);
+        }
+        jRes.largo = messages.length;
+      //  dumpMessages(messages);
+
+        //   console.log(messages[0]);
         if (!messages)
           return callBack({ message: "error not messages " }, null);
         //
         console.log(messages.length);
         log = messages.length;
         console.log(`al for each  ${log}`);
-        _numero = 0;
-        messages.forEach(function (message, index) {
-          if (!connection._connected && !connection._connecting)
-            connection.connect();
+        await connection.connect();
 
-          connection
-            .query(query, [message])
-            .then((result) => {
-              connection.end();
-              console.log(`res= ${result.rows[0].updateemails}`);
-              if (_numero === 0)
-                console.log(` update[0]==> ${JSON.stringify(result.rows[0])}`);
-              if (result.rows[0].updateemails) {
-                _numero++;
-              }
-            })
-            .catch((error) => {
-              if (error.message !== "Connection terminated") {
-                pop3Server.quit();
-                console.log(`error 157 ${error.stack}`);
-                //    connection.end();
-                callBack(error, null);
-              }
-            });
-        }); // for each
+        for (let index = 0; index < messages.length; index++) {
+          let error = false;
+          const message = messages[index];
+          if (message === null || message === undefined) continue;
+          // console.log(memorySizeOf(message));
 
-        pop3Server.quit();
-        callBack(null, { response: "ok", largo: log, updated: _numero });
-      });
-    } catch (err) {
-      // try connect
-      console.log(`error ppal 176 ${err.stack}`);
-      if (connection._connected) connection.end();
-      pop3Server.quit();
-      callBack(null, { response: "error", largo: log, updated: _numero });
-    }
-  });
-};
+          if (index > 0 && index % 10 == 0) {
+            //     console.log("----");
+            await connection.end();
+            await connection.end();
+            connection = null;
+            connection = clientPG();
+            await connection.connect();
+          }
+
+          try {
+            //
+
+            let result = await connection.query(query, [message]);
+            //         console.log("2");
+            if (index === 0)
+              console.log(` update[0]==> ${result.rows[0].updateemails}`);
+
+            if (result.rows[0].updateemails) {
+              jRes.updated = jRes.updated + 1;
+              console.log("3+");
+            }
+            //   console.log("2*'");
+          } catch (error) {
+            pop3Server.quit();
+            await connection.end();
+
+            console.log(`error 157 ${error.stack}`);
+            throw new Error(error);
+          }
+          //         console.log("4");
+          //     console.log(`index ${index}`);
+        } //for
+        //  console.log(`fin de sincro ${JSON.stringify(jRes)}`);
+        try {
+          await connection.end();
+        } catch (error) {}
+        callBack(null, jRes);
+      }); //retrieveall
+    }); //connect pop3
+  } catch (error) {
+    pop3Server.quit();
+    connection.end();
+    console.log(`error 258 ${error.stack}`);
+    callBack(error, null);
+  }
+}; // fin
 
 const count = async (callBack) => {
   console.log(`count ${__MODULE_FILE__}`);

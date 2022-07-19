@@ -6,9 +6,9 @@ import "moment-timezone";
 const { makeReduce } = require("./constants");
 const NULL_DIV = null;
 // import DocViewer, { PDFRenderer } from "react-doc-viewer";
-
+const small = "fs-6";
 function RenderAttach({ attach }) {
- //  console.log("render doc");
+  //  console.log("render doc");
   //  console.log(attach);
   const {
     length,
@@ -155,13 +155,13 @@ function EmailComponent({ data, name }) {
         {showHeader ? "- hide header details" : "+ show header details"}
       </button>
       {showHeader && (
-        <div id="ecomponent" className="bg-dark.bg-gradient mt-2 fs-4">
+        <div id="ecomponent" className={`bg-dark.bg-gradient mt-2 ${small}`}>
           <div>
             <ul className="c3 list-unstyled">
               {to
                 ? to.map((element, index) => (
                     <li key={shortid.generate()}>
-                      <div className="fs-4">
+                      <div className={` ${small} `}>
                         <p>
                           {index === 0 ? <b>To:</b> : null}
                           {` ${element.name} ${element.address}`}
@@ -178,7 +178,7 @@ function EmailComponent({ data, name }) {
               {from
                 ? from.map((element, index) => (
                     <li key={shortid.generate()}>
-                      <div className="fs-4">
+                      <div className={` ${small} `}>
                         <p>
                           {index === 0 ? <b>from:</b> : null}
                           {` ${element.name} ${element.address}`}
@@ -194,7 +194,7 @@ function EmailComponent({ data, name }) {
               {cc &&
                 cc.map((element, index) => (
                   <li key={shortid.generate()}>
-                    <div className="fs-4">
+                    <div className={` ${small} `}>
                       <p>
                         {index === 0 ? <b>cc: </b> : null}
                         {` ${element.name} ${element.address}`}
@@ -267,7 +267,7 @@ function EmailComponent({ data, name }) {
           })}
         {!html && (
           <textarea
-            className="p-1 fs-4 ml-2 fw-normal"
+            className={`p-1 ${small} ml-2 fw-normal`}
             readOnly={true}
             // rows={text.split("\n").length - 1}
             cols="120"

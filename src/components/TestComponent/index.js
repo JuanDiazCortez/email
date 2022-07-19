@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import sendMail from "../../assets/SendMassEmail.svg";
 import MyEditor from "../MyEditor";
 function TestComponent(props) {
+  const [texto, setTexto] = useState("");
   const inpuStyle = { height: "28px" };
   return (
     <div>
@@ -14,7 +15,7 @@ function TestComponent(props) {
             background: "linear-gradient(#e66465, #9198e5);",
           }}
         >
-          <MyEditor />
+          <MyEditor texto="" position="20rem" />
         </div>
         <form className="form">
           <div className="d-flex flex-row">
