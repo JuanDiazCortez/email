@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { Circles } from "react-loader-spinner";
-import BrowserMain from "./BrowserMain";
+import BrowserMain from "./BrowseMain";
 import EmailFilter from "./EmailFilter";
 import EmailContext from "./Context/EmailContext";
 import { getEmails } from "./Hooks/ApiHooks";
