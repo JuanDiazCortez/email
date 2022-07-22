@@ -1,5 +1,5 @@
 const PORT_BACKEND = "5100";
-const URL_DATABASE = "192.168.1.27";
+const URL_DATABASE = "localhost";
 const URL_PROTOCOL = "http";
 
 // const pako = require("pako");
